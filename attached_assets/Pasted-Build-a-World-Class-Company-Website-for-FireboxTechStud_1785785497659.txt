@@ -1,0 +1,421 @@
+Build a World-Class Company Website for FireboxTechStudios
+
+Create a premium, futuristic, fully responsive, and production-ready website for FireboxTechStudios, a software company specializing in Artificial Intelligence, Web Development, Mobile Applications, Cybersecurity, Cloud Computing, DevOps, Automation, APIs, and Custom Software Solutions.
+
+This should not be a simple landing page. It should function as a complete company platform with a powerful administrator dashboard (CMS) where every section of the website can be managed without editing code.
+
+---
+
+Design
+
+Design a world-class interface inspired by modern technology companies.
+
+Requirements:
+
+- Dark futuristic theme
+- Black, navy, purple and blue gradients
+- Glassmorphism
+- Premium typography
+- Smooth animations
+- Responsive on desktop, tablet and mobile
+- SEO optimized
+- Fast loading
+- Accessibility friendly
+
+---
+
+Hero Section
+
+Create an eye-catching hero section.
+
+Include:
+
+- Large animated headline
+- Animated subtitle
+- Call-to-action buttons
+- 3D glowing FireboxTechStudios logo
+
+Around the logo create animated orbiting service cards:
+
+- Artificial Intelligence
+- Web Development
+- Mobile Development
+- Cybersecurity
+- Cloud Computing
+- DevOps
+- Automation
+- API Development
+- UI/UX Design
+
+The service icons should rotate around the logo with smooth animations.
+
+Include:
+
+- Moving particles
+- Animated glowing lines
+- Interactive mouse effects
+- Scroll animations
+- Parallax effects
+
+---
+
+Website Pages
+
+Create:
+
+- Home
+- About
+- Services
+- Portfolio
+- Tutorials
+- Blog
+- Careers
+- Reviews
+- Contact
+- Support FireboxTechStudios
+- Privacy Policy
+- Terms of Service
+
+---
+
+Services
+
+Services must NOT be hardcoded.
+
+Create a dynamic service management system.
+
+Administrator should be able to:
+
+- Add service
+- Edit service
+- Delete service
+- Upload icon
+- Upload banner
+- Upload gallery
+- Add pricing
+- Add description
+- Select category
+- Add button text
+- Add destination URL
+- Feature service
+- Publish or hide service
+
+Public users should see professional service cards.
+
+Clicking a service should open either:
+
+- a dedicated service page
+
+or
+
+- another website/app configured by the administrator.
+
+---
+
+Portfolio
+
+Administrator can:
+
+- Add project
+- Upload screenshots
+- Upload videos
+- Add technologies used
+- Add GitHub link
+- Add Live Demo link
+- Feature projects
+
+---
+
+Tutorials
+
+Create a learning center.
+
+Administrator can:
+
+- Upload videos
+- Embed YouTube videos
+- Upload thumbnails
+- Add downloadable resources
+- Organize tutorials into categories
+- Publish tutorials
+- Edit tutorials
+- Delete tutorials
+
+Visitors can:
+
+- Watch tutorials
+- Read guides
+- Search tutorials
+- Filter by category
+
+---
+
+Blog
+
+Administrator can:
+
+- Create articles
+- Schedule publishing
+- Upload featured images
+- Edit posts
+- Delete posts
+- Categorize posts
+
+Visitors can:
+
+- Read articles
+- Search blog
+- Share articles
+
+---
+
+Reviews
+
+Create a customer review system.
+
+Visitors can:
+
+- Leave reviews
+- Give 1-5 star ratings
+- Write testimonials
+
+Administrator can:
+
+- Approve reviews
+- Reject reviews
+- Reply to reviews
+- Delete reviews
+- Feature reviews
+
+Display:
+
+Average rating
+
+Featured testimonials
+
+---
+
+Contact
+
+Include:
+
+Call
+
+WhatsApp Chat
+
+Email
+
+Office Location
+
+Google Maps
+
+---
+
+WhatsApp Community
+
+Create buttons for:
+
+Join WhatsApp Channel
+
+Join WhatsApp Group
+
+---
+
+Social Media
+
+Administrator manages:
+
+TikTok
+
+Facebook
+
+Instagram
+
+LinkedIn
+
+GitHub
+
+YouTube
+
+X (Twitter)
+
+Every icon should be clickable.
+
+---
+
+Floating Contact Button
+
+Create a floating contact button.
+
+When clicked it opens a premium popup containing:
+
+WhatsApp
+
+Call
+
+Email
+
+WhatsApp Channel
+
+WhatsApp Group
+
+All social media
+
+---
+
+Support FireboxTechStudios
+
+Create a donation/appreciation section.
+
+Title:
+
+Support FireboxTechStudios
+
+Subtitle:
+
+Love our work? Buy us a soda! Every contribution helps us build more software, AI tools, and free tutorials.
+
+Support:
+
+M-Pesa
+
+PayPal
+
+Card Payments
+
+Custom Amount
+
+Administrator manages:
+
+Payment methods
+
+Donation amounts
+
+Thank-you message
+
+---
+
+Administrator Dashboard
+
+Create a complete CMS.
+
+Dashboard
+
+Analytics
+
+Users
+
+Services
+
+Portfolio
+
+Tutorials
+
+Blog
+
+Reviews
+
+Messages
+
+Quote Requests
+
+Media Library
+
+Social Media
+
+Contact Information
+
+Website Settings
+
+SEO Settings
+
+Appearance
+
+Backups
+
+Security
+
+Roles & Permissions
+
+Everything must be editable from the dashboard.
+
+No hardcoded content.
+
+---
+
+Extra Features
+
+Search
+
+Animations
+
+Dark mode
+
+Newsletter
+
+Live statistics
+
+Contact forms
+
+Quote request form
+
+FAQ
+
+Case studies
+
+Trusted clients
+
+Cookies notice
+
+404 page
+
+Loading screen
+
+Custom favicon
+
+Progress bar
+
+Lazy loading
+
+Image optimization
+
+Automatic sitemap
+
+Schema markup
+
+---
+
+Technologies
+
+Use modern best practices.
+
+Frontend:
+
+- HTML5
+- CSS3
+- JavaScript/TypeScript
+- React or Next.js
+- GSAP
+- Three.js
+- Framer Motion
+
+Backend:
+
+- Node.js
+- Express
+
+Database:
+
+- MongoDB
+
+Authentication:
+
+- JWT
+
+File uploads:
+
+- Cloudinary or local storage abstraction
+
+The codebase should be clean, modular, secure, scalable, and easy to maintain.
+
+The final result should look and feel like the website of a global technology company rather than a simple business website.

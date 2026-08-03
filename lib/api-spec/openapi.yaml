@@ -3,20 +3,33 @@ info:
   # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: FireboxTechStudios API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
-    description: Health operations
+  - name: services
+  - name: portfolio
+  - name: tutorials
+  - name: blog
+  - name: reviews
+  - name: contact
+  - name: quotes
+  - name: newsletter
+  - name: settings
+  - name: team
+  - name: faq
+  - name: clients
+  - name: jobs
+  - name: stats
+
 paths:
   /healthz:
     get:
       operationId: healthCheck
       tags: [health]
       summary: Health check
-      description: Returns server health status
       responses:
         "200":
           description: Healthy
@@ -24,13 +37,1621 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  # ─── STATS ────────────────────────────────────────────────────────────────
+  /stats/dashboard:
+    get:
+      operationId: getDashboardStats
+      tags: [stats]
+      summary: Admin dashboard statistics
+      responses:
+        "200":
+          description: Dashboard stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashboardStats"
+
+  # ─── SERVICES ─────────────────────────────────────────────────────────────
+  /services:
+    get:
+      operationId: listServices
+      tags: [services]
+      summary: List all services (admin)
+      parameters:
+        - name: published
+          in: query
+          schema: { type: string }
+        - name: category
+          in: query
+          schema: { type: string }
+      responses:
+        "200":
+          description: List of services
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Service" }
+    post:
+      operationId: createService
+      tags: [services]
+      summary: Create a service
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ServiceInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Service"
+
+  /services/featured:
+    get:
+      operationId: listFeaturedServices
+      tags: [services]
+      summary: List featured published services (public)
+      responses:
+        "200":
+          description: Featured services
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Service" }
+
+  /services/public:
+    get:
+      operationId: listPublicServices
+      tags: [services]
+      summary: List all published services (public)
+      parameters:
+        - name: category
+          in: query
+          schema: { type: string }
+      responses:
+        "200":
+          description: Published services
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Service" }
+
+  /services/{id}:
+    get:
+      operationId: getService
+      tags: [services]
+      summary: Get a service by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      responses:
+        "200":
+          description: Service
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Service"
+        "404":
+          description: Not found
+    patch:
+      operationId: updateService
+      tags: [services]
+      summary: Update a service
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ServiceUpdate"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Service"
+    delete:
+      operationId: deleteService
+      tags: [services]
+      summary: Delete a service
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      responses:
+        "204":
+          description: Deleted
+
+  # ─── PORTFOLIO ────────────────────────────────────────────────────────────
+  /portfolio:
+    get:
+      operationId: listProjects
+      tags: [portfolio]
+      summary: List all projects (admin)
+      responses:
+        "200":
+          description: Projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Project" }
+    post:
+      operationId: createProject
+      tags: [portfolio]
+      summary: Create a project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProjectInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project" 
+
+  /portfolio/featured:
+    get:
+      operationId: listFeaturedProjects
+      tags: [portfolio]
+      summary: List featured projects (public)
+      responses:
+        "200":
+          description: Featured projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Project" }
+
+  /portfolio/public:
+    get:
+      operationId: listPublicProjects
+      tags: [portfolio]
+      summary: List all published projects (public)
+      parameters:
+        - name: technology
+          in: query
+          schema: { type: string }
+      responses:
+        "200":
+          description: Published projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Project" }
+
+  /portfolio/{id}:
+    get:
+      operationId: getProject
+      tags: [portfolio]
+      summary: Get a project by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      responses:
+        "200":
+          description: Project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+        "404":
+          description: Not found
+    patch:
+      operationId: updateProject
+      tags: [portfolio]
+      summary: Update a project
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProjectUpdate"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+    delete:
+      operationId: deleteProject
+      tags: [portfolio]
+      summary: Delete a project
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      responses:
+        "204":
+          description: Deleted
+
+  # ─── TUTORIALS ────────────────────────────────────────────────────────────
+  /tutorials:
+    get:
+      operationId: listTutorials
+      tags: [tutorials]
+      summary: List all tutorials (admin)
+      parameters:
+        - name: category
+          in: query
+          schema: { type: string }
+        - name: published
+          in: query
+          schema: { type: string }
+        - name: search
+          in: query
+          schema: { type: string }
+      responses:
+        "200":
+          description: Tutorials
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Tutorial" }
+    post:
+      operationId: createTutorial
+      tags: [tutorials]
+      summary: Create a tutorial
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TutorialInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tutorial"
+
+  /tutorials/public:
+    get:
+      operationId: listPublicTutorials
+      tags: [tutorials]
+      summary: List published tutorials (public)
+      parameters:
+        - name: category
+          in: query
+          schema: { type: string }
+        - name: search
+          in: query
+          schema: { type: string }
+      responses:
+        "200":
+          description: Published tutorials
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Tutorial" }
+
+  /tutorials/{id}:
+    get:
+      operationId: getTutorial
+      tags: [tutorials]
+      summary: Get a tutorial by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      responses:
+        "200":
+          description: Tutorial
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tutorial"
+        "404":
+          description: Not found
+    patch:
+      operationId: updateTutorial
+      tags: [tutorials]
+      summary: Update a tutorial
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TutorialUpdate"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tutorial"
+    delete:
+      operationId: deleteTutorial
+      tags: [tutorials]
+      summary: Delete a tutorial
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      responses:
+        "204":
+          description: Deleted
+
+  # ─── BLOG ─────────────────────────────────────────────────────────────────
+  /blog:
+    get:
+      operationId: listBlogPosts
+      tags: [blog]
+      summary: List all blog posts (admin)
+      parameters:
+        - name: category
+          in: query
+          schema: { type: string }
+        - name: published
+          in: query
+          schema: { type: string }
+        - name: search
+          in: query
+          schema: { type: string }
+      responses:
+        "200":
+          description: Blog posts
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/BlogPost" }
+    post:
+      operationId: createBlogPost
+      tags: [blog]
+      summary: Create a blog post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BlogPostInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BlogPost"
+
+  /blog/public:
+    get:
+      operationId: listPublicBlogPosts
+      tags: [blog]
+      summary: List published blog posts (public)
+      parameters:
+        - name: category
+          in: query
+          schema: { type: string }
+        - name: search
+          in: query
+          schema: { type: string }
+      responses:
+        "200":
+          description: Published posts
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/BlogPost" }
+
+  /blog/recent:
+    get:
+      operationId: listRecentBlogPosts
+      tags: [blog]
+      summary: Get 3 most recent published posts
+      responses:
+        "200":
+          description: Recent posts
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/BlogPost" }
+
+  /blog/{id}:
+    get:
+      operationId: getBlogPost
+      tags: [blog]
+      summary: Get a blog post by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      responses:
+        "200":
+          description: Blog post
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BlogPost"
+        "404":
+          description: Not found
+    patch:
+      operationId: updateBlogPost
+      tags: [blog]
+      summary: Update a blog post
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BlogPostUpdate"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BlogPost"
+    delete:
+      operationId: deleteBlogPost
+      tags: [blog]
+      summary: Delete a blog post
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      responses:
+        "204":
+          description: Deleted
+
+  # ─── REVIEWS ──────────────────────────────────────────────────────────────
+  /reviews:
+    get:
+      operationId: listReviews
+      tags: [reviews]
+      summary: List all reviews (admin)
+      parameters:
+        - name: status
+          in: query
+          schema: { type: string }
+      responses:
+        "200":
+          description: Reviews
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Review" }
+    post:
+      operationId: createReview
+      tags: [reviews]
+      summary: Submit a review (public)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReviewInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Review"
+
+  /reviews/public:
+    get:
+      operationId: listPublicReviews
+      tags: [reviews]
+      summary: List approved reviews with average rating (public)
+      responses:
+        "200":
+          description: Approved reviews
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PublicReviewsResponse"
+
+  /reviews/{id}:
+    patch:
+      operationId: updateReview
+      tags: [reviews]
+      summary: Update review status (approve/reject/feature/reply)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReviewUpdate"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Review"
+    delete:
+      operationId: deleteReview
+      tags: [reviews]
+      summary: Delete a review
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      responses:
+        "204":
+          description: Deleted
+
+  # ─── CONTACT MESSAGES ─────────────────────────────────────────────────────
+  /contact:
+    get:
+      operationId: listContactMessages
+      tags: [contact]
+      summary: List all contact messages (admin)
+      responses:
+        "200":
+          description: Messages
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/ContactMessage" }
+    post:
+      operationId: createContactMessage
+      tags: [contact]
+      summary: Submit a contact message (public)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContactMessageInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContactMessage"
+
+  /contact/{id}:
+    delete:
+      operationId: deleteContactMessage
+      tags: [contact]
+      summary: Delete a contact message
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      responses:
+        "204":
+          description: Deleted
+    patch:
+      operationId: updateContactMessage
+      tags: [contact]
+      summary: Mark message as read
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContactMessageUpdate"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContactMessage"
+
+  # ─── QUOTE REQUESTS ───────────────────────────────────────────────────────
+  /quotes:
+    get:
+      operationId: listQuoteRequests
+      tags: [quotes]
+      summary: List all quote requests (admin)
+      responses:
+        "200":
+          description: Quote requests
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/QuoteRequest" }
+    post:
+      operationId: createQuoteRequest
+      tags: [quotes]
+      summary: Submit a quote request (public)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QuoteRequestInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QuoteRequest"
+
+  /quotes/{id}:
+    patch:
+      operationId: updateQuoteRequest
+      tags: [quotes]
+      summary: Update quote request status
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QuoteRequestUpdate"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QuoteRequest"
+    delete:
+      operationId: deleteQuoteRequest
+      tags: [quotes]
+      summary: Delete a quote request
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      responses:
+        "204":
+          description: Deleted
+
+  # ─── NEWSLETTER ───────────────────────────────────────────────────────────
+  /newsletter:
+    post:
+      operationId: subscribeNewsletter
+      tags: [newsletter]
+      summary: Subscribe to newsletter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NewsletterSubscriptionInput"
+      responses:
+        "201":
+          description: Subscribed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NewsletterSubscription"
+    get:
+      operationId: listNewsletterSubscriptions
+      tags: [newsletter]
+      summary: List all subscribers (admin)
+      responses:
+        "200":
+          description: Subscribers
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/NewsletterSubscription" }
+
+  # ─── SITE SETTINGS ────────────────────────────────────────────────────────
+  /settings:
+    get:
+      operationId: getSiteSettings
+      tags: [settings]
+      summary: Get site settings
+      responses:
+        "200":
+          description: Settings
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SiteSettings"
+    patch:
+      operationId: updateSiteSettings
+      tags: [settings]
+      summary: Update site settings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SiteSettingsUpdate"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SiteSettings"
+
+  # ─── TEAM MEMBERS ─────────────────────────────────────────────────────────
+  /team:
+    get:
+      operationId: listTeamMembers
+      tags: [team]
+      summary: List team members
+      responses:
+        "200":
+          description: Team members
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/TeamMember" }
+    post:
+      operationId: createTeamMember
+      tags: [team]
+      summary: Add a team member
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TeamMemberInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TeamMember"
+
+  /team/{id}:
+    patch:
+      operationId: updateTeamMember
+      tags: [team]
+      summary: Update a team member
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TeamMemberUpdate"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TeamMember"
+    delete:
+      operationId: deleteTeamMember
+      tags: [team]
+      summary: Delete a team member
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      responses:
+        "204":
+          description: Deleted
+
+  # ─── FAQ ──────────────────────────────────────────────────────────────────
+  /faq:
+    get:
+      operationId: listFaqItems
+      tags: [faq]
+      summary: List FAQ items
+      responses:
+        "200":
+          description: FAQ items
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/FaqItem" }
+    post:
+      operationId: createFaqItem
+      tags: [faq]
+      summary: Create a FAQ item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FaqItemInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FaqItem"
+
+  /faq/{id}:
+    patch:
+      operationId: updateFaqItem
+      tags: [faq]
+      summary: Update a FAQ item
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FaqItemUpdate"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FaqItem"
+    delete:
+      operationId: deleteFaqItem
+      tags: [faq]
+      summary: Delete a FAQ item
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      responses:
+        "204":
+          description: Deleted
+
+  # ─── TRUSTED CLIENTS ──────────────────────────────────────────────────────
+  /clients:
+    get:
+      operationId: listTrustedClients
+      tags: [clients]
+      summary: List trusted clients
+      responses:
+        "200":
+          description: Clients
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/TrustedClient" }
+    post:
+      operationId: createTrustedClient
+      tags: [clients]
+      summary: Add a trusted client
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TrustedClientInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TrustedClient"
+
+  /clients/{id}:
+    patch:
+      operationId: updateTrustedClient
+      tags: [clients]
+      summary: Update a trusted client
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TrustedClientUpdate"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TrustedClient"
+    delete:
+      operationId: deleteTrustedClient
+      tags: [clients]
+      summary: Delete a trusted client
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      responses:
+        "204":
+          description: Deleted
+
+  # ─── JOBS / CAREERS ───────────────────────────────────────────────────────
+  /jobs:
+    get:
+      operationId: listJobs
+      tags: [jobs]
+      summary: List all job postings (admin)
+      responses:
+        "200":
+          description: Jobs
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Job" }
+    post:
+      operationId: createJob
+      tags: [jobs]
+      summary: Create a job posting
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JobInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+
+  /jobs/public:
+    get:
+      operationId: listPublicJobs
+      tags: [jobs]
+      summary: List active job postings (public)
+      responses:
+        "200":
+          description: Active jobs
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Job" }
+
+  /jobs/{id}:
+    patch:
+      operationId: updateJob
+      tags: [jobs]
+      summary: Update a job posting
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JobUpdate"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+    delete:
+      operationId: deleteJob
+      tags: [jobs]
+      summary: Delete a job posting
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: number }
+      responses:
+        "204":
+          description: Deleted
+
 components:
   schemas:
     HealthStatus:
       type: object
+      required: [status]
       properties:
-        status:
-          type: string
-      required:
-        - status
+        status: { type: string }
 
+    # ─── STATS ──────────────────────────────────────────────────────────────
+    DashboardStats:
+      type: object
+      required: [totalServices, totalProjects, totalTutorials, totalBlogPosts, totalReviews, pendingReviews, totalMessages, totalQuotes, totalSubscribers, totalJobs, avgRating]
+      properties:
+        totalServices: { type: number }
+        totalProjects: { type: number }
+        totalTutorials: { type: number }
+        totalBlogPosts: { type: number }
+        totalReviews: { type: number }
+        pendingReviews: { type: number }
+        totalMessages: { type: number }
+        totalQuotes: { type: number }
+        totalSubscribers: { type: number }
+        totalJobs: { type: number }
+        avgRating: { type: number }
+
+    # ─── SERVICE ────────────────────────────────────────────────────────────
+    Service:
+      type: object
+      required: [id, title, description, category, published, featured, createdAt]
+      properties:
+        id: { type: number }
+        title: { type: string }
+        description: { type: string }
+        category: { type: string }
+        icon: { type: ["string", "null"] }
+        bannerUrl: { type: ["string", "null"] }
+        galleryUrls: { type: ["string", "null"] }
+        pricing: { type: ["string", "null"] }
+        buttonText: { type: ["string", "null"] }
+        destinationUrl: { type: ["string", "null"] }
+        published: { type: boolean }
+        featured: { type: boolean }
+        sortOrder: { type: number }
+        createdAt: { type: string }
+        updatedAt: { type: string }
+
+    ServiceInput:
+      type: object
+      required: [title, description, category]
+      properties:
+        title: { type: string }
+        description: { type: string }
+        category: { type: string }
+        icon: { type: string }
+        bannerUrl: { type: string }
+        galleryUrls: { type: string }
+        pricing: { type: string }
+        buttonText: { type: string }
+        destinationUrl: { type: string }
+        published: { type: boolean }
+        featured: { type: boolean }
+        sortOrder: { type: number }
+
+    ServiceUpdate:
+      type: object
+      properties:
+        title: { type: string }
+        description: { type: string }
+        category: { type: string }
+        icon: { type: string }
+        bannerUrl: { type: string }
+        galleryUrls: { type: string }
+        pricing: { type: string }
+        buttonText: { type: string }
+        destinationUrl: { type: string }
+        published: { type: boolean }
+        featured: { type: boolean }
+        sortOrder: { type: number }
+
+    # ─── PROJECT ────────────────────────────────────────────────────────────
+    Project:
+      type: object
+      required: [id, title, description, published, featured, createdAt]
+      properties:
+        id: { type: number }
+        title: { type: string }
+        description: { type: string }
+        technologies: { type: ["string", "null"] }
+        screenshotUrls: { type: ["string", "null"] }
+        videoUrl: { type: ["string", "null"] }
+        githubUrl: { type: ["string", "null"] }
+        liveDemoUrl: { type: ["string", "null"] }
+        published: { type: boolean }
+        featured: { type: boolean }
+        category: { type: ["string", "null"] }
+        createdAt: { type: string }
+        updatedAt: { type: string }
+
+    ProjectInput:
+      type: object
+      required: [title, description]
+      properties:
+        title: { type: string }
+        description: { type: string }
+        technologies: { type: string }
+        screenshotUrls: { type: string }
+        videoUrl: { type: string }
+        githubUrl: { type: string }
+        liveDemoUrl: { type: string }
+        published: { type: boolean }
+        featured: { type: boolean }
+        category: { type: string }
+
+    ProjectUpdate:
+      type: object
+      properties:
+        title: { type: string }
+        description: { type: string }
+        technologies: { type: string }
+        screenshotUrls: { type: string }
+        videoUrl: { type: string }
+        githubUrl: { type: string }
+        liveDemoUrl: { type: string }
+        published: { type: boolean }
+        featured: { type: boolean }
+        category: { type: string }
+
+    # ─── TUTORIAL ───────────────────────────────────────────────────────────
+    Tutorial:
+      type: object
+      required: [id, title, description, category, published, createdAt]
+      properties:
+        id: { type: number }
+        title: { type: string }
+        description: { type: string }
+        category: { type: string }
+        thumbnailUrl: { type: ["string", "null"] }
+        videoUrl: { type: ["string", "null"] }
+        youtubeEmbedUrl: { type: ["string", "null"] }
+        downloadableResources: { type: ["string", "null"] }
+        published: { type: boolean }
+        duration: { type: ["string", "null"] }
+        difficulty: { type: ["string", "null"] }
+        createdAt: { type: string }
+        updatedAt: { type: string }
+
+    TutorialInput:
+      type: object
+      required: [title, description, category]
+      properties:
+        title: { type: string }
+        description: { type: string }
+        category: { type: string }
+        thumbnailUrl: { type: string }
+        videoUrl: { type: string }
+        youtubeEmbedUrl: { type: string }
+        downloadableResources: { type: string }
+        published: { type: boolean }
+        duration: { type: string }
+        difficulty: { type: string }
+
+    TutorialUpdate:
+      type: object
+      properties:
+        title: { type: string }
+        description: { type: string }
+        category: { type: string }
+        thumbnailUrl: { type: string }
+        videoUrl: { type: string }
+        youtubeEmbedUrl: { type: string }
+        downloadableResources: { type: string }
+        published: { type: boolean }
+        duration: { type: string }
+        difficulty: { type: string }
+
+    # ─── BLOG POST ──────────────────────────────────────────────────────────
+    BlogPost:
+      type: object
+      required: [id, title, slug, content, category, published, createdAt]
+      properties:
+        id: { type: number }
+        title: { type: string }
+        slug: { type: string }
+        content: { type: string }
+        excerpt: { type: ["string", "null"] }
+        category: { type: string }
+        featuredImageUrl: { type: ["string", "null"] }
+        published: { type: boolean }
+        scheduledAt: { type: ["string", "null"] }
+        authorName: { type: ["string", "null"] }
+        tags: { type: ["string", "null"] }
+        createdAt: { type: string }
+        updatedAt: { type: string }
+
+    BlogPostInput:
+      type: object
+      required: [title, content, category]
+      properties:
+        title: { type: string }
+        content: { type: string }
+        excerpt: { type: string }
+        category: { type: string }
+        featuredImageUrl: { type: string }
+        published: { type: boolean }
+        scheduledAt: { type: string }
+        authorName: { type: string }
+        tags: { type: string }
+
+    BlogPostUpdate:
+      type: object
+      properties:
+        title: { type: string }
+        content: { type: string }
+        excerpt: { type: string }
+        category: { type: string }
+        featuredImageUrl: { type: string }
+        published: { type: boolean }
+        scheduledAt: { type: string }
+        authorName: { type: string }
+        tags: { type: string }
+
+    # ─── REVIEW ─────────────────────────────────────────────────────────────
+    Review:
+      type: object
+      required: [id, name, email, rating, testimonial, status, featured, createdAt]
+      properties:
+        id: { type: number }
+        name: { type: string }
+        email: { type: string }
+        rating: { type: number }
+        testimonial: { type: string }
+        status: { type: string }
+        featured: { type: boolean }
+        adminReply: { type: ["string", "null"] }
+        createdAt: { type: string }
+
+    ReviewInput:
+      type: object
+      required: [name, email, rating, testimonial]
+      properties:
+        name: { type: string }
+        email: { type: string }
+        rating: { type: number }
+        testimonial: { type: string }
+
+    ReviewUpdate:
+      type: object
+      properties:
+        status: { type: string }
+        featured: { type: boolean }
+        adminReply: { type: string }
+
+    PublicReviewsResponse:
+      type: object
+      required: [reviews, averageRating, totalCount]
+      properties:
+        reviews:
+          type: array
+          items: { $ref: "#/components/schemas/Review" }
+        averageRating: { type: number }
+        totalCount: { type: number }
+
+    # ─── CONTACT MESSAGE ────────────────────────────────────────────────────
+    ContactMessage:
+      type: object
+      required: [id, name, email, subject, message, read, createdAt]
+      properties:
+        id: { type: number }
+        name: { type: string }
+        email: { type: string }
+        subject: { type: string }
+        message: { type: string }
+        phone: { type: ["string", "null"] }
+        read: { type: boolean }
+        createdAt: { type: string }
+
+    ContactMessageInput:
+      type: object
+      required: [name, email, subject, message]
+      properties:
+        name: { type: string }
+        email: { type: string }
+        subject: { type: string }
+        message: { type: string }
+        phone: { type: string }
+
+    ContactMessageUpdate:
+      type: object
+      properties:
+        read: { type: boolean }
+
+    # ─── QUOTE REQUEST ──────────────────────────────────────────────────────
+    QuoteRequest:
+      type: object
+      required: [id, name, email, projectType, description, budget, status, createdAt]
+      properties:
+        id: { type: number }
+        name: { type: string }
+        email: { type: string }
+        phone: { type: ["string", "null"] }
+        projectType: { type: string }
+        description: { type: string }
+        budget: { type: ["string", "null"] }
+        timeline: { type: ["string", "null"] }
+        status: { type: string }
+        createdAt: { type: string }
+
+    QuoteRequestInput:
+      type: object
+      required: [name, email, projectType, description]
+      properties:
+        name: { type: string }
+        email: { type: string }
+        phone: { type: string }
+        projectType: { type: string }
+        description: { type: string }
+        budget: { type: string }
+        timeline: { type: string }
+
+    QuoteRequestUpdate:
+      type: object
+      properties:
+        status: { type: string }
+
+    # ─── NEWSLETTER ─────────────────────────────────────────────────────────
+    NewsletterSubscription:
+      type: object
+      required: [id, email, createdAt]
+      properties:
+        id: { type: number }
+        email: { type: string }
+        createdAt: { type: string }
+
+    NewsletterSubscriptionInput:
+      type: object
+      required: [email]
+      properties:
+        email: { type: string }
+
+    # ─── SITE SETTINGS ──────────────────────────────────────────────────────
+    SiteSettings:
+      type: object
+      required: [id]
+      properties:
+        id: { type: number }
+        siteName: { type: string }
+        tagline: { type: string }
+        email: { type: string }
+        phone: { type: string }
+        whatsapp: { type: string }
+        whatsappChannelUrl: { type: string }
+        whatsappGroupUrl: { type: string }
+        address: { type: string }
+        googleMapsUrl: { type: string }
+        logoUrl: { type: string }
+        faviconUrl: { type: string }
+        # Social
+        tiktokUrl: { type: string }
+        facebookUrl: { type: string }
+        instagramUrl: { type: string }
+        linkedinUrl: { type: string }
+        githubUrl: { type: string }
+        youtubeUrl: { type: string }
+        twitterUrl: { type: string }
+        # Support/Donations
+        mpesaNumber: { type: string }
+        paypalEmail: { type: string }
+        donationMessage: { type: string }
+        # SEO
+        metaDescription: { type: string }
+        metaKeywords: { type: string }
+
+    SiteSettingsUpdate:
+      type: object
+      properties:
+        siteName: { type: string }
+        tagline: { type: string }
+        email: { type: string }
+        phone: { type: string }
+        whatsapp: { type: string }
+        whatsappChannelUrl: { type: string }
+        whatsappGroupUrl: { type: string }
+        address: { type: string }
+        googleMapsUrl: { type: string }
+        logoUrl: { type: string }
+        faviconUrl: { type: string }
+        tiktokUrl: { type: string }
+        facebookUrl: { type: string }
+        instagramUrl: { type: string }
+        linkedinUrl: { type: string }
+        githubUrl: { type: string }
+        youtubeUrl: { type: string }
+        twitterUrl: { type: string }
+        mpesaNumber: { type: string }
+        paypalEmail: { type: string }
+        donationMessage: { type: string }
+        metaDescription: { type: string }
+        metaKeywords: { type: string }
+
+    # ─── TEAM MEMBER ────────────────────────────────────────────────────────
+    TeamMember:
+      type: object
+      required: [id, name, role, createdAt]
+      properties:
+        id: { type: number }
+        name: { type: string }
+        role: { type: string }
+        bio: { type: ["string", "null"] }
+        avatarUrl: { type: ["string", "null"] }
+        linkedinUrl: { type: ["string", "null"] }
+        githubUrl: { type: ["string", "null"] }
+        twitterUrl: { type: ["string", "null"] }
+        sortOrder: { type: number }
+        createdAt: { type: string }
+
+    TeamMemberInput:
+      type: object
+      required: [name, role]
+      properties:
+        name: { type: string }
+        role: { type: string }
+        bio: { type: string }
+        avatarUrl: { type: string }
+        linkedinUrl: { type: string }
+        githubUrl: { type: string }
+        twitterUrl: { type: string }
+        sortOrder: { type: number }
+
+    TeamMemberUpdate:
+      type: object
+      properties:
+        name: { type: string }
+        role: { type: string }
+        bio: { type: string }
+        avatarUrl: { type: string }
+        linkedinUrl: { type: string }
+        githubUrl: { type: string }
+        twitterUrl: { type: string }
+        sortOrder: { type: number }
+
+    # ─── FAQ ────────────────────────────────────────────────────────────────
+    FaqItem:
+      type: object
+      required: [id, question, answer, sortOrder, createdAt]
+      properties:
+        id: { type: number }
+        question: { type: string }
+        answer: { type: string }
+        category: { type: ["string", "null"] }
+        sortOrder: { type: number }
+        createdAt: { type: string }
+
+    FaqItemInput:
+      type: object
+      required: [question, answer]
+      properties:
+        question: { type: string }
+        answer: { type: string }
+        category: { type: string }
+        sortOrder: { type: number }
+
+    FaqItemUpdate:
+      type: object
+      properties:
+        question: { type: string }
+        answer: { type: string }
+        category: { type: string }
+        sortOrder: { type: number }
+
+    # ─── TRUSTED CLIENT ─────────────────────────────────────────────────────
+    TrustedClient:
+      type: object
+      required: [id, name, sortOrder, createdAt]
+      properties:
+        id: { type: number }
+        name: { type: string }
+        logoUrl: { type: ["string", "null"] }
+        websiteUrl: { type: ["string", "null"] }
+        sortOrder: { type: number }
+        createdAt: { type: string }
+
+    TrustedClientInput:
+      type: object
+      required: [name]
+      properties:
+        name: { type: string }
+        logoUrl: { type: string }
+        websiteUrl: { type: string }
+        sortOrder: { type: number }
+
+    TrustedClientUpdate:
+      type: object
+      properties:
+        name: { type: string }
+        logoUrl: { type: string }
+        websiteUrl: { type: string }
+        sortOrder: { type: number }
+
+    # ─── JOB ────────────────────────────────────────────────────────────────
+    Job:
+      type: object
+      required: [id, title, department, type, location, description, active, createdAt]
+      properties:
+        id: { type: number }
+        title: { type: string }
+        department: { type: string }
+        type: { type: string }
+        location: { type: string }
+        description: { type: string }
+        requirements: { type: ["string", "null"] }
+        salaryRange: { type: ["string", "null"] }
+        active: { type: boolean }
+        applicationUrl: { type: ["string", "null"] }
+        createdAt: { type: string }
+        updatedAt: { type: string }
+
+    JobInput:
+      type: object
+      required: [title, department, type, location, description]
+      properties:
+        title: { type: string }
+        department: { type: string }
+        type: { type: string }
+        location: { type: string }
+        description: { type: string }
+        requirements: { type: string }
+        salaryRange: { type: string }
+        active: { type: boolean }
+        applicationUrl: { type: string }
+
+    JobUpdate:
+      type: object
+      properties:
+        title: { type: string }
+        department: { type: string }
+        type: { type: string }
+        location: { type: string }
+        description: { type: string }
+        requirements: { type: string }
+        salaryRange: { type: string }
+        active: { type: boolean }
+        applicationUrl: { type: string }

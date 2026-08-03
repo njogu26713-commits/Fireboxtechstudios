@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "FireboxTechStudios Website"
+description = "A premium company website and full CMS admin dashboard for FireboxTechStudios, a software company specializing in AI, web development, mobile apps, cybersecurity, cloud computing, DevOps, and more. Includes public pages (Home, About, Services, Portfolio, Blog, Tutorials, Reviews, Careers, Contact, Support) and a complete admin dashboard for managing all content dynamically."
+version = "1.0.0"
+id = "artifacts/firebox-website"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22542
+
+[services.development]
+run = "pnpm --filter @workspace/firebox-website run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/firebox-website", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/firebox-website/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22542"
+BASE_PATH = "/"
