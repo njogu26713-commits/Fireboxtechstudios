@@ -1,16 +1,19 @@
 import { Router, type IRouter } from "express";
-import { eq } from "drizzle-orm";
-import { db, siteSettingsTable } from "@workspace/db";
+import { SiteSettingsModel } from "@workspace/db";
 import { UpdateSiteSettingsBody } from "@workspace/api-zod";
 
 const router: IRouter = Router();
 
-router.get("/settings", async (_req, res): Promise<void> => {
-  let [settings] = await db.select().from(siteSettingsTable).limit(1);
+async function getOrCreateSettings() {
+  let settings = await SiteSettingsModel.findOne();
   if (!settings) {
-    // Auto-create default settings
-    [settings] = await db.insert(siteSettingsTable).values({}).returning();
+    settings = await SiteSettingsModel.create({});
   }
+  return settings;
+}
+
+router.get("/settings", async (_req, res): Promise<void> => {
+  const settings = await getOrCreateSettings();
   res.json(settings);
 });
 
@@ -20,15 +23,8 @@ router.patch("/settings", async (req, res): Promise<void> => {
     res.status(400).json({ error: parsed.error.message });
     return;
   }
-  let [settings] = await db.select().from(siteSettingsTable).limit(1);
-  if (!settings) {
-    [settings] = await db.insert(siteSettingsTable).values({}).returning();
-  }
-  const [updated] = await db
-    .update(siteSettingsTable)
-    .set(parsed.data)
-    .where(eq(siteSettingsTable.id, settings.id))
-    .returning();
+  const settings = await getOrCreateSettings();
+  const updated = await SiteSettingsModel.findByIdAndUpdate(settings._id, parsed.data, { new: true });
   res.json(updated);
 });
 

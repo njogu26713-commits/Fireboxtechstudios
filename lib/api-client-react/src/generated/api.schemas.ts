@@ -24,7 +24,7 @@ export interface DashboardStats {
 }
 
 export interface Service {
-  id: number;
+  id: string;
   title: string;
   description: string;
   category: string;
@@ -78,7 +78,7 @@ export interface ServiceUpdate {
 }
 
 export interface Project {
-  id: number;
+  id: string;
   title: string;
   description: string;
   /** @nullable */
@@ -126,7 +126,7 @@ export interface ProjectUpdate {
 }
 
 export interface Tutorial {
-  id: number;
+  id: string;
   title: string;
   description: string;
   category: string;
@@ -174,7 +174,7 @@ export interface TutorialUpdate {
 }
 
 export interface BlogPost {
-  id: number;
+  id: string;
   title: string;
   slug: string;
   content: string;
@@ -219,7 +219,7 @@ export interface BlogPostUpdate {
 }
 
 export interface Review {
-  id: number;
+  id: string;
   name: string;
   email: string;
   rating: number;
@@ -251,7 +251,7 @@ export interface PublicReviewsResponse {
 }
 
 export interface ContactMessage {
-  id: number;
+  id: string;
   name: string;
   email: string;
   subject: string;
@@ -275,7 +275,7 @@ export interface ContactMessageUpdate {
 }
 
 export interface QuoteRequest {
-  id: number;
+  id: string;
   name: string;
   email: string;
   /** @nullable */
@@ -305,7 +305,7 @@ export interface QuoteRequestUpdate {
 }
 
 export interface NewsletterSubscription {
-  id: number;
+  id: string;
   email: string;
   createdAt: string;
 }
@@ -315,7 +315,7 @@ export interface NewsletterSubscriptionInput {
 }
 
 export interface SiteSettings {
-  id: number;
+  id: string;
   siteName?: string;
   tagline?: string;
   email?: string;
@@ -368,7 +368,7 @@ export interface SiteSettingsUpdate {
 }
 
 export interface TeamMember {
-  id: number;
+  id: string;
   name: string;
   role: string;
   /** @nullable */
@@ -408,7 +408,7 @@ export interface TeamMemberUpdate {
 }
 
 export interface FaqItem {
-  id: number;
+  id: string;
   question: string;
   answer: string;
   /** @nullable */
@@ -432,7 +432,7 @@ export interface FaqItemUpdate {
 }
 
 export interface TrustedClient {
-  id: number;
+  id: string;
   name: string;
   /** @nullable */
   logoUrl?: string | null;
@@ -457,7 +457,7 @@ export interface TrustedClientUpdate {
 }
 
 export interface Job {
-  id: number;
+  id: string;
   title: string;
   department: string;
   type: string;

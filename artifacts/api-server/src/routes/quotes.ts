@@ -1,20 +1,14 @@
 import { Router, type IRouter } from "express";
-import { eq } from "drizzle-orm";
-import { db, quoteRequestsTable } from "@workspace/db";
+import { QuoteRequestModel } from "@workspace/db";
 import {
   CreateQuoteRequestBody,
   UpdateQuoteRequestBody,
-  UpdateQuoteRequestParams,
-  DeleteQuoteRequestParams,
 } from "@workspace/api-zod";
 
 const router: IRouter = Router();
 
 router.get("/quotes", async (_req, res): Promise<void> => {
-  const quotes = await db
-    .select()
-    .from(quoteRequestsTable)
-    .orderBy(quoteRequestsTable.createdAt);
+  const quotes = await QuoteRequestModel.find().sort({ createdAt: 1 });
   res.json(quotes);
 });
 
@@ -24,40 +18,32 @@ router.post("/quotes", async (req, res): Promise<void> => {
     res.status(400).json({ error: parsed.error.message });
     return;
   }
-  const [quote] = await db.insert(quoteRequestsTable).values(parsed.data).returning();
+  const quote = await QuoteRequestModel.create(parsed.data);
   res.status(201).json(quote);
 });
 
 router.patch("/quotes/:id", async (req, res): Promise<void> => {
-  const params = UpdateQuoteRequestParams.safeParse(req.params);
-  if (!params.success) {
-    res.status(400).json({ error: params.error.message });
-    return;
-  }
   const parsed = UpdateQuoteRequestBody.safeParse(req.body);
   if (!parsed.success) {
     res.status(400).json({ error: parsed.error.message });
     return;
   }
-  const [quote] = await db
-    .update(quoteRequestsTable)
-    .set(parsed.data)
-    .where(eq(quoteRequestsTable.id, params.data.id))
-    .returning();
-  if (!quote) {
+  try {
+    const quote = await QuoteRequestModel.findByIdAndUpdate(req.params.id, parsed.data, { new: true });
+    if (!quote) {
+      res.status(404).json({ error: "Quote request not found" });
+      return;
+    }
+    res.json(quote);
+  } catch {
     res.status(404).json({ error: "Quote request not found" });
-    return;
   }
-  res.json(quote);
 });
 
 router.delete("/quotes/:id", async (req, res): Promise<void> => {
-  const params = DeleteQuoteRequestParams.safeParse(req.params);
-  if (!params.success) {
-    res.status(400).json({ error: params.error.message });
-    return;
-  }
-  await db.delete(quoteRequestsTable).where(eq(quoteRequestsTable.id, params.data.id));
+  try {
+    await QuoteRequestModel.findByIdAndDelete(req.params.id);
+  } catch { /* ignore invalid id */ }
   res.sendStatus(204);
 });
 

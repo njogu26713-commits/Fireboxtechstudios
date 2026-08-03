@@ -1,45 +1,43 @@
-# [Project name]
+# FireboxTechStudios Website
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A premium full-stack company website and CMS for **FireboxTechStudios** — a software company specializing in AI, web development, mobile apps, cybersecurity, cloud computing, DevOps, and more.
 
-## Run & Operate
+## Architecture
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+This is a **pnpm monorepo** with two runnable artifacts:
 
-## Stack
+| Artifact | Description | Dev command |
+|---|---|---|
+| `artifacts/firebox-website` | React + Vite public website + admin CMS | `pnpm --filter @workspace/firebox-website run dev` |
+| `artifacts/api-server` | Express.js REST API | `pnpm --filter @workspace/api-server run dev` |
 
-- pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+### Shared Libraries
 
-## Where things live
+| Package | Purpose |
+|---|---|
+| `lib/db` | Mongoose models + MongoDB connection |
+| `lib/api-zod` | Zod validation schemas (generated from OpenAPI spec) |
+| `lib/api-spec` | OpenAPI spec (`openapi.yaml`) |
+| `lib/api-client-react` | React Query hooks (generated from OpenAPI spec) |
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+## Database: MongoDB
 
-## Architecture decisions
+The API server uses **MongoDB via Mongoose**. You must set the `MONGODB_URI` secret (Replit Secrets) to a valid MongoDB connection string (e.g. MongoDB Atlas free tier).
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+Collections: services, projects, tutorials, blogposts, reviews, contactmessages, quoterequests, newslettersubscriptions, sitesettings, teammembers, faqitems, trustedclients, jobs.
 
-## Product
+## Running Locally
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+Both workflows are managed by Replit. The API server starts at `:8080/api` and the website at port defined by the `PORT` env var.
 
-## User preferences
+## Regenerating the API Client
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+If you change `lib/api-spec/openapi.yaml`, regenerate the client:
 
-## Gotchas
+```bash
+pnpm --filter @workspace/api-spec run generate
+```
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+## User Preferences
 
-## Pointers
-
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+- Use MongoDB (not PostgreSQL) for the database layer.

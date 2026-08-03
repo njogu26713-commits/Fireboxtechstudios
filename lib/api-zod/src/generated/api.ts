@@ -43,7 +43,7 @@ export const ListServicesQueryParams = zod.object({
 })
 
 export const ListServicesResponseItem = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "description": zod.string(),
   "category": zod.string(),
@@ -81,7 +81,7 @@ export const CreateServiceBody = zod.object({
 })
 
 export const CreateServiceResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "description": zod.string(),
   "category": zod.string(),
@@ -103,7 +103,7 @@ export const CreateServiceResponse = zod.object({
  * @summary List featured published services (public)
  */
 export const ListFeaturedServicesResponseItem = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "description": zod.string(),
   "category": zod.string(),
@@ -130,7 +130,7 @@ export const ListPublicServicesQueryParams = zod.object({
 })
 
 export const ListPublicServicesResponseItem = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "description": zod.string(),
   "category": zod.string(),
@@ -153,11 +153,11 @@ export const ListPublicServicesResponse = zod.array(ListPublicServicesResponseIt
  * @summary Get a service by ID
  */
 export const GetServiceParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const GetServiceResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "description": zod.string(),
   "category": zod.string(),
@@ -179,7 +179,7 @@ export const GetServiceResponse = zod.object({
  * @summary Update a service
  */
 export const UpdateServiceParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const UpdateServiceBody = zod.object({
@@ -198,7 +198,7 @@ export const UpdateServiceBody = zod.object({
 })
 
 export const UpdateServiceResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "description": zod.string(),
   "category": zod.string(),
@@ -220,7 +220,7 @@ export const UpdateServiceResponse = zod.object({
  * @summary Delete a service
  */
 export const DeleteServiceParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const DeleteServiceResponse = zod.void()
@@ -230,7 +230,7 @@ export const DeleteServiceResponse = zod.void()
  * @summary List all projects (admin)
  */
 export const ListProjectsResponseItem = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "description": zod.string(),
   "technologies": zod.string().nullish(),
@@ -264,7 +264,7 @@ export const CreateProjectBody = zod.object({
 })
 
 export const CreateProjectResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "description": zod.string(),
   "technologies": zod.string().nullish(),
@@ -284,7 +284,7 @@ export const CreateProjectResponse = zod.object({
  * @summary List featured projects (public)
  */
 export const ListFeaturedProjectsResponseItem = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "description": zod.string(),
   "technologies": zod.string().nullish(),
@@ -309,7 +309,7 @@ export const ListPublicProjectsQueryParams = zod.object({
 })
 
 export const ListPublicProjectsResponseItem = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "description": zod.string(),
   "technologies": zod.string().nullish(),
@@ -330,11 +330,11 @@ export const ListPublicProjectsResponse = zod.array(ListPublicProjectsResponseIt
  * @summary Get a project by ID
  */
 export const GetProjectParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const GetProjectResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "description": zod.string(),
   "technologies": zod.string().nullish(),
@@ -354,7 +354,7 @@ export const GetProjectResponse = zod.object({
  * @summary Update a project
  */
 export const UpdateProjectParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const UpdateProjectBody = zod.object({
@@ -371,7 +371,7 @@ export const UpdateProjectBody = zod.object({
 })
 
 export const UpdateProjectResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "description": zod.string(),
   "technologies": zod.string().nullish(),
@@ -391,7 +391,7 @@ export const UpdateProjectResponse = zod.object({
  * @summary Delete a project
  */
 export const DeleteProjectParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const DeleteProjectResponse = zod.void()
@@ -407,7 +407,7 @@ export const ListTutorialsQueryParams = zod.object({
 })
 
 export const ListTutorialsResponseItem = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "description": zod.string(),
   "category": zod.string(),
@@ -441,7 +441,7 @@ export const CreateTutorialBody = zod.object({
 })
 
 export const CreateTutorialResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "description": zod.string(),
   "category": zod.string(),
@@ -466,7 +466,7 @@ export const ListPublicTutorialsQueryParams = zod.object({
 })
 
 export const ListPublicTutorialsResponseItem = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "description": zod.string(),
   "category": zod.string(),
@@ -487,11 +487,11 @@ export const ListPublicTutorialsResponse = zod.array(ListPublicTutorialsResponse
  * @summary Get a tutorial by ID
  */
 export const GetTutorialParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const GetTutorialResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "description": zod.string(),
   "category": zod.string(),
@@ -511,7 +511,7 @@ export const GetTutorialResponse = zod.object({
  * @summary Update a tutorial
  */
 export const UpdateTutorialParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const UpdateTutorialBody = zod.object({
@@ -528,7 +528,7 @@ export const UpdateTutorialBody = zod.object({
 })
 
 export const UpdateTutorialResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "description": zod.string(),
   "category": zod.string(),
@@ -548,7 +548,7 @@ export const UpdateTutorialResponse = zod.object({
  * @summary Delete a tutorial
  */
 export const DeleteTutorialParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const DeleteTutorialResponse = zod.void()
@@ -564,7 +564,7 @@ export const ListBlogPostsQueryParams = zod.object({
 })
 
 export const ListBlogPostsResponseItem = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "slug": zod.string(),
   "content": zod.string(),
@@ -597,7 +597,7 @@ export const CreateBlogPostBody = zod.object({
 })
 
 export const CreateBlogPostResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "slug": zod.string(),
   "content": zod.string(),
@@ -622,7 +622,7 @@ export const ListPublicBlogPostsQueryParams = zod.object({
 })
 
 export const ListPublicBlogPostsResponseItem = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "slug": zod.string(),
   "content": zod.string(),
@@ -643,7 +643,7 @@ export const ListPublicBlogPostsResponse = zod.array(ListPublicBlogPostsResponse
  * @summary Get 3 most recent published posts
  */
 export const ListRecentBlogPostsResponseItem = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "slug": zod.string(),
   "content": zod.string(),
@@ -664,11 +664,11 @@ export const ListRecentBlogPostsResponse = zod.array(ListRecentBlogPostsResponse
  * @summary Get a blog post by ID
  */
 export const GetBlogPostParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const GetBlogPostResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "slug": zod.string(),
   "content": zod.string(),
@@ -688,7 +688,7 @@ export const GetBlogPostResponse = zod.object({
  * @summary Update a blog post
  */
 export const UpdateBlogPostParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const UpdateBlogPostBody = zod.object({
@@ -704,7 +704,7 @@ export const UpdateBlogPostBody = zod.object({
 })
 
 export const UpdateBlogPostResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "slug": zod.string(),
   "content": zod.string(),
@@ -724,7 +724,7 @@ export const UpdateBlogPostResponse = zod.object({
  * @summary Delete a blog post
  */
 export const DeleteBlogPostParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const DeleteBlogPostResponse = zod.void()
@@ -738,7 +738,7 @@ export const ListReviewsQueryParams = zod.object({
 })
 
 export const ListReviewsResponseItem = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "name": zod.string(),
   "email": zod.string(),
   "rating": zod.number(),
@@ -762,7 +762,7 @@ export const CreateReviewBody = zod.object({
 })
 
 export const CreateReviewResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "name": zod.string(),
   "email": zod.string(),
   "rating": zod.number(),
@@ -779,7 +779,7 @@ export const CreateReviewResponse = zod.object({
  */
 export const ListPublicReviewsResponse = zod.object({
   "reviews": zod.array(zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "name": zod.string(),
   "email": zod.string(),
   "rating": zod.number(),
@@ -798,7 +798,7 @@ export const ListPublicReviewsResponse = zod.object({
  * @summary Update review status (approve/reject/feature/reply)
  */
 export const UpdateReviewParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const UpdateReviewBody = zod.object({
@@ -808,7 +808,7 @@ export const UpdateReviewBody = zod.object({
 })
 
 export const UpdateReviewResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "name": zod.string(),
   "email": zod.string(),
   "rating": zod.number(),
@@ -824,7 +824,7 @@ export const UpdateReviewResponse = zod.object({
  * @summary Delete a review
  */
 export const DeleteReviewParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const DeleteReviewResponse = zod.void()
@@ -834,7 +834,7 @@ export const DeleteReviewResponse = zod.void()
  * @summary List all contact messages (admin)
  */
 export const ListContactMessagesResponseItem = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "name": zod.string(),
   "email": zod.string(),
   "subject": zod.string(),
@@ -858,7 +858,7 @@ export const CreateContactMessageBody = zod.object({
 })
 
 export const CreateContactMessageResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "name": zod.string(),
   "email": zod.string(),
   "subject": zod.string(),
@@ -873,7 +873,7 @@ export const CreateContactMessageResponse = zod.object({
  * @summary Delete a contact message
  */
 export const DeleteContactMessageParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const DeleteContactMessageResponse = zod.void()
@@ -883,7 +883,7 @@ export const DeleteContactMessageResponse = zod.void()
  * @summary Mark message as read
  */
 export const UpdateContactMessageParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const UpdateContactMessageBody = zod.object({
@@ -891,7 +891,7 @@ export const UpdateContactMessageBody = zod.object({
 })
 
 export const UpdateContactMessageResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "name": zod.string(),
   "email": zod.string(),
   "subject": zod.string(),
@@ -906,7 +906,7 @@ export const UpdateContactMessageResponse = zod.object({
  * @summary List all quote requests (admin)
  */
 export const ListQuoteRequestsResponseItem = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "name": zod.string(),
   "email": zod.string(),
   "phone": zod.string().nullish(),
@@ -934,7 +934,7 @@ export const CreateQuoteRequestBody = zod.object({
 })
 
 export const CreateQuoteRequestResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "name": zod.string(),
   "email": zod.string(),
   "phone": zod.string().nullish(),
@@ -951,7 +951,7 @@ export const CreateQuoteRequestResponse = zod.object({
  * @summary Update quote request status
  */
 export const UpdateQuoteRequestParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const UpdateQuoteRequestBody = zod.object({
@@ -959,7 +959,7 @@ export const UpdateQuoteRequestBody = zod.object({
 })
 
 export const UpdateQuoteRequestResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "name": zod.string(),
   "email": zod.string(),
   "phone": zod.string().nullish(),
@@ -976,7 +976,7 @@ export const UpdateQuoteRequestResponse = zod.object({
  * @summary Delete a quote request
  */
 export const DeleteQuoteRequestParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const DeleteQuoteRequestResponse = zod.void()
@@ -990,7 +990,7 @@ export const SubscribeNewsletterBody = zod.object({
 })
 
 export const SubscribeNewsletterResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "email": zod.string(),
   "createdAt": zod.string()
 })
@@ -1000,7 +1000,7 @@ export const SubscribeNewsletterResponse = zod.object({
  * @summary List all subscribers (admin)
  */
 export const ListNewsletterSubscriptionsResponseItem = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "email": zod.string(),
   "createdAt": zod.string()
 })
@@ -1011,7 +1011,7 @@ export const ListNewsletterSubscriptionsResponse = zod.array(ListNewsletterSubsc
  * @summary Get site settings
  */
 export const GetSiteSettingsResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "siteName": zod.string().optional(),
   "tagline": zod.string().optional(),
   "email": zod.string().optional(),
@@ -1068,7 +1068,7 @@ export const UpdateSiteSettingsBody = zod.object({
 })
 
 export const UpdateSiteSettingsResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "siteName": zod.string().optional(),
   "tagline": zod.string().optional(),
   "email": zod.string().optional(),
@@ -1099,7 +1099,7 @@ export const UpdateSiteSettingsResponse = zod.object({
  * @summary List team members
  */
 export const ListTeamMembersResponseItem = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "name": zod.string(),
   "role": zod.string(),
   "bio": zod.string().nullish(),
@@ -1128,7 +1128,7 @@ export const CreateTeamMemberBody = zod.object({
 })
 
 export const CreateTeamMemberResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "name": zod.string(),
   "role": zod.string(),
   "bio": zod.string().nullish(),
@@ -1145,7 +1145,7 @@ export const CreateTeamMemberResponse = zod.object({
  * @summary Update a team member
  */
 export const UpdateTeamMemberParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const UpdateTeamMemberBody = zod.object({
@@ -1160,7 +1160,7 @@ export const UpdateTeamMemberBody = zod.object({
 })
 
 export const UpdateTeamMemberResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "name": zod.string(),
   "role": zod.string(),
   "bio": zod.string().nullish(),
@@ -1177,7 +1177,7 @@ export const UpdateTeamMemberResponse = zod.object({
  * @summary Delete a team member
  */
 export const DeleteTeamMemberParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const DeleteTeamMemberResponse = zod.void()
@@ -1187,7 +1187,7 @@ export const DeleteTeamMemberResponse = zod.void()
  * @summary List FAQ items
  */
 export const ListFaqItemsResponseItem = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "question": zod.string(),
   "answer": zod.string(),
   "category": zod.string().nullish(),
@@ -1208,7 +1208,7 @@ export const CreateFaqItemBody = zod.object({
 })
 
 export const CreateFaqItemResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "question": zod.string(),
   "answer": zod.string(),
   "category": zod.string().nullish(),
@@ -1221,7 +1221,7 @@ export const CreateFaqItemResponse = zod.object({
  * @summary Update a FAQ item
  */
 export const UpdateFaqItemParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const UpdateFaqItemBody = zod.object({
@@ -1232,7 +1232,7 @@ export const UpdateFaqItemBody = zod.object({
 })
 
 export const UpdateFaqItemResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "question": zod.string(),
   "answer": zod.string(),
   "category": zod.string().nullish(),
@@ -1245,7 +1245,7 @@ export const UpdateFaqItemResponse = zod.object({
  * @summary Delete a FAQ item
  */
 export const DeleteFaqItemParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const DeleteFaqItemResponse = zod.void()
@@ -1255,7 +1255,7 @@ export const DeleteFaqItemResponse = zod.void()
  * @summary List trusted clients
  */
 export const ListTrustedClientsResponseItem = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "name": zod.string(),
   "logoUrl": zod.string().nullish(),
   "websiteUrl": zod.string().nullish(),
@@ -1276,7 +1276,7 @@ export const CreateTrustedClientBody = zod.object({
 })
 
 export const CreateTrustedClientResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "name": zod.string(),
   "logoUrl": zod.string().nullish(),
   "websiteUrl": zod.string().nullish(),
@@ -1289,7 +1289,7 @@ export const CreateTrustedClientResponse = zod.object({
  * @summary Update a trusted client
  */
 export const UpdateTrustedClientParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const UpdateTrustedClientBody = zod.object({
@@ -1300,7 +1300,7 @@ export const UpdateTrustedClientBody = zod.object({
 })
 
 export const UpdateTrustedClientResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "name": zod.string(),
   "logoUrl": zod.string().nullish(),
   "websiteUrl": zod.string().nullish(),
@@ -1313,7 +1313,7 @@ export const UpdateTrustedClientResponse = zod.object({
  * @summary Delete a trusted client
  */
 export const DeleteTrustedClientParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const DeleteTrustedClientResponse = zod.void()
@@ -1323,7 +1323,7 @@ export const DeleteTrustedClientResponse = zod.void()
  * @summary List all job postings (admin)
  */
 export const ListJobsResponseItem = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "department": zod.string(),
   "type": zod.string(),
@@ -1355,7 +1355,7 @@ export const CreateJobBody = zod.object({
 })
 
 export const CreateJobResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "department": zod.string(),
   "type": zod.string(),
@@ -1374,7 +1374,7 @@ export const CreateJobResponse = zod.object({
  * @summary List active job postings (public)
  */
 export const ListPublicJobsResponseItem = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "department": zod.string(),
   "type": zod.string(),
@@ -1394,7 +1394,7 @@ export const ListPublicJobsResponse = zod.array(ListPublicJobsResponseItem)
  * @summary Update a job posting
  */
 export const UpdateJobParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const UpdateJobBody = zod.object({
@@ -1410,7 +1410,7 @@ export const UpdateJobBody = zod.object({
 })
 
 export const UpdateJobResponse = zod.object({
-  "id": zod.number(),
+  "id": zod.string(),
   "title": zod.string(),
   "department": zod.string(),
   "type": zod.string(),
@@ -1429,7 +1429,7 @@ export const UpdateJobResponse = zod.object({
  * @summary Delete a job posting
  */
 export const DeleteJobParams = zod.object({
-  "id": zod.coerce.number()
+  "id": zod.string()
 })
 
 export const DeleteJobResponse = zod.void()
