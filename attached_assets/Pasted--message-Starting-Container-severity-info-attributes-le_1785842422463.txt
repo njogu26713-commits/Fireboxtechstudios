@@ -1,0 +1,105 @@
+{"message":"Starting Container","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:38.150530805Z"}
+{"message":"    at consumeUntil (/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:218:17)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:38.722272939Z"}
+{"message":"    at Function.route (/app/node_modules/.pnpm/router@2.2.0/node_modules/router/index.js:428:17)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:38.722273152Z"}
+{"message":"    at parse (/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:262:24)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:38.722282867Z"}
+{"message":"    at Function.route (/app/node_modules/.pnpm/express@5.2.1/node_modules/express/lib/application.js:257:22)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:38.722286195Z"}
+{"message":"    at process (/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:466:52)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:38.722290837Z"}
+{"message":"    at pathToRegexp (/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:478:3)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:38.722301921Z"}
+{"message":"    at Object.match (/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:416:28)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:38.722309296Z"}
+{"message":"    at matcher (/app/node_modules/.pnpm/router@2.2.0/node_modules/router/lib/layer.js:86:23)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:38.722310362Z"}
+{"message":"    at new Layer (/app/node_modules/.pnpm/router@2.2.0/node_modules/router/lib/layer.js:93:62)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:38.722316637Z"}
+{"message":"","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:38.722391785Z"}
+{"message":"> @workspace/api-server@0.0.0 start /app/artifacts/api-server","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:38.722399112Z"}
+{"message":"> node --enable-source-maps ./dist/index.mjs","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:38.722406070Z"}
+{"message":"","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:38.722427873Z"}
+{"message":"/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:218","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:38.722436426Z"}
+{"message":"          throw new PathError(`Missing parameter name at index ${index}`, str);","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:38.722443621Z"}
+{"message":"                ^","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:38.722450322Z"}
+{"message":"","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:38.722456950Z"}
+{"message":"PathError [TypeError]: Missing parameter name at index 1: *; visit https://git.new/pathToRegexpError for info","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:38.722463590Z"}
+{"message":" ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/api-server@0.0.0 start: `node --enable-source-maps ./dist/index.mjs`","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:38.725518935Z"}
+{"message":"Exit status 1","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:38.725530924Z"}
+{"message":"    at Function.app2.<computed> (/app/node_modules/.pnpm/express@5.2.1/node_modules/express/lib/application.js:478:22) {","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:38.725602276Z"}
+{"message":"  originalPath: '*'","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:38.725606297Z"}
+{"message":"}","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:38.725610179Z"}
+{"message":"","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:38.725614509Z"}
+{"message":"Node.js v22.23.1","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:38.725618942Z"}
+{"message":"/app/artifacts/api-server:","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:38.725622984Z"}
+{"message":"","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:41.355906214Z"}
+{"message":"> @workspace/api-server@0.0.0 start /app/artifacts/api-server","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:41.355911649Z"}
+{"message":"> node --enable-source-maps ./dist/index.mjs","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:41.355917399Z"}
+{"message":"","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:41.355922787Z"}
+{"message":"/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:218","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:41.355928509Z"}
+{"message":"          throw new PathError(`Missing parameter name at index ${index}`, str);","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:41.355934294Z"}
+{"message":"                ^","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:41.355939862Z"}
+{"message":"","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:41.355945439Z"}
+{"message":"PathError [TypeError]: Missing parameter name at index 1: *; visit https://git.new/pathToRegexpError for info","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:41.355950896Z"}
+{"message":"    at consumeUntil (/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:218:17)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:41.355955959Z"}
+{"message":"    at parse (/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:262:24)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:41.355966322Z"}
+{"message":"    at process (/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:466:52)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:41.355970875Z"}
+{"message":"    at pathToRegexp (/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:478:3)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:41.355976035Z"}
+{"message":"    at Object.match (/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:416:28)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:41.355979957Z"}
+{"message":"    at matcher (/app/node_modules/.pnpm/router@2.2.0/node_modules/router/lib/layer.js:86:23)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:41.355983831Z"}
+{"message":"    at new Layer (/app/node_modules/.pnpm/router@2.2.0/node_modules/router/lib/layer.js:93:62)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:41.355987926Z"}
+{"message":"    at Function.route (/app/node_modules/.pnpm/router@2.2.0/node_modules/router/index.js:428:17)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:41.355993230Z"}
+{"message":"    at Function.route (/app/node_modules/.pnpm/express@5.2.1/node_modules/express/lib/application.js:257:22)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:41.355998791Z"}
+{"message":"    at Function.app2.<computed> (/app/node_modules/.pnpm/express@5.2.1/node_modules/express/lib/application.js:478:22) {","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:42.036243563Z"}
+{"message":"  originalPath: '*'","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:42.036254343Z"}
+{"message":"/app/artifacts/api-server:","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:42.036257967Z"}
+{"message":"}","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:42.036263683Z"}
+{"message":"","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:42.036274665Z"}
+{"message":" ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/api-server@0.0.0 start: `node --enable-source-maps ./dist/index.mjs`","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:42.036277329Z"}
+{"message":"Node.js v22.23.1","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:42.036286991Z"}
+{"message":"Exit status 1","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:42.036291812Z"}
+{"message":"","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:43.083017241Z"}
+{"message":"","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:43.083085435Z"}
+{"message":"> @workspace/api-server@0.0.0 start /app/artifacts/api-server","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:43.083091247Z"}
+{"message":"> node --enable-source-maps ./dist/index.mjs","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:43.083096846Z"}
+{"message":"  originalPath: '*'","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:44.137253524Z"}
+{"message":"    at new Layer (/app/node_modules/.pnpm/router@2.2.0/node_modules/router/lib/layer.js:93:62)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:44.137266854Z"}
+{"message":"    at Function.route (/app/node_modules/.pnpm/router@2.2.0/node_modules/router/index.js:428:17)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:44.137274869Z"}
+{"message":"    at Function.route (/app/node_modules/.pnpm/express@5.2.1/node_modules/express/lib/application.js:257:22)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:44.137284087Z"}
+{"message":"    at Function.app2.<computed> (/app/node_modules/.pnpm/express@5.2.1/node_modules/express/lib/application.js:478:22) {","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:44.137292610Z"}
+{"message":"    at parse (/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:262:24)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:44.137296333Z"}
+{"message":"    at process (/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:466:52)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:44.137304305Z"}
+{"message":"    at pathToRegexp (/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:478:3)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:44.137309577Z"}
+{"message":"    at Object.match (/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:416:28)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:44.137314823Z"}
+{"message":"/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:218","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:44.137318956Z"}
+{"message":"    at matcher (/app/node_modules/.pnpm/router@2.2.0/node_modules/router/lib/layer.js:86:23)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:44.137319575Z"}
+{"message":"          throw new PathError(`Missing parameter name at index ${index}`, str);","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:44.137341057Z"}
+{"message":"                ^","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:44.137354112Z"}
+{"message":"","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:44.137365121Z"}
+{"message":"PathError [TypeError]: Missing parameter name at index 1: *; visit https://git.new/pathToRegexpError for info","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:44.137374862Z"}
+{"message":"    at consumeUntil (/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:218:17)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:44.137385635Z"}
+{"message":"","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:44.142514970Z"}
+{"message":"Node.js v22.23.1","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:44.142524126Z"}
+{"message":"/app/artifacts/api-server:","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:44.142532061Z"}
+{"message":" ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/api-server@0.0.0 start: `node --enable-source-maps ./dist/index.mjs`","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:44.142539073Z"}
+{"message":"Exit status 1","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:44.142546105Z"}
+{"message":"}","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:44.142561706Z"}
+{"message":"          throw new PathError(`Missing parameter name at index ${index}`, str);","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:46.191016209Z"}
+{"message":"    at parse (/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:262:24)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:46.191021645Z"}
+{"message":"                ^","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:46.191023975Z"}
+{"message":"    at process (/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:466:52)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:46.191027666Z"}
+{"message":"    at pathToRegexp (/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:478:3)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:46.191034200Z"}
+{"message":"","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:46.191034932Z"}
+{"message":"    at Function.route (/app/node_modules/.pnpm/router@2.2.0/node_modules/router/index.js:428:17)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:46.191034957Z"}
+{"message":"> @workspace/api-server@0.0.0 start /app/artifacts/api-server","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:46.191042041Z"}
+{"message":"","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:46.191044536Z"}
+{"message":"    at Function.route (/app/node_modules/.pnpm/express@5.2.1/node_modules/express/lib/application.js:257:22)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:46.191046149Z"}
+{"message":"> node --enable-source-maps ./dist/index.mjs","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:46.191049503Z"}
+{"message":"PathError [TypeError]: Missing parameter name at index 1: *; visit https://git.new/pathToRegexpError for info","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:46.191051560Z"}
+{"message":"","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:46.191056505Z"}
+{"message":"    at consumeUntil (/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:218:17)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:46.191058150Z"}
+{"message":"    at Object.match (/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:416:28)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:46.191060887Z"}
+{"message":"/app/node_modules/.pnpm/path-to-regexp@8.4.2/node_modules/path-to-regexp/src/index.ts:218","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:46.191062654Z"}
+{"message":"    at matcher (/app/node_modules/.pnpm/router@2.2.0/node_modules/router/lib/layer.js:86:23)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:46.191069655Z"}
+{"message":"    at new Layer (/app/node_modules/.pnpm/router@2.2.0/node_modules/router/lib/layer.js:93:62)","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:46.191075968Z"}
+{"message":"","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:46.192099648Z"}
+{"message":"Node.js v22.23.1","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:46.192109567Z"}
+{"message":"/app/artifacts/api-server:","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:46.192115155Z"}
+{"message":" ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/api-server@0.0.0 start: `node --enable-source-maps ./dist/index.mjs`","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:46.192120206Z"}
+{"message":"Exit status 1","severity":"info","attributes":{"level":"info"},"timestamp":"2026-08-04T11:18:46.192125350Z"}
+{"message":"    at Function.app2.<computed> (/app/node_modules/.pnpm/express@5.2.1/node_modules/express/lib/application.js:478:22) {","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:46.192183546Z"}
+{"message":"  originalPath: '*'","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:46.192191542Z"}
+{"message":"}","severity":"error","attributes":{"level":"error"},"timestamp":"2026-08-04T11:18:46.192197680Z"}
