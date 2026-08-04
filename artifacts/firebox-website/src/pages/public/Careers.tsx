@@ -13,7 +13,7 @@ export default function Careers() {
           Join the Team
         </span>
         <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Build the <span className="text-gradient">Impossible</span></h1>
-        <p className="text-xl text-white/60 max-w-2xl mx-auto">
+        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           We are always looking for visionary engineers, designers, and thinkers to join us in shaping the future of technology.
         </p>
       </div>
@@ -39,7 +39,7 @@ export default function Careers() {
               >
                 <div>
                   <h3 className="text-2xl font-bold font-display mb-2 group-hover:text-primary transition-colors">{job.title}</h3>
-                  <div className="flex flex-wrap items-center gap-4 text-sm text-white/60 font-mono">
+                  <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground font-mono">
                     <span className="flex items-center gap-1"><Briefcase size={14} /> {job.department} · {job.type}</span>
                     <span className="flex items-center gap-1"><MapPin size={14} /> {job.location}</span>
                     {job.salaryRange && <span className="flex items-center gap-1"><DollarSign size={14} /> {job.salaryRange}</span>}
@@ -50,7 +50,7 @@ export default function Careers() {
                   href={job.applicationUrl || `mailto:careers@fireboxtechstudios.com?subject=Application for ${job.title}`}
                   target={job.applicationUrl ? "_blank" : undefined}
                   rel="noreferrer"
-                  className="shrink-0 h-12 px-6 rounded-xl bg-white/10 hover:bg-primary hover:text-primary-foreground font-bold flex items-center justify-center gap-2 transition-all"
+                  className="shrink-0 h-12 px-6 rounded-xl bg-muted/60 hover:bg-primary hover:text-primary-foreground font-bold flex items-center justify-center gap-2 transition-all"
                 >
                   Apply Now <ArrowRight size={16} />
                 </a>
@@ -60,7 +60,7 @@ export default function Careers() {
         ) : (
           <div className="glass-panel p-12 rounded-3xl text-center">
             <h3 className="text-xl font-bold mb-2">No open positions right now</h3>
-            <p className="text-white/60 mb-6">But we're always interested in meeting talented people. Send us your resume anyway.</p>
+            <p className="text-muted-foreground mb-6">But we're always interested in meeting talented people. Send us your resume anyway.</p>
             <a href="mailto:careers@fireboxtechstudios.com" className="inline-flex h-12 px-6 rounded-xl bg-white text-background font-bold items-center justify-center">
               Email Resume
             </a>

@@ -58,11 +58,11 @@ export default function JobsManage() {
       </div>
 
       {isLoading ? (
-        <div className="text-white/60">Loading...</div>
+        <div className="text-muted-foreground">Loading...</div>
       ) : (
-        <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+        <div className="bg-muted/40 border border-border rounded-2xl overflow-hidden">
           <table className="w-full text-left">
-            <thead className="bg-white/5 border-b border-white/10 text-sm text-white/60">
+            <thead className="bg-muted/40 border-b border-border text-sm text-muted-foreground">
               <tr>
                 <th className="p-4">Title</th>
                 <th className="p-4">Department</th>
@@ -74,11 +74,11 @@ export default function JobsManage() {
             </thead>
             <tbody className="divide-y divide-white/5">
               {(jobs as any[]).map((j: any) => (
-                <tr key={j.id} className="hover:bg-white/5">
+                <tr key={j.id} className="hover:bg-muted/40">
                   <td className="p-4 font-medium">{j.title}</td>
-                  <td className="p-4 text-white/60">{j.department}</td>
-                  <td className="p-4 text-white/60 capitalize">{j.type}</td>
-                  <td className="p-4 text-white/60">{j.location}</td>
+                  <td className="p-4 text-muted-foreground">{j.department}</td>
+                  <td className="p-4 text-muted-foreground capitalize">{j.type}</td>
+                  <td className="p-4 text-muted-foreground">{j.location}</td>
                   <td className="p-4">
                     <span className={`text-xs px-2 py-1 rounded-full ${j.active ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
                       {j.active ? 'Active' : 'Closed'}
@@ -86,24 +86,24 @@ export default function JobsManage() {
                   </td>
                   <td className="p-4">
                     <div className="flex items-center gap-2">
-                      <button onClick={() => handleOpenEdit(j)} className="p-2 hover:bg-white/10 rounded-lg text-blue-400"><Edit2 size={16} /></button>
-                      <button onClick={() => handleDelete(j.id)} className="p-2 hover:bg-white/10 rounded-lg text-red-400"><Trash2 size={16} /></button>
+                      <button onClick={() => handleOpenEdit(j)} className="p-2 hover:bg-muted/60 rounded-lg text-blue-400"><Edit2 size={16} /></button>
+                      <button onClick={() => handleDelete(j.id)} className="p-2 hover:bg-muted/60 rounded-lg text-red-400"><Trash2 size={16} /></button>
                     </div>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-          {(jobs as any[]).length === 0 && <div className="p-8 text-center text-white/40">No job postings yet.</div>}
+          {(jobs as any[]).length === 0 && <div className="p-8 text-center text-muted-foreground/70">No job postings yet.</div>}
         </div>
       )}
 
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-gray-900 border border-white/10 rounded-2xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
+          <div className="bg-gray-900 border border-border rounded-2xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-bold">{editingId ? 'Edit Job' : 'Add Job Posting'}</h2>
-              <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-white/10 rounded-lg"><X size={18} /></button>
+              <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-muted/60 rounded-lg"><X size={18} /></button>
             </div>
             <form onSubmit={handleSubmit} className="space-y-4">
               {[
@@ -114,13 +114,13 @@ export default function JobsManage() {
                 { key: 'applicationUrl', label: 'Application URL' },
               ].map(({ key, label, required }) => (
                 <div key={key}>
-                  <label className="block text-sm text-white/60 mb-1">{label}</label>
-                  <input value={(formData as any)[key]} onChange={e => setFormData(p => ({ ...p, [key]: e.target.value }))} required={required} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white outline-none focus:border-purple-500" />
+                  <label className="block text-sm text-muted-foreground mb-1">{label}</label>
+                  <input value={(formData as any)[key]} onChange={e => setFormData(p => ({ ...p, [key]: e.target.value }))} required={required} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white outline-none focus:border-purple-500" />
                 </div>
               ))}
               <div>
-                <label className="block text-sm text-white/60 mb-1">Employment Type</label>
-                <select value={formData.type} onChange={e => setFormData(p => ({ ...p, type: e.target.value }))} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white outline-none focus:border-purple-500">
+                <label className="block text-sm text-muted-foreground mb-1">Employment Type</label>
+                <select value={formData.type} onChange={e => setFormData(p => ({ ...p, type: e.target.value }))} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white outline-none focus:border-purple-500">
                   <option value="full-time">Full-time</option>
                   <option value="part-time">Part-time</option>
                   <option value="contract">Contract</option>
@@ -129,19 +129,19 @@ export default function JobsManage() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm text-white/60 mb-1">Description</label>
-                <textarea rows={3} value={formData.description} onChange={e => setFormData(p => ({ ...p, description: e.target.value }))} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white outline-none focus:border-purple-500" />
+                <label className="block text-sm text-muted-foreground mb-1">Description</label>
+                <textarea rows={3} value={formData.description} onChange={e => setFormData(p => ({ ...p, description: e.target.value }))} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white outline-none focus:border-purple-500" />
               </div>
               <div>
-                <label className="block text-sm text-white/60 mb-1">Requirements</label>
-                <textarea rows={3} value={formData.requirements} onChange={e => setFormData(p => ({ ...p, requirements: e.target.value }))} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white outline-none focus:border-purple-500" />
+                <label className="block text-sm text-muted-foreground mb-1">Requirements</label>
+                <textarea rows={3} value={formData.requirements} onChange={e => setFormData(p => ({ ...p, requirements: e.target.value }))} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white outline-none focus:border-purple-500" />
               </div>
               <label className="flex items-center gap-2 cursor-pointer">
                 <input type="checkbox" checked={formData.active} onChange={e => setFormData(p => ({ ...p, active: e.target.checked }))} className="w-4 h-4" />
-                <span className="text-sm text-white/80">Active (visible to applicants)</span>
+                <span className="text-sm text-foreground/80">Active (visible to applicants)</span>
               </label>
               <div className="flex gap-3 pt-2">
-                <button type="button" onClick={() => setIsModalOpen(false)} className="flex-1 py-2 rounded-lg bg-white/5 hover:bg-white/10">Cancel</button>
+                <button type="button" onClick={() => setIsModalOpen(false)} className="flex-1 py-2 rounded-lg bg-muted/40 hover:bg-muted/60">Cancel</button>
                 <button type="submit" className="flex-1 py-2 rounded-lg bg-purple-600 hover:bg-purple-700 font-bold">Save</button>
               </div>
             </form>

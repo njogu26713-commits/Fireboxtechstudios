@@ -56,7 +56,7 @@ export default function BlogManage() {
 
       <div className="glass-panel rounded-2xl overflow-hidden">
         <table className="w-full text-left">
-          <thead className="bg-white/5 border-b border-white/10 text-sm">
+          <thead className="bg-muted/40 border-b border-border text-sm">
             <tr>
               <th className="p-4">Title</th>
               <th className="p-4">Category</th>
@@ -66,16 +66,16 @@ export default function BlogManage() {
             </tr>
           </thead>
           <tbody>
-            {isLoading ? <tr><td colSpan={5} className="p-8 text-center text-white/50">Loading...</td></tr> : 
-             posts.length === 0 ? <tr><td colSpan={5} className="p-8 text-center text-white/50">No posts.</td></tr> :
+            {isLoading ? <tr><td colSpan={5} className="p-8 text-center text-muted-foreground">Loading...</td></tr> : 
+             posts.length === 0 ? <tr><td colSpan={5} className="p-8 text-center text-muted-foreground">No posts.</td></tr> :
              posts.map(p => (
-              <tr key={p.id} className="border-b border-white/5">
+              <tr key={p.id} className="border-b border-border/50">
                 <td className="p-4 font-medium">{p.title}</td>
-                <td className="p-4 text-sm text-white/60">{p.category}</td>
-                <td className="p-4 text-sm text-white/60">{new Date(p.createdAt).toLocaleDateString()}</td>
+                <td className="p-4 text-sm text-muted-foreground">{p.category}</td>
+                <td className="p-4 text-sm text-muted-foreground">{new Date(p.createdAt).toLocaleDateString()}</td>
                 <td className="p-4">{p.published ? <span className="text-green-400 text-xs font-bold">Published</span> : <span className="text-yellow-400 text-xs font-bold">Draft</span>}</td>
                 <td className="p-4 text-right flex justify-end gap-2">
-                  <button onClick={() => handleOpenEdit(p)} className="p-2 bg-white/10 hover:bg-white/20 rounded"><Edit2 size={16}/></button>
+                  <button onClick={() => handleOpenEdit(p)} className="p-2 bg-muted/60 hover:bg-white/20 rounded"><Edit2 size={16}/></button>
                   <button onClick={() => confirm('Delete post?') && deletePost.mutate({id:p.id},{onSuccess:()=>queryClient.invalidateQueries({queryKey:['listBlogPosts']})})} className="p-2 bg-destructive/20 text-destructive rounded"><Trash2 size={16}/></button>
                 </td>
               </tr>
@@ -86,22 +86,22 @@ export default function BlogManage() {
 
       {isModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-card border border-white/10 w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl p-6 shadow-2xl">
+          <div className="bg-card border border-border w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl p-6 shadow-2xl">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold">{editingId ? 'Edit Post' : 'New Post'}</h2>
-              <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-white/10 rounded-full"><X size={20} /></button>
+              <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-muted/60 rounded-full"><X size={20} /></button>
             </div>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
-                <div><label className="block text-xs mb-1">Title</label><input required value={formData.title} onChange={e=>setFormData({...formData,title:e.target.value})} className="w-full bg-white/5 border border-white/10 rounded p-2 text-sm" /></div>
-                <div><label className="block text-xs mb-1">Category</label><input required value={formData.category} onChange={e=>setFormData({...formData,category:e.target.value})} className="w-full bg-white/5 border border-white/10 rounded p-2 text-sm" /></div>
+                <div><label className="block text-xs mb-1">Title</label><input required value={formData.title} onChange={e=>setFormData({...formData,title:e.target.value})} className="w-full bg-muted/40 border border-border rounded p-2 text-sm" /></div>
+                <div><label className="block text-xs mb-1">Category</label><input required value={formData.category} onChange={e=>setFormData({...formData,category:e.target.value})} className="w-full bg-muted/40 border border-border rounded p-2 text-sm" /></div>
               </div>
-              <div><label className="block text-xs mb-1">Excerpt</label><textarea value={formData.excerpt} onChange={e=>setFormData({...formData,excerpt:e.target.value})} className="w-full bg-white/5 border border-white/10 rounded p-2 text-sm resize-none"></textarea></div>
-              <div><label className="block text-xs mb-1">Content (HTML)</label><textarea required rows={10} value={formData.content} onChange={e=>setFormData({...formData,content:e.target.value})} className="w-full bg-white/5 border border-white/10 rounded p-2 text-sm font-mono resize-none"></textarea></div>
+              <div><label className="block text-xs mb-1">Excerpt</label><textarea value={formData.excerpt} onChange={e=>setFormData({...formData,excerpt:e.target.value})} className="w-full bg-muted/40 border border-border rounded p-2 text-sm resize-none"></textarea></div>
+              <div><label className="block text-xs mb-1">Content (HTML)</label><textarea required rows={10} value={formData.content} onChange={e=>setFormData({...formData,content:e.target.value})} className="w-full bg-muted/40 border border-border rounded p-2 text-sm font-mono resize-none"></textarea></div>
               <div className="grid grid-cols-3 gap-4">
-                <div><label className="block text-xs mb-1">Image URL</label><input value={formData.featuredImageUrl} onChange={e=>setFormData({...formData,featuredImageUrl:e.target.value})} className="w-full bg-white/5 border border-white/10 rounded p-2 text-sm" /></div>
-                <div><label className="block text-xs mb-1">Author Name</label><input value={formData.authorName} onChange={e=>setFormData({...formData,authorName:e.target.value})} className="w-full bg-white/5 border border-white/10 rounded p-2 text-sm" /></div>
-                <div><label className="block text-xs mb-1">Tags (csv)</label><input value={formData.tags} onChange={e=>setFormData({...formData,tags:e.target.value})} className="w-full bg-white/5 border border-white/10 rounded p-2 text-sm" /></div>
+                <div><label className="block text-xs mb-1">Image URL</label><input value={formData.featuredImageUrl} onChange={e=>setFormData({...formData,featuredImageUrl:e.target.value})} className="w-full bg-muted/40 border border-border rounded p-2 text-sm" /></div>
+                <div><label className="block text-xs mb-1">Author Name</label><input value={formData.authorName} onChange={e=>setFormData({...formData,authorName:e.target.value})} className="w-full bg-muted/40 border border-border rounded p-2 text-sm" /></div>
+                <div><label className="block text-xs mb-1">Tags (csv)</label><input value={formData.tags} onChange={e=>setFormData({...formData,tags:e.target.value})} className="w-full bg-muted/40 border border-border rounded p-2 text-sm" /></div>
               </div>
               <label className="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" checked={formData.published} onChange={e=>setFormData({...formData,published:e.target.checked})} /> Published</label>
               <div className="flex justify-end pt-4"><button type="submit" className="px-6 py-2 bg-green-500 text-white font-bold rounded">Save Post</button></div>

@@ -14,11 +14,11 @@ export default function BlogPost() {
   if (isLoading) {
     return (
       <div className="container mx-auto px-4 py-24 max-w-3xl animate-pulse space-y-6">
-        <div className="h-8 bg-white/10 rounded w-1/4"></div>
-        <div className="h-16 bg-white/10 rounded w-full"></div>
-        <div className="aspect-[21/9] bg-white/10 rounded-3xl w-full"></div>
-        <div className="h-4 bg-white/10 rounded w-full"></div>
-        <div className="h-4 bg-white/10 rounded w-full"></div>
+        <div className="h-8 bg-muted/60 rounded w-1/4"></div>
+        <div className="h-16 bg-muted/60 rounded w-full"></div>
+        <div className="aspect-[21/9] bg-muted/60 rounded-3xl w-full"></div>
+        <div className="h-4 bg-muted/60 rounded w-full"></div>
+        <div className="h-4 bg-muted/60 rounded w-full"></div>
       </div>
     );
   }
@@ -37,7 +37,7 @@ export default function BlogPost() {
   return (
     <article className="pb-24">
       <div className="container mx-auto px-4 md:px-6 pt-12 max-w-4xl">
-        <Link href="/blog" className="inline-flex items-center gap-2 text-white/50 hover:text-white mb-8 transition-colors">
+        <Link href="/blog" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 transition-colors">
           <ArrowLeft size={16} /> Back to Blog
         </Link>
         
@@ -47,12 +47,12 @@ export default function BlogPost() {
           </span>
           <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 leading-tight">{post.title}</h1>
           
-          <div className="flex flex-wrap items-center gap-6 text-sm text-white/50 font-mono border-b border-white/10 pb-8">
+          <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground font-mono border-b border-border pb-8">
             <div className="flex items-center gap-2"><Calendar size={16} /> {new Date(post.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</div>
             {post.authorName && <div className="flex items-center gap-2"><User size={16} /> {post.authorName}</div>}
             
             <button 
-              className="ml-auto flex items-center gap-2 hover:text-white transition-colors"
+              className="ml-auto flex items-center gap-2 hover:text-foreground transition-colors"
               onClick={() => navigator.clipboard.writeText(shareUrl)}
             >
               <Share2 size={16} /> Copy Link
@@ -61,7 +61,7 @@ export default function BlogPost() {
         </div>
 
         {post.featuredImageUrl && (
-          <div className="rounded-3xl overflow-hidden mb-12 border border-white/10 shadow-2xl">
+          <div className="rounded-3xl overflow-hidden mb-12 border border-border shadow-2xl">
             <img src={post.featuredImageUrl} alt={post.title} className="w-full h-auto object-cover max-h-[600px]" />
           </div>
         )}
@@ -73,9 +73,9 @@ export default function BlogPost() {
         />
 
         {post.tags && (
-          <div className="mt-12 pt-8 border-t border-white/10 flex flex-wrap gap-2">
+          <div className="mt-12 pt-8 border-t border-border flex flex-wrap gap-2">
             {post.tags.split(',').map(tag => (
-              <span key={tag} className="px-3 py-1 bg-white/5 rounded text-sm text-white/60">#{tag.trim()}</span>
+              <span key={tag} className="px-3 py-1 bg-muted/40 rounded text-sm text-muted-foreground">#{tag.trim()}</span>
             ))}
           </div>
         )}

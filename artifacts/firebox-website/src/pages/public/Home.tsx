@@ -55,7 +55,7 @@ export default function Home() {
           >
             <span className="font-display font-bold text-4xl md:text-5xl text-background">FTS</span>
             {/* Orbiting elements */}
-            <div className="absolute inset-[-40px] border border-white/10 rounded-full animate-[firebox-orbit-cw_10s_linear_infinite]" />
+            <div className="absolute inset-[-40px] border border-border rounded-full animate-[firebox-orbit-cw_10s_linear_infinite]" />
             <div className="absolute inset-[-80px] border border-primary/20 rounded-full animate-[firebox-orbit-ccw_15s_linear_infinite]" />
           </motion.div>
 
@@ -72,7 +72,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-lg md:text-xl text-white/60 max-w-2xl mb-10"
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10"
           >
             FireboxTechStudios is a global technology partner building next-generation software, AI solutions, and cloud architectures for forward-thinking companies.
           </motion.p>
@@ -86,7 +86,7 @@ export default function Home() {
             <Link href="/services" className="h-14 px-8 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold flex items-center justify-center gap-2 transition-all hover:shadow-[0_0_30px_rgba(0,183,255,0.5)]">
               Explore Services <ArrowRight size={18} />
             </Link>
-            <Link href="/contact" className="h-14 px-8 rounded-full glass-panel hover:bg-white/10 font-semibold flex items-center justify-center gap-2 transition-all">
+            <Link href="/contact" className="h-14 px-8 rounded-full glass-panel hover:bg-muted/60 font-semibold flex items-center justify-center gap-2 transition-all">
               Get a Quote
             </Link>
           </motion.div>
@@ -95,24 +95,24 @@ export default function Home() {
 
       {/* Stats Section */}
       {stats && (
-        <section className="py-12 border-y border-white/5 bg-white/[0.02]">
+        <section className="py-12 border-y border-border/50 bg-muted/30">
           <div className="container mx-auto px-4 md:px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="text-center">
                 <div className="text-4xl md:text-5xl font-display font-bold text-primary mb-2">{stats.totalProjects}+</div>
-                <div className="text-sm text-white/60 uppercase tracking-wider font-mono">Projects Delivered</div>
+                <div className="text-sm text-muted-foreground uppercase tracking-wider font-mono">Projects Delivered</div>
               </div>
               <div className="text-center">
                 <div className="text-4xl md:text-5xl font-display font-bold text-white mb-2">{stats.totalServices}</div>
-                <div className="text-sm text-white/60 uppercase tracking-wider font-mono">Core Services</div>
+                <div className="text-sm text-muted-foreground uppercase tracking-wider font-mono">Core Services</div>
               </div>
               <div className="text-center">
                 <div className="text-4xl md:text-5xl font-display font-bold text-white mb-2">{stats.avgRating.toFixed(1)}</div>
-                <div className="text-sm text-white/60 uppercase tracking-wider font-mono">Client Rating</div>
+                <div className="text-sm text-muted-foreground uppercase tracking-wider font-mono">Client Rating</div>
               </div>
               <div className="text-center">
                 <div className="text-4xl md:text-5xl font-display font-bold text-secondary mb-2">24/7</div>
-                <div className="text-sm text-white/60 uppercase tracking-wider font-mono">Support</div>
+                <div className="text-sm text-muted-foreground uppercase tracking-wider font-mono">Support</div>
               </div>
             </div>
           </div>
@@ -131,9 +131,9 @@ export default function Home() {
           >
             <div className="max-w-2xl">
               <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">Core <span className="text-primary">Capabilities</span></h2>
-              <p className="text-white/60 text-lg">We deliver end-to-end digital transformation across multiple domains of technology.</p>
+              <p className="text-muted-foreground text-lg">We deliver end-to-end digital transformation across multiple domains of technology.</p>
             </div>
-            <Link href="/services" className="flex items-center gap-2 text-primary hover:text-white transition-colors font-medium">
+            <Link href="/services" className="flex items-center gap-2 text-primary hover:text-foreground transition-colors font-medium">
               View all services <ChevronRight size={20} />
             </Link>
           </motion.div>
@@ -152,7 +152,7 @@ export default function Home() {
                   target={service.destinationUrl ? "_blank" : undefined}
                   className="block glass-panel-glow p-8 rounded-3xl h-full flex flex-col group cursor-pointer"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-background transition-colors">
+                  <div className="w-14 h-14 rounded-2xl bg-muted/40 flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-background transition-colors">
                     {/* fallback icons based on text */}
                     {service.title.toLowerCase().includes('web') ? <Code size={28} /> :
                      service.title.toLowerCase().includes('app') ? <Smartphone size={28} /> :
@@ -162,7 +162,7 @@ export default function Home() {
                      <Terminal size={28} />}
                   </div>
                   <h3 className="text-2xl font-display font-bold mb-3">{service.title}</h3>
-                  <p className="text-white/60 mb-6 flex-1">{service.description.substring(0, 120)}...</p>
+                  <p className="text-muted-foreground mb-6 flex-1">{service.description.substring(0, 120)}...</p>
                   <div className="text-primary font-medium flex items-center gap-2 mt-auto group-hover:gap-4 transition-all">
                     {service.buttonText || 'Learn More'} <ArrowRight size={16} />
                   </div>
@@ -172,10 +172,10 @@ export default function Home() {
               // Fallback skeleton or empty state
               Array(3).fill(0).map((_, i) => (
                 <div key={i} className="glass-panel p-8 rounded-3xl h-64 animate-pulse">
-                  <div className="w-14 h-14 bg-white/10 rounded-2xl mb-6"></div>
-                  <div className="h-6 bg-white/10 rounded w-3/4 mb-4"></div>
-                  <div className="h-4 bg-white/10 rounded w-full mb-2"></div>
-                  <div className="h-4 bg-white/10 rounded w-5/6"></div>
+                  <div className="w-14 h-14 bg-muted/60 rounded-2xl mb-6"></div>
+                  <div className="h-6 bg-muted/60 rounded w-3/4 mb-4"></div>
+                  <div className="h-4 bg-muted/60 rounded w-full mb-2"></div>
+                  <div className="h-4 bg-muted/60 rounded w-5/6"></div>
                 </div>
               ))
             )}
@@ -184,7 +184,7 @@ export default function Home() {
       </section>
 
       {/* Featured Portfolio */}
-      <section className="py-24 bg-card/30 border-y border-white/5 relative overflow-hidden">
+      <section className="py-24 bg-card/30 border-y border-border/50 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[100px] pointer-events-none" />
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -196,7 +196,7 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">Featured <span className="text-secondary">Work</span></h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">Discover how we've helped businesses scale and succeed through technology.</p>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">Discover how we've helped businesses scale and succeed through technology.</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -210,7 +210,7 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.6 }}
                 >
-                  <Link href={`/portfolio/${project.id}`} className="group block relative h-[400px] rounded-3xl overflow-hidden bg-white/5">
+                  <Link href={`/portfolio/${project.id}`} className="group block relative h-[400px] rounded-3xl overflow-hidden bg-muted/40">
                     {bgImg ? (
                       <img src={bgImg} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40" />
                     ) : (
@@ -218,9 +218,9 @@ export default function Home() {
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent flex flex-col justify-end p-8">
                       <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        {project.category && <span className="px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-xs font-mono mb-4 inline-block">{project.category}</span>}
+                        {project.category && <span className="px-3 py-1 bg-muted/60 backdrop-blur-md rounded-full text-xs font-mono mb-4 inline-block">{project.category}</span>}
                         <h3 className="text-3xl font-display font-bold mb-2">{project.title}</h3>
-                        <p className="text-white/70 line-clamp-2 mb-4">{project.description}</p>
+                        <p className="text-foreground/70 line-clamp-2 mb-4">{project.description}</p>
                         <div className="flex flex-wrap gap-2">
                           {project.technologies?.split(',').slice(0, 3).map(tech => (
                             <span key={tech} className="text-xs text-primary">{tech.trim()}</span>
@@ -232,12 +232,12 @@ export default function Home() {
                 </motion.div>
               );
             }) : (
-              <div className="col-span-1 md:col-span-2 text-center text-white/40 py-12">Projects loading...</div>
+              <div className="col-span-1 md:col-span-2 text-center text-muted-foreground/70 py-12">Projects loading...</div>
             )}
           </div>
           
           <div className="mt-12 text-center">
-            <Link href="/portfolio" className="inline-flex h-12 px-8 rounded-full border border-white/20 hover:bg-white/5 items-center justify-center font-medium transition-all">
+            <Link href="/portfolio" className="inline-flex h-12 px-8 rounded-full border border-white/20 hover:bg-muted/40 items-center justify-center font-medium transition-all">
               View Full Portfolio
             </Link>
           </div>
@@ -246,9 +246,9 @@ export default function Home() {
 
       {/* Trusted Clients Marquee */}
       {clients && clients.length > 0 && (
-        <section className="py-12 border-b border-white/5 overflow-hidden">
+        <section className="py-12 border-b border-border/50 overflow-hidden">
           <div className="container mx-auto px-4 text-center mb-8">
-            <h3 className="text-sm font-mono text-white/40 uppercase tracking-widest">Trusted by industry leaders</h3>
+            <h3 className="text-sm font-mono text-muted-foreground/70 uppercase tracking-widest">Trusted by industry leaders</h3>
           </div>
           <div className="flex gap-12 items-center w-max animate-[firebox-shimmer_30s_linear_infinite]">
             {[...clients, ...clients, ...clients].map((client, i) => (
@@ -281,7 +281,7 @@ export default function Home() {
             {reviews.slice(0, 3).map(review => (
               <div key={review.id} className="glass-panel p-8 rounded-3xl relative">
                 <div className="text-primary mb-6"><Star fill="currentColor" size={32} /></div>
-                <p className="text-white/80 text-lg leading-relaxed mb-8 italic">"{review.testimonial}"</p>
+                <p className="text-foreground/80 text-lg leading-relaxed mb-8 italic">"{review.testimonial}"</p>
                 <div className="mt-auto">
                   <p className="font-bold font-display">{review.name}</p>
                 </div>
@@ -290,7 +290,7 @@ export default function Home() {
           </div>
           
           <div className="mt-12 text-center">
-            <Link href="/reviews" className="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors">
+            <Link href="/reviews" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
               Read all reviews <ArrowRight size={16} />
             </Link>
           </div>
@@ -311,7 +311,7 @@ export default function Home() {
             className="max-w-3xl mx-auto"
           >
             <h2 className="text-5xl md:text-7xl font-display font-bold mb-6">Ready to build the <span className="text-gradient">future?</span></h2>
-            <p className="text-xl text-white/70 mb-10">Let's turn your vision into reality. Reach out to our team of experts today.</p>
+            <p className="text-xl text-foreground/70 mb-10">Let's turn your vision into reality. Reach out to our team of experts today.</p>
             <Link href="/contact" className="inline-flex h-16 px-10 rounded-full bg-white text-background font-bold items-center justify-center text-lg hover:bg-white/90 transition-all hover:scale-105">
               Start Your Project
             </Link>

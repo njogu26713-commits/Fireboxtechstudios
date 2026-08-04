@@ -36,14 +36,14 @@ export default function Reviews() {
     <div className="container mx-auto px-4 md:px-6 py-12 pb-24">
       <div className="max-w-4xl mx-auto text-center mb-16 pt-12">
         <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Client <span className="text-primary">Love</span></h1>
-        <p className="text-xl text-white/60 mb-8">See what our clients say about working with FireboxTechStudios.</p>
+        <p className="text-xl text-muted-foreground mb-8">See what our clients say about working with FireboxTechStudios.</p>
         
         <div className="inline-flex flex-col items-center justify-center p-6 glass-panel rounded-3xl">
           <div className="text-5xl font-display font-bold text-white mb-2">{average.toFixed(1)}</div>
           <div className="flex gap-1 text-primary mb-2">
             {[1,2,3,4,5].map(s => <Star key={s} fill={s <= Math.round(average) ? "currentColor" : "none"} size={24} />)}
           </div>
-          <div className="text-sm font-mono text-white/50">Based on {reviewsData?.totalCount || 0} reviews</div>
+          <div className="text-sm font-mono text-muted-foreground">Based on {reviewsData?.totalCount || 0} reviews</div>
         </div>
       </div>
 
@@ -67,23 +67,23 @@ export default function Reviews() {
                     {[1,2,3,4,5].map(s => <Star key={s} fill={s <= review.rating ? "currentColor" : "none"} size={16} />)}
                   </div>
                 </div>
-                <p className="text-white/80 leading-relaxed italic">"{review.testimonial}"</p>
+                <p className="text-foreground/80 leading-relaxed italic">"{review.testimonial}"</p>
                 
                 {review.adminReply && (
-                  <div className="mt-6 pt-4 border-t border-white/10 flex gap-4">
+                  <div className="mt-6 pt-4 border-t border-border flex gap-4">
                     <div className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0">
                       <MessageSquare size={14} />
                     </div>
                     <div>
                       <div className="text-xs font-bold text-primary mb-1">Firebox Team</div>
-                      <p className="text-sm text-white/60">{review.adminReply}</p>
+                      <p className="text-sm text-muted-foreground">{review.adminReply}</p>
                     </div>
                   </div>
                 )}
               </motion.div>
             ))
           ) : (
-            <div className="text-center text-white/50 py-12">No reviews yet. Be the first!</div>
+            <div className="text-center text-muted-foreground py-12">No reviews yet. Be the first!</div>
           )}
         </div>
 
@@ -93,15 +93,15 @@ export default function Reviews() {
             <h3 className="text-2xl font-display font-bold mb-6">Leave a Review</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm text-white/60 mb-1">Name</label>
-                <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-white" />
+                <label className="block text-sm text-muted-foreground mb-1">Name</label>
+                <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full bg-muted/40 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-white" />
               </div>
               <div>
-                <label className="block text-sm text-white/60 mb-1">Email (private)</label>
-                <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-white" />
+                <label className="block text-sm text-muted-foreground mb-1">Email (private)</label>
+                <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-muted/40 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-white" />
               </div>
               <div>
-                <label className="block text-sm text-white/60 mb-1">Rating</label>
+                <label className="block text-sm text-muted-foreground mb-1">Rating</label>
                 <div className="flex gap-2">
                   {[1,2,3,4,5].map(s => (
                     <button type="button" key={s} onClick={() => setFormData({...formData, rating: s})} className={`text-2xl ${s <= formData.rating ? 'text-primary' : 'text-white/20'}`}>★</button>
@@ -109,8 +109,8 @@ export default function Reviews() {
                 </div>
               </div>
               <div>
-                <label className="block text-sm text-white/60 mb-1">Review</label>
-                <textarea required rows={4} value={formData.testimonial} onChange={e => setFormData({...formData, testimonial: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-white resize-none"></textarea>
+                <label className="block text-sm text-muted-foreground mb-1">Review</label>
+                <textarea required rows={4} value={formData.testimonial} onChange={e => setFormData({...formData, testimonial: e.target.value})} className="w-full bg-muted/40 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-white resize-none"></textarea>
               </div>
               <button disabled={createReview.isPending} type="submit" className="w-full h-12 rounded-xl bg-white text-background font-bold hover:bg-white/90 transition-all disabled:opacity-50">
                 {createReview.isPending ? 'Submitting...' : 'Submit Review'}

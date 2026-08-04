@@ -15,11 +15,11 @@ export default function NewsletterManage() {
       </div>
 
       {isLoading ? (
-        <div className="text-white/60">Loading...</div>
+        <div className="text-muted-foreground">Loading...</div>
       ) : (
-        <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+        <div className="bg-muted/40 border border-border rounded-2xl overflow-hidden">
           <table className="w-full text-left">
-            <thead className="bg-white/5 border-b border-white/10 text-sm text-white/60">
+            <thead className="bg-muted/40 border-b border-border text-sm text-muted-foreground">
               <tr>
                 <th className="p-4">#</th>
                 <th className="p-4">Email</th>
@@ -28,16 +28,16 @@ export default function NewsletterManage() {
             </thead>
             <tbody className="divide-y divide-white/5">
               {(subscribers as any[]).map((sub: any, index: number) => (
-                <tr key={sub.id} className="hover:bg-white/5">
-                  <td className="p-4 text-white/40">{index + 1}</td>
+                <tr key={sub.id} className="hover:bg-muted/40">
+                  <td className="p-4 text-muted-foreground/70">{index + 1}</td>
                   <td className="p-4 font-medium">{sub.email}</td>
-                  <td className="p-4 text-white/60 text-sm">{sub.createdAt ? new Date(sub.createdAt).toLocaleDateString() : '—'}</td>
+                  <td className="p-4 text-muted-foreground text-sm">{sub.createdAt ? new Date(sub.createdAt).toLocaleDateString() : '—'}</td>
                 </tr>
               ))}
             </tbody>
           </table>
           {(subscribers as any[]).length === 0 && (
-            <div className="p-8 text-center text-white/40">No subscribers yet.</div>
+            <div className="p-8 text-center text-muted-foreground/70">No subscribers yet.</div>
           )}
         </div>
       )}

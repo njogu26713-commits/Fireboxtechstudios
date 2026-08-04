@@ -77,7 +77,7 @@ export default function ServicesManage() {
 
       <div className="glass-panel rounded-2xl overflow-hidden">
         <table className="w-full text-left">
-          <thead className="bg-white/5 border-b border-white/10 text-sm">
+          <thead className="bg-muted/40 border-b border-border text-sm">
             <tr>
               <th className="p-4">Title</th>
               <th className="p-4">Category</th>
@@ -88,21 +88,21 @@ export default function ServicesManage() {
           </thead>
           <tbody>
             {isLoading ? (
-              <tr><td colSpan={5} className="p-8 text-center text-white/50">Loading...</td></tr>
+              <tr><td colSpan={5} className="p-8 text-center text-muted-foreground">Loading...</td></tr>
             ) : services.length === 0 ? (
-              <tr><td colSpan={5} className="p-8 text-center text-white/50">No services found.</td></tr>
+              <tr><td colSpan={5} className="p-8 text-center text-muted-foreground">No services found.</td></tr>
             ) : (
               services.map(s => (
-                <tr key={s.id} className="border-b border-white/5 hover:bg-white/[0.02]">
+                <tr key={s.id} className="border-b border-border/50 hover:bg-muted/30">
                   <td className="p-4 font-medium">{s.title}</td>
-                  <td className="p-4"><span className="px-2 py-1 bg-white/10 rounded text-xs">{s.category}</span></td>
+                  <td className="p-4"><span className="px-2 py-1 bg-muted/60 rounded text-xs">{s.category}</span></td>
                   <td className="p-4">
                     {s.published ? <span className="text-green-400 text-xs font-bold">Published</span> : <span className="text-yellow-400 text-xs font-bold">Draft</span>}
                   </td>
                   <td className="p-4">{s.featured ? 'Yes' : 'No'}</td>
                   <td className="p-4 text-right flex items-center justify-end gap-2">
-                    <button onClick={() => handleOpenEdit(s)} className="p-2 bg-white/10 hover:bg-white/20 rounded"><Edit2 size={16} /></button>
-                    <button onClick={() => handleDelete(s.id)} className="p-2 bg-destructive/20 text-destructive hover:bg-destructive hover:text-white rounded"><Trash2 size={16} /></button>
+                    <button onClick={() => handleOpenEdit(s)} className="p-2 bg-muted/60 hover:bg-white/20 rounded"><Edit2 size={16} /></button>
+                    <button onClick={() => handleDelete(s.id)} className="p-2 bg-destructive/20 text-destructive hover:bg-destructive hover:text-foreground rounded"><Trash2 size={16} /></button>
                   </td>
                 </tr>
               ))
@@ -113,52 +113,52 @@ export default function ServicesManage() {
 
       {isModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-card border border-white/10 w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl p-6 shadow-2xl">
+          <div className="bg-card border border-border w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl p-6 shadow-2xl">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold">{editingId ? 'Edit Service' : 'Add Service'}</h2>
-              <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-white/10 rounded-full"><X size={20} /></button>
+              <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-muted/60 rounded-full"><X size={20} /></button>
             </div>
             
             <form onSubmit={handleSubmit} className="space-y-4 text-sm">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-white/60 mb-1">Title</label>
-                  <input required value={formData.title} onChange={e=>setFormData({...formData, title: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none" />
+                  <label className="block text-muted-foreground mb-1">Title</label>
+                  <input required value={formData.title} onChange={e=>setFormData({...formData, title: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none" />
                 </div>
                 <div>
-                  <label className="block text-white/60 mb-1">Category</label>
-                  <input required value={formData.category} onChange={e=>setFormData({...formData, category: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none" />
+                  <label className="block text-muted-foreground mb-1">Category</label>
+                  <input required value={formData.category} onChange={e=>setFormData({...formData, category: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none" />
                 </div>
               </div>
               
               <div>
-                <label className="block text-white/60 mb-1">Description</label>
-                <textarea required rows={4} value={formData.description} onChange={e=>setFormData({...formData, description: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none resize-none"></textarea>
+                <label className="block text-muted-foreground mb-1">Description</label>
+                <textarea required rows={4} value={formData.description} onChange={e=>setFormData({...formData, description: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none resize-none"></textarea>
               </div>
               
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-white/60 mb-1">Banner Image URL</label>
-                  <input value={formData.bannerUrl} onChange={e=>setFormData({...formData, bannerUrl: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none" />
+                  <label className="block text-muted-foreground mb-1">Banner Image URL</label>
+                  <input value={formData.bannerUrl} onChange={e=>setFormData({...formData, bannerUrl: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none" />
                 </div>
                 <div>
-                  <label className="block text-white/60 mb-1">Gallery URLs (comma separated)</label>
-                  <input value={formData.galleryUrls} onChange={e=>setFormData({...formData, galleryUrls: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none" />
+                  <label className="block text-muted-foreground mb-1">Gallery URLs (comma separated)</label>
+                  <input value={formData.galleryUrls} onChange={e=>setFormData({...formData, galleryUrls: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none" />
                 </div>
               </div>
 
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-white/60 mb-1">Pricing (e.g. $5k+)</label>
-                  <input value={formData.pricing} onChange={e=>setFormData({...formData, pricing: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none" />
+                  <label className="block text-muted-foreground mb-1">Pricing (e.g. $5k+)</label>
+                  <input value={formData.pricing} onChange={e=>setFormData({...formData, pricing: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none" />
                 </div>
                 <div>
-                  <label className="block text-white/60 mb-1">Button Text</label>
-                  <input value={formData.buttonText} onChange={e=>setFormData({...formData, buttonText: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none" />
+                  <label className="block text-muted-foreground mb-1">Button Text</label>
+                  <input value={formData.buttonText} onChange={e=>setFormData({...formData, buttonText: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none" />
                 </div>
                 <div>
-                  <label className="block text-white/60 mb-1">Destination URL (External)</label>
-                  <input value={formData.destinationUrl} onChange={e=>setFormData({...formData, destinationUrl: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none" />
+                  <label className="block text-muted-foreground mb-1">Destination URL (External)</label>
+                  <input value={formData.destinationUrl} onChange={e=>setFormData({...formData, destinationUrl: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none" />
                 </div>
               </div>
 
@@ -174,7 +174,7 @@ export default function ServicesManage() {
               </div>
 
               <div className="pt-4 flex justify-end gap-3">
-                <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 bg-white/10 rounded-lg font-medium hover:bg-white/20">Cancel</button>
+                <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 bg-muted/60 rounded-lg font-medium hover:bg-white/20">Cancel</button>
                 <button type="submit" disabled={createService.isPending || updateService.isPending} className="px-6 py-2 bg-primary text-background font-bold rounded-lg hover:bg-primary/90">
                   {editingId ? 'Save Changes' : 'Create Service'}
                 </button>

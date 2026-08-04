@@ -70,7 +70,7 @@ export default function PortfolioManage() {
 
       <div className="glass-panel rounded-2xl overflow-hidden">
         <table className="w-full text-left">
-          <thead className="bg-white/5 border-b border-white/10 text-sm">
+          <thead className="bg-muted/40 border-b border-border text-sm">
             <tr>
               <th className="p-4">Project</th>
               <th className="p-4">Category</th>
@@ -81,14 +81,14 @@ export default function PortfolioManage() {
           </thead>
           <tbody>
             {isLoading ? (
-              <tr><td colSpan={5} className="p-8 text-center text-white/50">Loading...</td></tr>
+              <tr><td colSpan={5} className="p-8 text-center text-muted-foreground">Loading...</td></tr>
             ) : projects.length === 0 ? (
-              <tr><td colSpan={5} className="p-8 text-center text-white/50">No projects found.</td></tr>
+              <tr><td colSpan={5} className="p-8 text-center text-muted-foreground">No projects found.</td></tr>
             ) : (
               projects.map(p => (
-                <tr key={p.id} className="border-b border-white/5 hover:bg-white/[0.02]">
+                <tr key={p.id} className="border-b border-border/50 hover:bg-muted/30">
                   <td className="p-4 font-medium">{p.title}</td>
-                  <td className="p-4"><span className="px-2 py-1 bg-white/10 rounded text-xs">{p.category || 'None'}</span></td>
+                  <td className="p-4"><span className="px-2 py-1 bg-muted/60 rounded text-xs">{p.category || 'None'}</span></td>
                   <td className="p-4 flex gap-2">
                     {p.liveDemoUrl && <a href={p.liveDemoUrl} target="_blank" rel="noreferrer" className="text-blue-400 hover:text-blue-300"><ExternalLink size={16}/></a>}
                   </td>
@@ -98,8 +98,8 @@ export default function PortfolioManage() {
                   </td>
                   <td className="p-4 text-right">
                     <div className="flex justify-end gap-2">
-                      <button onClick={() => handleOpenEdit(p)} className="p-2 bg-white/10 hover:bg-white/20 rounded"><Edit2 size={16} /></button>
-                      <button onClick={() => handleDelete(p.id)} className="p-2 bg-destructive/20 text-destructive hover:bg-destructive hover:text-white rounded"><Trash2 size={16} /></button>
+                      <button onClick={() => handleOpenEdit(p)} className="p-2 bg-muted/60 hover:bg-white/20 rounded"><Edit2 size={16} /></button>
+                      <button onClick={() => handleDelete(p.id)} className="p-2 bg-destructive/20 text-destructive hover:bg-destructive hover:text-foreground rounded"><Trash2 size={16} /></button>
                     </div>
                   </td>
                 </tr>
@@ -111,51 +111,51 @@ export default function PortfolioManage() {
 
       {isModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-card border border-white/10 w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl p-6 shadow-2xl">
+          <div className="bg-card border border-border w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl p-6 shadow-2xl">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold">{editingId ? 'Edit Project' : 'Add Project'}</h2>
-              <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-white/10 rounded-full"><X size={20} /></button>
+              <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-muted/60 rounded-full"><X size={20} /></button>
             </div>
             
             <form onSubmit={handleSubmit} className="space-y-4 text-sm">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-white/60 mb-1">Title</label>
-                  <input required value={formData.title} onChange={e=>setFormData({...formData, title: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none" />
+                  <label className="block text-muted-foreground mb-1">Title</label>
+                  <input required value={formData.title} onChange={e=>setFormData({...formData, title: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none" />
                 </div>
                 <div>
-                  <label className="block text-white/60 mb-1">Category</label>
-                  <input value={formData.category} onChange={e=>setFormData({...formData, category: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none" />
+                  <label className="block text-muted-foreground mb-1">Category</label>
+                  <input value={formData.category} onChange={e=>setFormData({...formData, category: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none" />
                 </div>
               </div>
               
               <div>
-                <label className="block text-white/60 mb-1">Description</label>
-                <textarea required rows={4} value={formData.description} onChange={e=>setFormData({...formData, description: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none resize-none"></textarea>
+                <label className="block text-muted-foreground mb-1">Description</label>
+                <textarea required rows={4} value={formData.description} onChange={e=>setFormData({...formData, description: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none resize-none"></textarea>
               </div>
 
               <div>
-                <label className="block text-white/60 mb-1">Technologies (comma separated)</label>
-                <input value={formData.technologies} onChange={e=>setFormData({...formData, technologies: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none" />
+                <label className="block text-muted-foreground mb-1">Technologies (comma separated)</label>
+                <input value={formData.technologies} onChange={e=>setFormData({...formData, technologies: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none" />
               </div>
               
               <div>
-                <label className="block text-white/60 mb-1">Screenshot URLs (comma separated)</label>
-                <input value={formData.screenshotUrls} onChange={e=>setFormData({...formData, screenshotUrls: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none" />
+                <label className="block text-muted-foreground mb-1">Screenshot URLs (comma separated)</label>
+                <input value={formData.screenshotUrls} onChange={e=>setFormData({...formData, screenshotUrls: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none" />
               </div>
 
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-white/60 mb-1">Video URL</label>
-                  <input value={formData.videoUrl} onChange={e=>setFormData({...formData, videoUrl: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none" />
+                  <label className="block text-muted-foreground mb-1">Video URL</label>
+                  <input value={formData.videoUrl} onChange={e=>setFormData({...formData, videoUrl: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none" />
                 </div>
                 <div>
-                  <label className="block text-white/60 mb-1">Live Demo URL</label>
-                  <input value={formData.liveDemoUrl} onChange={e=>setFormData({...formData, liveDemoUrl: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none" />
+                  <label className="block text-muted-foreground mb-1">Live Demo URL</label>
+                  <input value={formData.liveDemoUrl} onChange={e=>setFormData({...formData, liveDemoUrl: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none" />
                 </div>
                 <div>
-                  <label className="block text-white/60 mb-1">GitHub URL</label>
-                  <input value={formData.githubUrl} onChange={e=>setFormData({...formData, githubUrl: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none" />
+                  <label className="block text-muted-foreground mb-1">GitHub URL</label>
+                  <input value={formData.githubUrl} onChange={e=>setFormData({...formData, githubUrl: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none" />
                 </div>
               </div>
 
@@ -171,7 +171,7 @@ export default function PortfolioManage() {
               </div>
 
               <div className="pt-4 flex justify-end gap-3">
-                <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 bg-white/10 rounded-lg font-medium hover:bg-white/20">Cancel</button>
+                <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 bg-muted/60 rounded-lg font-medium hover:bg-white/20">Cancel</button>
                 <button type="submit" disabled={createProject.isPending || updateProject.isPending} className="px-6 py-2 bg-secondary text-white font-bold rounded-lg hover:bg-secondary/90">
                   {editingId ? 'Save Changes' : 'Create Project'}
                 </button>

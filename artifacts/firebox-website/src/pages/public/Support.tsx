@@ -12,7 +12,7 @@ export default function Support() {
           <Heart size={40} />
         </div>
         <h1 className="text-5xl md:text-6xl font-display font-bold mb-6">Support <span className="text-destructive">Firebox</span></h1>
-        <p className="text-xl text-white/70">
+        <p className="text-xl text-foreground/70">
           {settings?.donationMessage || "If you love our free tutorials, open-source projects, and community work, consider buying us a coffee. Your support keeps the servers running and the caffeine flowing."}
         </p>
       </div>
@@ -24,8 +24,8 @@ export default function Support() {
               <Smartphone size={32} />
             </div>
             <h3 className="text-2xl font-bold font-display mb-2">M-Pesa</h3>
-            <p className="text-white/60 mb-8">Send support directly via Safaricom M-Pesa (Kenya).</p>
-            <div className="bg-black/30 py-4 px-6 rounded-xl border border-white/10 font-mono text-2xl tracking-wider text-[#4CAF50] font-bold">
+            <p className="text-muted-foreground mb-8">Send support directly via Safaricom M-Pesa (Kenya).</p>
+            <div className="bg-black/30 py-4 px-6 rounded-xl border border-border font-mono text-2xl tracking-wider text-[#4CAF50] font-bold">
               {settings.mpesaNumber}
             </div>
           </div>
@@ -37,7 +37,7 @@ export default function Support() {
               <CreditCard size={32} />
             </div>
             <h3 className="text-2xl font-bold font-display mb-2">PayPal</h3>
-            <p className="text-white/60 mb-8">Support us globally securely through PayPal.</p>
+            <p className="text-muted-foreground mb-8">Support us globally securely through PayPal.</p>
             <a 
               href={`https://paypal.me/${settings.paypalEmail}`} 
               target="_blank" 
@@ -50,7 +50,7 @@ export default function Support() {
         )}
         
         {!settings?.mpesaNumber && !settings?.paypalEmail && (
-          <div className="col-span-1 md:col-span-2 text-center text-white/50 py-12">
+          <div className="col-span-1 md:col-span-2 text-center text-muted-foreground py-12">
             Donation options are currently being updated. Check back soon!
           </div>
         )}

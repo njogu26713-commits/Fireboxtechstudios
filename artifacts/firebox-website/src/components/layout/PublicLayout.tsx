@@ -46,15 +46,15 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
     <div className="min-h-[100dvh] flex flex-col relative overflow-hidden bg-background text-foreground">
       {/* Background ambient light */}
       <div className="fixed inset-0 pointer-events-none -z-10">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] opacity-50 mix-blend-screen" />
-        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-secondary/20 rounded-full blur-[150px] opacity-50 mix-blend-screen" />
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] opacity-50 mix-blend-multiply" />
+        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-secondary/20 rounded-full blur-[150px] opacity-50 mix-blend-multiply" />
         <div className="absolute inset-0 bg-noise pointer-events-none" />
       </div>
 
       {/* Navbar */}
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-background/70 backdrop-blur-xl border-b border-white/10 py-3' : 'bg-transparent py-5'
+          isScrolled ? 'bg-background/70 backdrop-blur-xl border-b border-border py-3' : 'bg-transparent py-5'
         }`}
       >
         <div className="container mx-auto px-4 md:px-6">
@@ -76,8 +76,8 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                   href={link.href}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                     location === link.href 
-                      ? 'bg-white/10 text-white' 
-                      : 'text-white/70 hover:text-white hover:bg-white/5'
+                      ? 'bg-muted/60 text-white' 
+                      : 'text-foreground/70 hover:text-foreground hover:bg-muted/40'
                   }`}
                 >
                   {link.label}
@@ -93,7 +93,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
 
             {/* Mobile Toggle */}
             <button 
-              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10"
+              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-muted/40 border border-border"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -117,8 +117,8 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                   key={link.href} 
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`text-2xl font-display font-semibold py-4 border-b border-white/5 ${
-                    location === link.href ? 'text-primary' : 'text-white/80'
+                  className={`text-2xl font-display font-semibold py-4 border-b border-border/50 ${
+                    location === link.href ? 'text-primary' : 'text-foreground/80'
                   }`}
                 >
                   {link.label}
@@ -144,7 +144,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-white/10 bg-background/80 backdrop-blur-lg pt-16 pb-8 mt-20 relative z-10">
+      <footer className="border-t border-border bg-background/80 backdrop-blur-lg pt-16 pb-8 mt-20 relative z-10">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
             <div className="space-y-4">
@@ -154,14 +154,14 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                 </div>
                 <span className="font-display font-bold text-lg">FireboxTechStudios</span>
               </Link>
-              <p className="text-white/60 text-sm leading-relaxed max-w-xs">
+              <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
                 {settings?.tagline || 'Building the future with AI, Web, Mobile, and Cloud Computing solutions.'}
               </p>
             </div>
             
             <div>
               <h4 className="font-display font-semibold mb-4 text-white">Quick Links</h4>
-              <ul className="space-y-2 text-sm text-white/60">
+              <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><Link href="/about" className="hover:text-primary transition-colors">About Us</Link></li>
                 <li><Link href="/services" className="hover:text-primary transition-colors">Services</Link></li>
                 <li><Link href="/portfolio" className="hover:text-primary transition-colors">Portfolio</Link></li>
@@ -171,7 +171,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
             
             <div>
               <h4 className="font-display font-semibold mb-4 text-white">Resources</h4>
-              <ul className="space-y-2 text-sm text-white/60">
+              <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><Link href="/tutorials" className="hover:text-primary transition-colors">Tutorials</Link></li>
                 <li><Link href="/blog" className="hover:text-primary transition-colors">Blog</Link></li>
                 <li><Link href="/support" className="hover:text-primary transition-colors">Support Us</Link></li>
@@ -181,7 +181,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
             
             <div>
               <h4 className="font-display font-semibold mb-4 text-white">Contact</h4>
-              <ul className="space-y-3 text-sm text-white/60">
+              <ul className="space-y-3 text-sm text-muted-foreground">
                 {settings?.email && (
                   <li className="flex items-center gap-2"><Mail size={16} className="text-primary" /> {settings.email}</li>
                 )}
@@ -192,11 +192,11 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
             </div>
           </div>
           
-          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/50">
+          <div className="border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
             <p>&copy; {new Date().getFullYear()} {settings?.siteName || 'FireboxTechStudios'}. All rights reserved.</p>
             <div className="flex items-center gap-4">
-              <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-              <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+              <Link href="/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-foreground transition-colors">Terms of Service</Link>
             </div>
           </div>
         </div>
@@ -215,19 +215,19 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
               <h4 className="font-display font-medium text-sm mb-3">Reach out to us</h4>
               <div className="space-y-2">
                 {settings?.whatsapp && (
-                  <a href={`https://wa.me/${settings.whatsapp.replace(/[^0-9]/g, '')}`} target="_blank" rel="noreferrer" className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors text-sm">
+                  <a href={`https://wa.me/${settings.whatsapp.replace(/[^0-9]/g, '')}`} target="_blank" rel="noreferrer" className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/40 transition-colors text-sm">
                     <div className="w-8 h-8 rounded-full bg-[#25D366]/20 text-[#25D366] flex items-center justify-center"><MessageSquare size={16} /></div>
                     WhatsApp Us
                   </a>
                 )}
                 {settings?.phone && (
-                  <a href={`tel:${settings.phone}`} className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors text-sm">
+                  <a href={`tel:${settings.phone}`} className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/40 transition-colors text-sm">
                     <div className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center"><Phone size={16} /></div>
                     Call Us
                   </a>
                 )}
                 {settings?.email && (
-                  <a href={`mailto:${settings.email}`} className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors text-sm">
+                  <a href={`mailto:${settings.email}`} className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/40 transition-colors text-sm">
                     <div className="w-8 h-8 rounded-full bg-secondary/20 text-secondary flex items-center justify-center"><Mail size={16} /></div>
                     Email Us
                   </a>
@@ -255,7 +255,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
             className="fixed bottom-6 left-6 right-24 md:right-auto md:max-w-md z-40"
           >
             <div className="glass-panel p-5 rounded-2xl flex flex-col gap-4 shadow-2xl">
-              <p className="text-sm text-white/80">
+              <p className="text-sm text-foreground/80">
                 We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept", you consent to our use of cookies.
               </p>
               <div className="flex gap-3">
@@ -267,7 +267,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                 </button>
                 <Link 
                   href="/privacy" 
-                  className="px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-white text-sm font-medium transition-colors"
+                  className="px-4 py-2 rounded-lg bg-muted/40 hover:bg-muted/60 text-white text-sm font-medium transition-colors"
                   onClick={() => setShowCookie(false)}
                 >
                   Privacy Policy

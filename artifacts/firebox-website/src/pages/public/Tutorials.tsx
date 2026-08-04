@@ -19,7 +19,7 @@ export default function Tutorials() {
     <div className="container mx-auto px-4 md:px-6 py-12">
       <div className="max-w-4xl mx-auto text-center mb-16">
         <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Developer <span className="text-primary">Tutorials</span></h1>
-        <p className="text-xl text-white/60">Level up your skills with our deep-dive technical guides and video tutorials.</p>
+        <p className="text-xl text-muted-foreground">Level up your skills with our deep-dive technical guides and video tutorials.</p>
       </div>
 
       <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
@@ -31,7 +31,7 @@ export default function Tutorials() {
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 category === cat 
                   ? 'bg-primary text-primary-foreground' 
-                  : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white'
+                  : 'bg-muted/40 text-foreground/70 hover:bg-muted/60 hover:text-white'
               }`}
             >
               {cat}
@@ -39,13 +39,13 @@ export default function Tutorials() {
           ))}
         </div>
         <div className="relative w-full md:w-64">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40" size={18} />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground/70" size={18} />
           <input 
             type="text" 
             placeholder="Search tutorials..." 
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm focus:outline-none focus:border-primary/50 text-white"
+            className="w-full pl-10 pr-4 py-2 bg-muted/40 border border-border rounded-full text-sm focus:outline-none focus:border-primary/50 text-white"
           />
         </div>
       </div>
@@ -70,7 +70,7 @@ export default function Tutorials() {
                   {tutorial.thumbnailUrl ? (
                     <img src={tutorial.thumbnailUrl} alt={tutorial.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-white/5"><Play size={40} className="text-white/20" /></div>
+                    <div className="w-full h-full flex items-center justify-center bg-muted/40"><Play size={40} className="text-white/20" /></div>
                   )}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-14 h-14 rounded-full bg-primary/80 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 transition-all duration-300">
@@ -87,17 +87,17 @@ export default function Tutorials() {
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-xs font-mono text-primary uppercase tracking-wider">{tutorial.category}</span>
                     <span className="w-1 h-1 rounded-full bg-white/20"></span>
-                    <span className="text-xs text-white/50">{tutorial.difficulty || 'All Levels'}</span>
+                    <span className="text-xs text-muted-foreground">{tutorial.difficulty || 'All Levels'}</span>
                   </div>
                   <h3 className="text-xl font-bold font-display mb-2 group-hover:text-primary transition-colors">{tutorial.title}</h3>
-                  <p className="text-white/60 text-sm line-clamp-2 mt-auto">{tutorial.description}</p>
+                  <p className="text-muted-foreground text-sm line-clamp-2 mt-auto">{tutorial.description}</p>
                 </div>
               </Link>
             </motion.div>
           ))}
         </div>
       ) : (
-        <div className="text-center py-24 text-white/50">
+        <div className="text-center py-24 text-muted-foreground">
           <p>No tutorials found matching your criteria.</p>
         </div>
       )}

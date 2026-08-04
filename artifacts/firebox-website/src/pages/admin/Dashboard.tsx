@@ -6,7 +6,7 @@ import { Link } from 'wouter';
 export default function Dashboard() {
   const { data: stats, isLoading } = useGetDashboardStats();
 
-  if (isLoading) return <div className="p-8 animate-pulse text-white/50">Loading dashboard data...</div>;
+  if (isLoading) return <div className="p-8 animate-pulse text-muted-foreground">Loading dashboard data...</div>;
 
   const statCards = [
     { label: 'Total Services', value: stats?.totalServices || 0, icon: Layers, href: '/admin/services', color: 'text-blue-500' },
@@ -31,12 +31,12 @@ export default function Dashboard() {
           return (
             <Link key={i} href={stat.href} className="block glass-panel p-6 rounded-2xl hover:border-primary/50 transition-all hover:scale-[1.02]">
               <div className="flex items-start justify-between mb-4">
-                <div className={`p-3 rounded-lg bg-white/5 ${stat.color}`}>
+                <div className={`p-3 rounded-lg bg-muted/40 ${stat.color}`}>
                   <Icon size={24} />
                 </div>
                 <div className="text-3xl font-display font-bold">{stat.value}</div>
               </div>
-              <div className="text-white/60 font-medium">{stat.label}</div>
+              <div className="text-muted-foreground font-medium">{stat.label}</div>
             </Link>
           );
         })}
@@ -48,7 +48,7 @@ export default function Dashboard() {
             </div>
             <div className="text-3xl font-display font-bold">{stats?.avgRating?.toFixed(1) || 0}</div>
           </div>
-          <div className="text-white/60 font-medium">Average Rating</div>
+          <div className="text-muted-foreground font-medium">Average Rating</div>
         </div>
       </div>
     </div>
