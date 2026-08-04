@@ -97,7 +97,7 @@ export default function SettingsManage() {
           </div>
         </div>
 
-        <button type="submit" disabled={updateSettings.isPending} className="px-8 py-3 bg-primary text-background font-bold rounded-xl hover:bg-primary/90 transition-all">
+        <button type="submit" disabled={updateSettings.isPending} className="px-8 py-3 bg-primary text-background font-bold rounded-md hover:bg-primary/90 transition-all">
           {updateSettings.isPending ? 'Saving...' : 'Save Settings'}
         </button>
       </form>

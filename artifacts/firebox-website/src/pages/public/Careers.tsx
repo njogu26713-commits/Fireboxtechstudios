@@ -9,7 +9,7 @@ export default function Careers() {
   return (
     <div className="container mx-auto px-4 md:px-6 py-12 pb-24">
       <div className="max-w-4xl mx-auto text-center mb-16 pt-12">
-        <span className="px-4 py-1.5 rounded-full bg-primary/20 text-primary text-sm font-mono font-medium mb-6 inline-block">
+        <span className="px-4 py-1.5 rounded-md bg-primary/20 text-primary text-sm font-mono font-medium mb-6 inline-block">
           Join the Team
         </span>
         <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Build the <span className="text-gradient">Impossible</span></h1>
@@ -50,7 +50,7 @@ export default function Careers() {
                   href={job.applicationUrl || `mailto:careers@fireboxtechstudios.com?subject=Application for ${job.title}`}
                   target={job.applicationUrl ? "_blank" : undefined}
                   rel="noreferrer"
-                  className="shrink-0 h-12 px-6 rounded-xl bg-muted/60 hover:bg-primary hover:text-primary-foreground font-bold flex items-center justify-center gap-2 transition-all"
+                  className="shrink-0 h-12 px-6 rounded-md bg-muted/60 hover:bg-primary hover:text-primary-foreground font-bold flex items-center justify-center gap-2 transition-all"
                 >
                   Apply Now <ArrowRight size={16} />
                 </a>
@@ -61,7 +61,7 @@ export default function Careers() {
           <div className="glass-panel p-12 rounded-lg text-center">
             <h3 className="text-xl font-bold mb-2">No open positions right now</h3>
             <p className="text-muted-foreground mb-6">But we're always interested in meeting talented people. Send us your resume anyway.</p>
-            <a href="mailto:careers@fireboxtechstudios.com" className="inline-flex h-12 px-6 rounded-xl bg-white text-background font-bold items-center justify-center">
+            <a href="mailto:careers@fireboxtechstudios.com" className="inline-flex h-12 px-6 rounded-md bg-white text-background font-bold items-center justify-center">
               Email Resume
             </a>
           </div>

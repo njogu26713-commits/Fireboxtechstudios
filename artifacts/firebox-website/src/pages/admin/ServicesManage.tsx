@@ -116,7 +116,7 @@ export default function ServicesManage() {
           <div className="bg-card border border-border w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-lg p-6 shadow-2xl">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold">{editingId ? 'Edit Service' : 'Add Service'}</h2>
-              <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-muted/60 rounded-full"><X size={20} /></button>
+              <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-muted/60 rounded-md"><X size={20} /></button>
             </div>
             
             <form onSubmit={handleSubmit} className="space-y-4 text-sm">

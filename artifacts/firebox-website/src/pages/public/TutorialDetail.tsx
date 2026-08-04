@@ -49,7 +49,7 @@ export default function TutorialDetail() {
         
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-4 mb-4 text-sm font-mono">
-            <span className="text-primary px-3 py-1 bg-primary/10 rounded-full">{tutorial.category}</span>
+            <span className="text-primary px-3 py-1 bg-primary/10 rounded-md">{tutorial.category}</span>
             {tutorial.difficulty && <span className="flex items-center gap-1 text-muted-foreground"><BarChart size={14}/> {tutorial.difficulty}</span>}
             {tutorial.duration && <span className="flex items-center gap-1 text-muted-foreground"><Clock size={14}/> {tutorial.duration}</span>}
           </div>
@@ -83,7 +83,7 @@ export default function TutorialDetail() {
                 <h3 className="text-xl font-bold mb-1">Project Files</h3>
                 <p className="text-muted-foreground text-sm">Download the source code and assets used in this tutorial.</p>
               </div>
-              <a href={tutorial.downloadableResources} target="_blank" rel="noreferrer" className="flex items-center gap-2 h-12 px-6 rounded-xl bg-white text-background font-bold hover:bg-white/90 transition-colors">
+              <a href={tutorial.downloadableResources} target="_blank" rel="noreferrer" className="flex items-center gap-2 h-12 px-6 rounded-md bg-white text-background font-bold hover:bg-white/90 transition-colors">
                 <Download size={18} /> Download
               </a>
             </div>

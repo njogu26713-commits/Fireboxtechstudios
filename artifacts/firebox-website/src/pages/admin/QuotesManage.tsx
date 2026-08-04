@@ -36,7 +36,7 @@ export default function QuotesManage() {
                <div>
                  <div className="flex items-center gap-3 mb-1">
                    <h3 className="font-bold text-lg">{q.projectType}</h3>
-                   <span className="px-2 py-0.5 bg-secondary/20 text-secondary text-xs rounded-full">{q.budget || 'Any Budget'}</span>
+                   <span className="px-2 py-0.5 bg-secondary/20 text-secondary text-xs rounded-md">{q.budget || 'Any Budget'}</span>
                  </div>
                  <div className="text-sm text-muted-foreground">From: {q.name} ({q.email}) • {q.phone || 'No phone'}</div>
                </div>

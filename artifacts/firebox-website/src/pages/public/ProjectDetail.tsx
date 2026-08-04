@@ -88,12 +88,12 @@ export default function ProjectDetail() {
 
                 <div className="pt-6 mt-6 border-t border-border flex flex-col gap-3">
                   {project.liveDemoUrl && (
-                    <a href={project.liveDemoUrl} target="_blank" rel="noreferrer" className="w-full h-12 rounded-xl bg-primary text-primary-foreground font-bold flex items-center justify-center gap-2 hover:bg-primary/90 transition-all">
+                    <a href={project.liveDemoUrl} target="_blank" rel="noreferrer" className="w-full h-12 rounded-md bg-primary text-primary-foreground font-bold flex items-center justify-center gap-2 hover:bg-primary/90 transition-all">
                       <ExternalLink size={18} /> Live Demo
                     </a>
                   )}
                   {project.githubUrl && (
-                    <a href={project.githubUrl} target="_blank" rel="noreferrer" className="w-full h-12 rounded-xl bg-muted/60 text-foreground font-bold flex items-center justify-center gap-2 hover:bg-muted transition-all">
+                    <a href={project.githubUrl} target="_blank" rel="noreferrer" className="w-full h-12 rounded-md bg-muted/60 text-foreground font-bold flex items-center justify-center gap-2 hover:bg-muted transition-all">
                       <Github size={18} /> Source Code
                     </a>
                   )}
@@ -104,7 +104,7 @@ export default function ProjectDetail() {
             <div className="glass-panel-glow p-8 rounded-lg text-center">
               <h4 className="font-display font-bold mb-2">Want to build something similar?</h4>
               <p className="text-muted-foreground text-sm mb-6">Let's discuss how we can bring your vision to life.</p>
-              <Link href="/contact" className="inline-block px-6 py-3 rounded-full border border-primary text-primary font-medium hover:bg-primary hover:text-primary-foreground transition-all w-full">
+              <Link href="/contact" className="inline-block px-6 py-3 rounded-md border border-primary text-primary font-medium hover:bg-primary hover:text-primary-foreground transition-all w-full">
                 Start a Conversation
               </Link>
             </div>

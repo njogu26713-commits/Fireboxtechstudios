@@ -28,7 +28,7 @@ export default function Portfolio() {
           <button
             key={tech}
             onClick={() => setTechFilter(tech)}
-            className={`px-6 py-2 rounded-full font-medium transition-all ${
+            className={`px-6 py-2 rounded-md font-medium transition-all ${
               techFilter === tech 
                 ? 'bg-secondary text-secondary-foreground shadow-[0_0_15px_rgba(168,85,247,0.4)]' 
                 : 'bg-muted/40 text-foreground/70 hover:bg-muted/60 hover:text-foreground'
@@ -67,7 +67,7 @@ export default function Portfolio() {
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/60 to-transparent flex flex-col justify-end p-8">
                     <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
                       {project.category && (
-                        <span className="px-3 py-1 bg-muted/60 backdrop-blur-md rounded-full text-xs font-mono mb-4 inline-block">
+                        <span className="px-3 py-1 bg-muted/60 backdrop-blur-md rounded-md text-xs font-mono mb-4 inline-block">
                           {project.category}
                         </span>
                       )}
@@ -81,16 +81,16 @@ export default function Portfolio() {
                       </div>
 
                       <div className="flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity delay-100">
-                        <Link href={`/portfolio/${project.id}`} className="px-6 py-2 bg-white text-background font-bold rounded-full text-sm">
+                        <Link href={`/portfolio/${project.id}`} className="px-6 py-2 bg-white text-background font-bold rounded-md text-sm">
                           View Details
                         </Link>
                         {project.liveDemoUrl && (
-                          <a href={project.liveDemoUrl} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-muted/60 flex items-center justify-center hover:bg-white/20 transition-colors">
+                          <a href={project.liveDemoUrl} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-md bg-muted/60 flex items-center justify-center hover:bg-white/20 transition-colors">
                             <ExternalLink size={18} />
                           </a>
                         )}
                         {project.githubUrl && (
-                          <a href={project.githubUrl} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-muted/60 flex items-center justify-center hover:bg-white/20 transition-colors">
+                          <a href={project.githubUrl} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-md bg-muted/60 flex items-center justify-center hover:bg-white/20 transition-colors">
                             <Github size={18} />
                           </a>
                         )}

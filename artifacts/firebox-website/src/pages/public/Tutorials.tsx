@@ -28,7 +28,7 @@ export default function Tutorials() {
             <button
               key={cat}
               onClick={() => setCategory(cat)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
                 category === cat 
                   ? 'bg-primary text-primary-foreground' 
                   : 'bg-muted/40 text-foreground/70 hover:bg-muted/60 hover:text-foreground'
@@ -45,7 +45,7 @@ export default function Tutorials() {
             placeholder="Search tutorials..." 
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 bg-muted/40 border border-border rounded-full text-sm focus:outline-none focus:border-primary/50 text-foreground"
+            className="w-full pl-10 pr-4 py-2 bg-muted/40 border border-border rounded-md text-sm focus:outline-none focus:border-primary/50 text-foreground"
           />
         </div>
       </div>
@@ -73,7 +73,7 @@ export default function Tutorials() {
                     <div className="w-full h-full flex items-center justify-center bg-muted/40"><Play size={40} className="text-foreground/20" /></div>
                   )}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-14 h-14 rounded-full bg-primary/80 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 transition-all duration-300">
+                    <div className="w-14 h-14 rounded-md bg-primary/80 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 transition-all duration-300">
                       <Play fill="currentColor" size={20} />
                     </div>
                   </div>
@@ -86,7 +86,7 @@ export default function Tutorials() {
                 <div className="p-6 flex-1 flex flex-col">
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-xs font-mono text-primary uppercase tracking-wider">{tutorial.category}</span>
-                    <span className="w-1 h-1 rounded-full bg-white/20"></span>
+                    <span className="w-1 h-1 rounded-md bg-white/20"></span>
                     <span className="text-xs text-muted-foreground">{tutorial.difficulty || 'All Levels'}</span>
                   </div>
                   <h3 className="text-xl font-bold font-display mb-2 group-hover:text-primary transition-colors">{tutorial.title}</h3>

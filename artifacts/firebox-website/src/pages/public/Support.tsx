@@ -8,7 +8,7 @@ export default function Support() {
   return (
     <div className="container mx-auto px-4 md:px-6 py-24 pb-32">
       <div className="max-w-3xl mx-auto text-center mb-16">
-        <div className="w-20 h-20 mx-auto rounded-full bg-destructive/20 text-destructive flex items-center justify-center mb-6">
+        <div className="w-20 h-20 mx-auto rounded-md bg-destructive/20 text-destructive flex items-center justify-center mb-6">
           <Heart size={40} />
         </div>
         <h1 className="text-5xl md:text-6xl font-display font-bold mb-6">Support <span className="text-destructive">Firebox</span></h1>
@@ -20,12 +20,12 @@ export default function Support() {
       <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
         {settings?.mpesaNumber && (
           <div className="glass-panel-glow p-10 rounded-lg text-center border-t-[4px] border-t-[#4CAF50]">
-            <div className="w-16 h-16 mx-auto rounded-full bg-[#4CAF50]/20 text-[#4CAF50] flex items-center justify-center mb-6">
+            <div className="w-16 h-16 mx-auto rounded-md bg-[#4CAF50]/20 text-[#4CAF50] flex items-center justify-center mb-6">
               <Smartphone size={32} />
             </div>
             <h3 className="text-2xl font-bold font-display mb-2">M-Pesa</h3>
             <p className="text-muted-foreground mb-8">Send support directly via Safaricom M-Pesa (Kenya).</p>
-            <div className="bg-black/30 py-4 px-6 rounded-xl border border-border font-mono text-2xl tracking-wider text-[#4CAF50] font-bold">
+            <div className="bg-black/30 py-4 px-6 rounded-md border border-border font-mono text-2xl tracking-wider text-[#4CAF50] font-bold">
               {settings.mpesaNumber}
             </div>
           </div>
@@ -33,7 +33,7 @@ export default function Support() {
 
         {settings?.paypalEmail && (
           <div className="glass-panel-glow p-10 rounded-lg text-center border-t-[4px] border-t-[#003087]">
-            <div className="w-16 h-16 mx-auto rounded-full bg-[#003087]/20 text-[#0079C1] flex items-center justify-center mb-6">
+            <div className="w-16 h-16 mx-auto rounded-md bg-[#003087]/20 text-[#0079C1] flex items-center justify-center mb-6">
               <CreditCard size={32} />
             </div>
             <h3 className="text-2xl font-bold font-display mb-2">PayPal</h3>
@@ -42,7 +42,7 @@ export default function Support() {
               href={`https://paypal.me/${settings.paypalEmail}`} 
               target="_blank" 
               rel="noreferrer"
-              className="inline-flex w-full h-14 items-center justify-center rounded-xl bg-[#0079C1] text-white font-bold hover:bg-[#003087] transition-colors"
+              className="inline-flex w-full h-14 items-center justify-center rounded-md bg-[#0079C1] text-white font-bold hover:bg-[#003087] transition-colors"
             >
               Donate via PayPal
             </a>

@@ -66,7 +66,7 @@ export default function FaqManage() {
           {faqLoading ? <div className="text-muted-foreground">Loading...</div> : (
             <div className="space-y-3">
               {(faqs as any[]).map((f: any) => (
-                <div key={f.id} className="bg-muted/40 border border-border rounded-xl p-4">
+                <div key={f.id} className="bg-muted/40 border border-border rounded-md p-4">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
                       <div className="font-medium">{f.question}</div>
@@ -96,7 +96,7 @@ export default function FaqManage() {
           {clientLoading ? <div className="text-muted-foreground">Loading...</div> : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {(clients as any[]).map((c: any) => (
-                <div key={c.id} className="bg-muted/40 border border-border rounded-xl p-4 flex items-center gap-4">
+                <div key={c.id} className="bg-muted/40 border border-border rounded-md p-4 flex items-center gap-4">
                   {c.logoUrl && <img src={c.logoUrl} alt={c.name} className="w-12 h-12 object-contain rounded-lg bg-muted/40 p-1" />}
                   <div className="flex-1 min-w-0">
                     <div className="font-medium truncate">{c.name}</div>

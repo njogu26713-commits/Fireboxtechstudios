@@ -42,7 +42,7 @@ export default function BlogPost() {
         </Link>
         
         <div className="mb-8">
-          <span className="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-xs font-mono font-medium mb-6 inline-block">
+          <span className="px-3 py-1 bg-secondary/20 text-secondary rounded-md text-xs font-mono font-medium mb-6 inline-block">
             {post.category}
           </span>
           <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 leading-tight">{post.title}</h1>

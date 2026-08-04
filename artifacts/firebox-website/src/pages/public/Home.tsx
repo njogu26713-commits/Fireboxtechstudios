@@ -55,8 +55,8 @@ export default function Home() {
           >
             <span className="font-display font-bold text-4xl md:text-5xl text-background">FTS</span>
             {/* Orbiting elements */}
-            <div className="absolute inset-[-40px] border border-border rounded-full animate-[firebox-orbit-cw_10s_linear_infinite]" />
-            <div className="absolute inset-[-80px] border border-primary/20 rounded-full animate-[firebox-orbit-ccw_15s_linear_infinite]" />
+            <div className="absolute inset-[-40px] border border-border rounded-md animate-[firebox-orbit-cw_10s_linear_infinite]" />
+            <div className="absolute inset-[-80px] border border-primary/20 rounded-md animate-[firebox-orbit-ccw_15s_linear_infinite]" />
           </motion.div>
 
           <motion.h1 
@@ -83,10 +83,10 @@ export default function Home() {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <Link href="/services" className="h-14 px-8 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold flex items-center justify-center gap-2 transition-all hover:shadow-[0_0_30px_rgba(0,183,255,0.5)]">
+            <Link href="/services" className="h-14 px-8 rounded-md bg-primary hover:bg-primary/90 text-primary-foreground font-semibold flex items-center justify-center gap-2 transition-all hover:shadow-[0_0_30px_rgba(0,183,255,0.5)]">
               Explore Services <ArrowRight size={18} />
             </Link>
-            <Link href="/contact" className="h-14 px-8 rounded-full glass-panel hover:bg-muted/60 font-semibold flex items-center justify-center gap-2 transition-all">
+            <Link href="/contact" className="h-14 px-8 rounded-md glass-panel hover:bg-muted/60 font-semibold flex items-center justify-center gap-2 transition-all">
               Get a Quote
             </Link>
           </motion.div>
@@ -185,7 +185,7 @@ export default function Home() {
 
       {/* Featured Portfolio */}
       <section className="py-24 bg-card/30 border-y border-border/50 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/10 rounded-md blur-[100px] pointer-events-none" />
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div 
@@ -218,7 +218,7 @@ export default function Home() {
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent flex flex-col justify-end p-8">
                       <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        {project.category && <span className="px-3 py-1 bg-muted/60 backdrop-blur-md rounded-full text-xs font-mono mb-4 inline-block">{project.category}</span>}
+                        {project.category && <span className="px-3 py-1 bg-muted/60 backdrop-blur-md rounded-md text-xs font-mono mb-4 inline-block">{project.category}</span>}
                         <h3 className="text-3xl font-display font-bold mb-2">{project.title}</h3>
                         <p className="text-foreground/70 line-clamp-2 mb-4">{project.description}</p>
                         <div className="flex flex-wrap gap-2">
@@ -237,7 +237,7 @@ export default function Home() {
           </div>
           
           <div className="mt-12 text-center">
-            <Link href="/portfolio" className="inline-flex h-12 px-8 rounded-full border border-white/20 hover:bg-muted/40 items-center justify-center font-medium transition-all">
+            <Link href="/portfolio" className="inline-flex h-12 px-8 rounded-md border border-white/20 hover:bg-muted/40 items-center justify-center font-medium transition-all">
               View Full Portfolio
             </Link>
           </div>
@@ -301,7 +301,7 @@ export default function Home() {
       <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-primary/10"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-primary/30 blur-[100px] rounded-full pointer-events-none"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-primary/30 blur-[100px] rounded-md pointer-events-none"></div>
         
         <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div
@@ -312,7 +312,7 @@ export default function Home() {
           >
             <h2 className="text-5xl md:text-7xl font-display font-bold mb-6">Ready to build the <span className="text-gradient">future?</span></h2>
             <p className="text-xl text-foreground/70 mb-10">Let's turn your vision into reality. Reach out to our team of experts today.</p>
-            <Link href="/contact" className="inline-flex h-16 px-10 rounded-full bg-white text-background font-bold items-center justify-center text-lg hover:bg-white/90 transition-all hover:scale-105">
+            <Link href="/contact" className="inline-flex h-16 px-10 rounded-md bg-white text-background font-bold items-center justify-center text-lg hover:bg-white/90 transition-all hover:scale-105">
               Start Your Project
             </Link>
           </motion.div>

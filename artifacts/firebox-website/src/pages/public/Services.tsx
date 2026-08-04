@@ -26,7 +26,7 @@ export default function Services() {
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
-            className={`px-6 py-2 rounded-full font-medium transition-all ${
+            className={`px-6 py-2 rounded-md font-medium transition-all ${
               activeCategory === cat 
                 ? 'bg-primary text-primary-foreground shadow-[0_0_15px_rgba(0,183,255,0.3)]' 
                 : 'bg-muted/40 text-foreground/70 hover:bg-muted/60 hover:text-foreground'

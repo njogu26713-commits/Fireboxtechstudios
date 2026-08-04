@@ -57,7 +57,7 @@ export default function Contact() {
               
               {settings?.email && (
                 <div className="flex gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/20 text-primary flex items-center justify-center shrink-0"><Mail /></div>
+                  <div className="w-12 h-12 rounded-md bg-primary/20 text-primary flex items-center justify-center shrink-0"><Mail /></div>
                   <div>
                     <div className="text-sm text-muted-foreground mb-1">Email Us</div>
                     <a href={`mailto:${settings.email}`} className="text-foreground hover:text-primary font-medium">{settings.email}</a>
@@ -67,7 +67,7 @@ export default function Contact() {
               
               {settings?.phone && (
                 <div className="flex gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-secondary/20 text-secondary flex items-center justify-center shrink-0"><Phone /></div>
+                  <div className="w-12 h-12 rounded-md bg-secondary/20 text-secondary flex items-center justify-center shrink-0"><Phone /></div>
                   <div>
                     <div className="text-sm text-muted-foreground mb-1">Call Us</div>
                     <a href={`tel:${settings.phone}`} className="text-foreground hover:text-secondary font-medium">{settings.phone}</a>
@@ -77,7 +77,7 @@ export default function Contact() {
               
               {settings?.address && (
                 <div className="flex gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-muted/60 text-foreground flex items-center justify-center shrink-0"><MapPin /></div>
+                  <div className="w-12 h-12 rounded-md bg-muted/60 text-foreground flex items-center justify-center shrink-0"><MapPin /></div>
                   <div>
                     <div className="text-sm text-muted-foreground mb-1">Visit Us</div>
                     <address className="text-foreground not-italic">{settings.address}</address>
@@ -96,7 +96,7 @@ export default function Contact() {
 
           {/* Form Area */}
           <div className="lg:col-span-2 glass-panel p-8 md:p-10 rounded-lg">
-            <div className="flex bg-muted/40 rounded-xl p-1 mb-8">
+            <div className="flex bg-muted/40 rounded-md p-1 mb-8">
               <button 
                 onClick={() => setMode('contact')}
                 className={`flex-1 py-3 text-sm font-bold rounded-lg transition-all ${mode === 'contact' ? 'bg-primary text-background' : 'text-muted-foreground hover:text-foreground'}`}
@@ -116,28 +116,28 @@ export default function Contact() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm text-muted-foreground mb-2">Your Name</label>
-                    <input required type="text" value={contactData.name} onChange={e=>setContactData({...contactData, name: e.target.value})} className="w-full bg-muted/40 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-foreground" />
+                    <input required type="text" value={contactData.name} onChange={e=>setContactData({...contactData, name: e.target.value})} className="w-full bg-muted/40 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-primary text-foreground" />
                   </div>
                   <div>
                     <label className="block text-sm text-muted-foreground mb-2">Email Address</label>
-                    <input required type="email" value={contactData.email} onChange={e=>setContactData({...contactData, email: e.target.value})} className="w-full bg-muted/40 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-foreground" />
+                    <input required type="email" value={contactData.email} onChange={e=>setContactData({...contactData, email: e.target.value})} className="w-full bg-muted/40 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-primary text-foreground" />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm text-muted-foreground mb-2">Phone (Optional)</label>
-                    <input type="tel" value={contactData.phone} onChange={e=>setContactData({...contactData, phone: e.target.value})} className="w-full bg-muted/40 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-foreground" />
+                    <input type="tel" value={contactData.phone} onChange={e=>setContactData({...contactData, phone: e.target.value})} className="w-full bg-muted/40 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-primary text-foreground" />
                   </div>
                   <div>
                     <label className="block text-sm text-muted-foreground mb-2">Subject</label>
-                    <input required type="text" value={contactData.subject} onChange={e=>setContactData({...contactData, subject: e.target.value})} className="w-full bg-muted/40 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-foreground" />
+                    <input required type="text" value={contactData.subject} onChange={e=>setContactData({...contactData, subject: e.target.value})} className="w-full bg-muted/40 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-primary text-foreground" />
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm text-muted-foreground mb-2">Message</label>
-                  <textarea required rows={5} value={contactData.message} onChange={e=>setContactData({...contactData, message: e.target.value})} className="w-full bg-muted/40 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-foreground resize-none"></textarea>
+                  <textarea required rows={5} value={contactData.message} onChange={e=>setContactData({...contactData, message: e.target.value})} className="w-full bg-muted/40 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-primary text-foreground resize-none"></textarea>
                 </div>
-                <button disabled={createMessage.isPending} type="submit" className="w-full h-14 rounded-xl bg-primary text-background font-bold flex items-center justify-center gap-2 hover:bg-primary/90 transition-all">
+                <button disabled={createMessage.isPending} type="submit" className="w-full h-14 rounded-md bg-primary text-background font-bold flex items-center justify-center gap-2 hover:bg-primary/90 transition-all">
                   {createMessage.isPending ? 'Sending...' : <><Send size={18}/> Send Message</>}
                 </button>
               </form>
@@ -146,17 +146,17 @@ export default function Contact() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm text-muted-foreground mb-2">Company / Name</label>
-                    <input required type="text" value={quoteData.name} onChange={e=>setQuoteData({...quoteData, name: e.target.value})} className="w-full bg-muted/40 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-secondary text-foreground" />
+                    <input required type="text" value={quoteData.name} onChange={e=>setQuoteData({...quoteData, name: e.target.value})} className="w-full bg-muted/40 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-secondary text-foreground" />
                   </div>
                   <div>
                     <label className="block text-sm text-muted-foreground mb-2">Email Address</label>
-                    <input required type="email" value={quoteData.email} onChange={e=>setQuoteData({...quoteData, email: e.target.value})} className="w-full bg-muted/40 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-secondary text-foreground" />
+                    <input required type="email" value={quoteData.email} onChange={e=>setQuoteData({...quoteData, email: e.target.value})} className="w-full bg-muted/40 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-secondary text-foreground" />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm text-muted-foreground mb-2">Project Type</label>
-                    <select required value={quoteData.projectType} onChange={e=>setQuoteData({...quoteData, projectType: e.target.value})} className="w-full bg-muted/40 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-secondary text-foreground appearance-none">
+                    <select required value={quoteData.projectType} onChange={e=>setQuoteData({...quoteData, projectType: e.target.value})} className="w-full bg-muted/40 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-secondary text-foreground appearance-none">
                       <option value="" disabled>Select...</option>
                       <option value="Web Development">Web Development</option>
                       <option value="Mobile App">Mobile App</option>
@@ -167,7 +167,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <label className="block text-sm text-muted-foreground mb-2">Budget Range</label>
-                    <select required value={quoteData.budget} onChange={e=>setQuoteData({...quoteData, budget: e.target.value})} className="w-full bg-muted/40 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-secondary text-foreground appearance-none">
+                    <select required value={quoteData.budget} onChange={e=>setQuoteData({...quoteData, budget: e.target.value})} className="w-full bg-muted/40 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-secondary text-foreground appearance-none">
                       <option value="" disabled>Select...</option>
                       <option value="<$5k">&lt; $5,000</option>
                       <option value="$5k-$10k">$5,000 - $10,000</option>
@@ -178,9 +178,9 @@ export default function Contact() {
                 </div>
                 <div>
                   <label className="block text-sm text-muted-foreground mb-2">Project Description</label>
-                  <textarea required rows={5} placeholder="Tell us about your goals, timeline, and requirements..." value={quoteData.description} onChange={e=>setQuoteData({...quoteData, description: e.target.value})} className="w-full bg-muted/40 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-secondary text-foreground resize-none"></textarea>
+                  <textarea required rows={5} placeholder="Tell us about your goals, timeline, and requirements..." value={quoteData.description} onChange={e=>setQuoteData({...quoteData, description: e.target.value})} className="w-full bg-muted/40 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-secondary text-foreground resize-none"></textarea>
                 </div>
-                <button disabled={createQuote.isPending} type="submit" className="w-full h-14 rounded-xl bg-secondary text-white font-bold flex items-center justify-center gap-2 hover:bg-secondary/90 transition-all">
+                <button disabled={createQuote.isPending} type="submit" className="w-full h-14 rounded-md bg-secondary text-white font-bold flex items-center justify-center gap-2 hover:bg-secondary/90 transition-all">
                   {createQuote.isPending ? 'Submitting...' : 'Request Quote'}
                 </button>
               </form>

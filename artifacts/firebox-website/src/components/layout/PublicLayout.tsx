@@ -46,8 +46,8 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
     <div className="min-h-[100dvh] flex flex-col relative overflow-hidden bg-background text-foreground">
       {/* Background ambient light */}
       <div className="fixed inset-0 pointer-events-none -z-10">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] opacity-50 mix-blend-multiply" />
-        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-secondary/20 rounded-full blur-[150px] opacity-50 mix-blend-multiply" />
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-md blur-[120px] opacity-50 mix-blend-multiply" />
+        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-secondary/20 rounded-md blur-[150px] opacity-50 mix-blend-multiply" />
         <div className="absolute inset-0 bg-noise pointer-events-none" />
       </div>
 
@@ -60,7 +60,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center font-display font-bold text-lg shadow-[0_0_20px_rgba(0,183,255,0.3)] group-hover:shadow-[0_0_30px_rgba(0,183,255,0.6)] transition-all">
+              <div className="w-10 h-10 rounded-md bg-gradient-to-br from-primary to-secondary flex items-center justify-center font-display font-bold text-lg shadow-[0_0_20px_rgba(0,183,255,0.3)] group-hover:shadow-[0_0_30px_rgba(0,183,255,0.6)] transition-all">
                 FTS
               </div>
               <span className="font-display font-bold text-xl tracking-tight hidden sm:block">
@@ -69,12 +69,12 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-1 glass-panel rounded-full px-4 py-2">
+            <nav className="hidden lg:flex items-center gap-1 glass-panel rounded-md px-4 py-2">
               {navLinks.map((link) => (
                 <Link 
                   key={link.href} 
                   href={link.href}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                     location === link.href 
                       ? 'bg-muted/60 text-foreground' 
                       : 'text-foreground/70 hover:text-foreground hover:bg-muted/40'
@@ -86,14 +86,14 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
             </nav>
 
             <div className="hidden lg:flex items-center gap-4">
-              <Link href="/contact" className="h-10 px-6 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium flex items-center justify-center transition-all hover:shadow-[0_0_20px_rgba(0,183,255,0.4)]">
+              <Link href="/contact" className="h-10 px-6 rounded-md bg-primary hover:bg-primary/90 text-primary-foreground font-medium flex items-center justify-center transition-all hover:shadow-[0_0_20px_rgba(0,183,255,0.4)]">
                 Get a Quote
               </Link>
             </div>
 
             {/* Mobile Toggle */}
             <button 
-              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-muted/40 border border-border"
+              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-md bg-muted/40 border border-border"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -128,7 +128,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                 <Link 
                   href="/contact" 
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full h-14 rounded-xl bg-primary text-primary-foreground font-semibold flex items-center justify-center text-lg"
+                  className="w-full h-14 rounded-md bg-primary text-primary-foreground font-semibold flex items-center justify-center text-lg"
                 >
                   Get a Quote
                 </Link>
@@ -216,19 +216,19 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
               <div className="space-y-2">
                 {settings?.whatsapp && (
                   <a href={`https://wa.me/${settings.whatsapp.replace(/[^0-9]/g, '')}`} target="_blank" rel="noreferrer" className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/40 transition-colors text-sm">
-                    <div className="w-8 h-8 rounded-full bg-[#25D366]/20 text-[#25D366] flex items-center justify-center"><MessageSquare size={16} /></div>
+                    <div className="w-8 h-8 rounded-md bg-[#25D366]/20 text-[#25D366] flex items-center justify-center"><MessageSquare size={16} /></div>
                     WhatsApp Us
                   </a>
                 )}
                 {settings?.phone && (
                   <a href={`tel:${settings.phone}`} className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/40 transition-colors text-sm">
-                    <div className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center"><Phone size={16} /></div>
+                    <div className="w-8 h-8 rounded-md bg-primary/20 text-primary flex items-center justify-center"><Phone size={16} /></div>
                     Call Us
                   </a>
                 )}
                 {settings?.email && (
                   <a href={`mailto:${settings.email}`} className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/40 transition-colors text-sm">
-                    <div className="w-8 h-8 rounded-full bg-secondary/20 text-secondary flex items-center justify-center"><Mail size={16} /></div>
+                    <div className="w-8 h-8 rounded-md bg-secondary/20 text-secondary flex items-center justify-center"><Mail size={16} /></div>
                     Email Us
                   </a>
                 )}
@@ -239,7 +239,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
         
         <button 
           onClick={() => setContactOpen(!contactOpen)}
-          className="w-14 h-14 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-[0_0_20px_rgba(0,183,255,0.4)] hover:shadow-[0_0_30px_rgba(0,183,255,0.6)] transition-all z-50"
+          className="w-14 h-14 rounded-md bg-primary text-primary-foreground flex items-center justify-center shadow-[0_0_20px_rgba(0,183,255,0.4)] hover:shadow-[0_0_30px_rgba(0,183,255,0.6)] transition-all z-50"
         >
           {contactOpen ? <X size={24} /> : <MessageSquare size={24} />}
         </button>

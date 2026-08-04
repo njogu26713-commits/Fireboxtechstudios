@@ -71,7 +71,7 @@ export default function Reviews() {
                 
                 {review.adminReply && (
                   <div className="mt-6 pt-4 border-t border-border flex gap-4">
-                    <div className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-md bg-primary/20 text-primary flex items-center justify-center shrink-0">
                       <MessageSquare size={14} />
                     </div>
                     <div>
@@ -94,11 +94,11 @@ export default function Reviews() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-sm text-muted-foreground mb-1">Name</label>
-                <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full bg-muted/40 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-foreground" />
+                <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full bg-muted/40 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-primary text-foreground" />
               </div>
               <div>
                 <label className="block text-sm text-muted-foreground mb-1">Email (private)</label>
-                <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-muted/40 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-foreground" />
+                <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-muted/40 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-primary text-foreground" />
               </div>
               <div>
                 <label className="block text-sm text-muted-foreground mb-1">Rating</label>
@@ -110,9 +110,9 @@ export default function Reviews() {
               </div>
               <div>
                 <label className="block text-sm text-muted-foreground mb-1">Review</label>
-                <textarea required rows={4} value={formData.testimonial} onChange={e => setFormData({...formData, testimonial: e.target.value})} className="w-full bg-muted/40 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-foreground resize-none"></textarea>
+                <textarea required rows={4} value={formData.testimonial} onChange={e => setFormData({...formData, testimonial: e.target.value})} className="w-full bg-muted/40 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-primary text-foreground resize-none"></textarea>
               </div>
-              <button disabled={createReview.isPending} type="submit" className="w-full h-12 rounded-xl bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all disabled:opacity-50">
+              <button disabled={createReview.isPending} type="submit" className="w-full h-12 rounded-md bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all disabled:opacity-50">
                 {createReview.isPending ? 'Submitting...' : 'Submit Review'}
               </button>
             </form>

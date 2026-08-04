@@ -80,7 +80,7 @@ export default function JobsManage() {
                   <td className="p-4 text-muted-foreground capitalize">{j.type}</td>
                   <td className="p-4 text-muted-foreground">{j.location}</td>
                   <td className="p-4">
-                    <span className={`text-xs px-2 py-1 rounded-full ${j.active ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
+                    <span className={`text-xs px-2 py-1 rounded-md ${j.active ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
                       {j.active ? 'Active' : 'Closed'}
                     </span>
                   </td>

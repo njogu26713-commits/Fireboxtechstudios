@@ -79,7 +79,7 @@ export default function TutorialsManage() {
                   <td className="p-4 text-muted-foreground">{t.category}</td>
                   <td className="p-4 text-muted-foreground capitalize">{t.difficulty}</td>
                   <td className="p-4">
-                    <span className={`text-xs px-2 py-1 rounded-full ${t.published ? 'bg-green-500/20 text-green-400' : 'bg-yellow-500/20 text-yellow-400'}`}>
+                    <span className={`text-xs px-2 py-1 rounded-md ${t.published ? 'bg-green-500/20 text-green-400' : 'bg-yellow-500/20 text-yellow-400'}`}>
                       {t.published ? 'Published' : 'Draft'}
                     </span>
                   </td>

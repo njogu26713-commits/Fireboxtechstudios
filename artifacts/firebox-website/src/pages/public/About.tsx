@@ -29,7 +29,7 @@ export default function About() {
               viewport={{ once: true }}
               className="glass-panel p-10 rounded-lg"
             >
-              <div className="w-14 h-14 rounded-full bg-primary/20 text-primary flex items-center justify-center mb-6">
+              <div className="w-14 h-14 rounded-md bg-primary/20 text-primary flex items-center justify-center mb-6">
                 <Target size={28} />
               </div>
               <h2 className="text-3xl font-display font-bold mb-4">Our Mission</h2>
@@ -44,7 +44,7 @@ export default function About() {
               viewport={{ once: true }}
               className="glass-panel-glow p-10 rounded-lg"
             >
-              <div className="w-14 h-14 rounded-full bg-secondary/20 text-secondary flex items-center justify-center mb-6">
+              <div className="w-14 h-14 rounded-md bg-secondary/20 text-secondary flex items-center justify-center mb-6">
                 <Rocket size={28} />
               </div>
               <h2 className="text-3xl font-display font-bold mb-4">Our Vision</h2>
@@ -71,7 +71,7 @@ export default function About() {
               { title: 'Agility', desc: 'We adapt quickly to changing market demands and client needs.' }
             ].map((value, i) => (
               <div key={i} className="text-center">
-                <div className="w-16 h-16 mx-auto rounded-full bg-muted/40 flex items-center justify-center text-foreground mb-6">
+                <div className="w-16 h-16 mx-auto rounded-md bg-muted/40 flex items-center justify-center text-foreground mb-6">
                   <CheckCircle2 size={24} />
                 </div>
                 <h3 className="text-xl font-bold mb-3">{value.title}</h3>

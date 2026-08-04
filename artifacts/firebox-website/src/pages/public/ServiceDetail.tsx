@@ -53,7 +53,7 @@ export default function ServiceDetail() {
           </Link>
           
           <div className="max-w-4xl">
-            <span className="px-4 py-1.5 rounded-full bg-primary/20 text-primary text-sm font-mono font-medium mb-6 inline-block">
+            <span className="px-4 py-1.5 rounded-md bg-primary/20 text-primary text-sm font-mono font-medium mb-6 inline-block">
               {service.category}
             </span>
             <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">{service.title}</h1>
@@ -99,7 +99,7 @@ export default function ServiceDetail() {
               <p className="text-muted-foreground mb-8">Ready to transform your business with our {service.title.toLowerCase()} solutions?</p>
               
               {service.pricing && (
-                <div className="mb-8 p-4 bg-muted/40 rounded-xl border border-border">
+                <div className="mb-8 p-4 bg-muted/40 rounded-md border border-border">
                   <div className="text-sm text-muted-foreground mb-1">Starting from</div>
                   <div className="text-3xl font-display font-bold text-primary">{service.pricing}</div>
                 </div>
@@ -107,7 +107,7 @@ export default function ServiceDetail() {
 
               <Link 
                 href="/contact" 
-                className="w-full h-14 rounded-xl bg-primary text-primary-foreground font-bold flex items-center justify-center hover:bg-primary/90 transition-all hover:scale-[1.02]"
+                className="w-full h-14 rounded-md bg-primary text-primary-foreground font-bold flex items-center justify-center hover:bg-primary/90 transition-all hover:scale-[1.02]"
               >
                 Request a Quote
               </Link>

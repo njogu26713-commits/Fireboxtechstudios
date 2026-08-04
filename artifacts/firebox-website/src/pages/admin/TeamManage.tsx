@@ -65,9 +65,9 @@ export default function TeamManage() {
             <div key={m.id} className="bg-muted/40 border border-border rounded-md p-5 flex flex-col gap-3">
               <div className="flex items-center gap-3">
                 {m.avatarUrl ? (
-                  <img src={m.avatarUrl} alt={m.name} className="w-12 h-12 rounded-full object-cover" />
+                  <img src={m.avatarUrl} alt={m.name} className="w-12 h-12 rounded-md object-cover" />
                 ) : (
-                  <div className="w-12 h-12 rounded-full bg-purple-600/30 flex items-center justify-center text-purple-300 font-bold text-lg">
+                  <div className="w-12 h-12 rounded-md bg-purple-600/30 flex items-center justify-center text-purple-300 font-bold text-lg">
                     {m.name?.[0]}
                   </div>
                 )}
