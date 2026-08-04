@@ -29,7 +29,7 @@ export default function MessagesManage() {
 
       <div className="space-y-4">
         {isLoading ? <div className="p-8">Loading...</div> : 
-         messages.length === 0 ? <div className="p-8 glass-panel rounded-md text-muted-foreground">No messages.</div> :
+         messages.length === 0 ? <div className="p-8 glass-panel rounded-xl text-muted-foreground">No messages.</div> :
          messages.map(msg => (
            <div key={msg.id} className={`glass-panel p-6 rounded-md border-l-4 ${msg.read ? 'border-l-white/10 opacity-70' : 'border-l-primary'}`}>
              <div className="flex justify-between items-start mb-4">

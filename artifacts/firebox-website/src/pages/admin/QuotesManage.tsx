@@ -29,7 +29,7 @@ export default function QuotesManage() {
 
       <div className="space-y-4">
         {isLoading ? <div className="p-8">Loading...</div> : 
-         quotes.length === 0 ? <div className="p-8 glass-panel rounded-md text-muted-foreground">No requests.</div> :
+         quotes.length === 0 ? <div className="p-8 glass-panel rounded-xl text-muted-foreground">No requests.</div> :
          quotes.map(q => (
            <div key={q.id} className="glass-panel p-6 rounded-md border-l-4 border-l-secondary">
              <div className="flex justify-between items-start mb-4">

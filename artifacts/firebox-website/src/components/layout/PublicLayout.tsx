@@ -69,7 +69,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-1 glass-panel rounded-md px-4 py-2">
+            <nav className="hidden lg:flex items-center gap-1 glass-panel rounded-xl px-4 py-2">
               {navLinks.map((link) => (
                 <Link 
                   key={link.href} 

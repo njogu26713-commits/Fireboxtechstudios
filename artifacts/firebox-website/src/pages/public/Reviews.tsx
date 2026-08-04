@@ -38,7 +38,7 @@ export default function Reviews() {
         <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Client <span className="text-primary">Love</span></h1>
         <p className="text-xl text-muted-foreground mb-8">See what our clients say about working with FireboxTechStudios.</p>
         
-        <div className="inline-flex flex-col items-center justify-center p-6 glass-panel rounded-lg">
+        <div className="inline-flex flex-col items-center justify-center p-6 glass-panel rounded-xl">
           <div className="text-5xl font-display font-bold text-foreground mb-2">{average.toFixed(1)}</div>
           <div className="flex gap-1 text-primary mb-2">
             {[1,2,3,4,5].map(s => <Star key={s} fill={s <= Math.round(average) ? "currentColor" : "none"} size={24} />)}

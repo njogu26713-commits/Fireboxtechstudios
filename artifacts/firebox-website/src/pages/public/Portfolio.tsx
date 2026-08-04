@@ -42,7 +42,7 @@ export default function Portfolio() {
       {isLoading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {Array(4).fill(0).map((_, i) => (
-            <div key={i} className="glass-panel rounded-lg h-[400px] animate-pulse" />
+            <div key={i} className="glass-panel rounded-xl h-[400px] animate-pulse" />
           ))}
         </div>
       ) : projects.length > 0 ? (

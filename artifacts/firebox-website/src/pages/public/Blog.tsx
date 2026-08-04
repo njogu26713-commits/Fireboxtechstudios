@@ -53,7 +53,7 @@ export default function Blog() {
       {isLoading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {Array(6).fill(0).map((_, i) => (
-            <div key={i} className="glass-panel rounded-lg h-[450px] animate-pulse" />
+            <div key={i} className="glass-panel rounded-xl h-[450px] animate-pulse" />
           ))}
         </div>
       ) : posts.length > 0 ? (
@@ -65,7 +65,7 @@ export default function Blog() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
             >
-              <Link href={`/blog/${post.id}`} className="group block glass-panel rounded-lg overflow-hidden hover:border-secondary/50 transition-colors h-full flex flex-col">
+              <Link href={`/blog/${post.id}`} className="group block glass-panel rounded-xl overflow-hidden hover:border-secondary/50 transition-colors h-full flex flex-col">
                 <div className="relative aspect-[16/10] bg-muted/40">
                   {post.featuredImageUrl && (
                     <img src={post.featuredImageUrl} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />

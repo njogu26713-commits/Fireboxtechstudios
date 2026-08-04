@@ -75,7 +75,7 @@ export default function ServicesManage() {
         </button>
       </div>
 
-      <div className="glass-panel rounded-md overflow-hidden">
+      <div className="glass-panel rounded-xl overflow-hidden">
         <table className="w-full text-left">
           <thead className="bg-muted/40 border-b border-border text-sm">
             <tr>
@@ -113,7 +113,7 @@ export default function ServicesManage() {
 
       {isModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-card border border-border w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-lg p-6 shadow-2xl">
+          <div className="bg-card border border-border w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-xl p-6 shadow-2xl">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold">{editingId ? 'Edit Service' : 'Add Service'}</h2>
               <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-muted/60 rounded-md"><X size={20} /></button>
