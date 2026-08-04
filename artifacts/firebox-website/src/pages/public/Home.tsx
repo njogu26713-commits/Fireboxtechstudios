@@ -42,55 +42,75 @@ export default function Home() {
   return (
     <div className="flex flex-col w-full">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center pt-20 overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
         {/* Background Grid */}
         <div className="absolute inset-0 bg-grid opacity-30 z-0"></div>
-        
-        <div className="w-full relative z-10 px-4 text-center flex flex-col items-center">
-          <motion.div 
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ type: "spring", stiffness: 100, damping: 20 }}
-            className="w-24 h-24 md:w-32 md:h-32 rounded-md bg-gradient-to-br from-primary via-primary to-secondary flex items-center justify-center mb-8 relative animate-firebox-pulse-glow"
-          >
-            <span className="font-display font-bold text-4xl md:text-5xl text-background">FTS</span>
-            {/* Orbiting elements */}
-            <div className="absolute inset-[-40px] border border-border rounded-md animate-[firebox-orbit-cw_10s_linear_infinite]" />
-            <div className="absolute inset-[-80px] border border-primary/20 rounded-md animate-[firebox-orbit-ccw_15s_linear_infinite]" />
-          </motion.div>
 
-          <div className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden py-2 mb-2">
-            <div className="flex whitespace-nowrap animate-marquee-ltr">
-              {[...Array(6)].map((_, i) => (
-                <span key={i} className="text-[6vw] font-display font-bold tracking-tight leading-none shrink-0 px-[3vw]">
-                  Innovate with <span className="text-gradient">Intelligence</span>
+        <div className="w-full relative z-10 px-6 md:px-12 lg:px-20 max-w-screen-xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+            {/* Left — text content */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+              className="flex flex-col items-start"
+            >
+              {/* Badge */}
+              <motion.div variants={fadeInUp} className="mb-6">
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium">
+                  <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                  Next-Generation Technology
                 </span>
-              ))}
-            </div>
+              </motion.div>
+
+              {/* Headline */}
+              <motion.h1
+                variants={fadeInUp}
+                className="text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight leading-[1.05] mb-6"
+              >
+                Innovate with{' '}
+                <span className="text-gradient">Intelligence</span>
+              </motion.h1>
+
+              <motion.p
+                variants={fadeInUp}
+                className="text-lg md:text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed"
+              >
+                FireboxTechStudios is a global technology partner building next-generation software, AI solutions, and cloud architectures for forward-thinking companies.
+              </motion.p>
+
+              <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4">
+                <Link href="/services" className="h-14 px-8 rounded-md bg-primary hover:bg-primary/90 text-primary-foreground font-semibold flex items-center justify-center gap-2 transition-all hover:shadow-[0_0_30px_rgba(0,183,255,0.5)]">
+                  Explore Services <ArrowRight size={18} />
+                </Link>
+                <Link href="/contact" className="h-14 px-8 rounded-md glass-panel hover:bg-muted/60 font-semibold flex items-center justify-center gap-2 transition-all">
+                  Get a Quote
+                </Link>
+              </motion.div>
+            </motion.div>
+
+            {/* Right — hero image */}
+            <motion.div
+              initial={{ opacity: 0, x: 60 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+              className="relative hidden lg:flex items-center justify-center"
+            >
+              {/* Glow behind image */}
+              <div className="absolute inset-0 bg-primary/20 blur-[80px] rounded-full scale-75 pointer-events-none" />
+              <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_80px_rgba(0,183,255,0.15)]">
+                <img
+                  src="/hero-image.jpg"
+                  alt="Futuristic AI and technology visualization"
+                  className="w-full h-full object-cover max-h-[560px]"
+                />
+                {/* Subtle overlay to blend with dark theme */}
+                <div className="absolute inset-0 bg-gradient-to-tl from-background/40 via-transparent to-transparent pointer-events-none" />
+              </div>
+            </motion.div>
+
           </div>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10"
-          >
-            FireboxTechStudios is a global technology partner building next-generation software, AI solutions, and cloud architectures for forward-thinking companies.
-          </motion.p>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4"
-          >
-            <Link href="/services" className="h-14 px-8 rounded-md bg-primary hover:bg-primary/90 text-primary-foreground font-semibold flex items-center justify-center gap-2 transition-all hover:shadow-[0_0_30px_rgba(0,183,255,0.5)]">
-              Explore Services <ArrowRight size={18} />
-            </Link>
-            <Link href="/contact" className="h-14 px-8 rounded-md glass-panel hover:bg-muted/60 font-semibold flex items-center justify-center gap-2 transition-all">
-              Get a Quote
-            </Link>
-          </motion.div>
         </div>
       </section>
 
