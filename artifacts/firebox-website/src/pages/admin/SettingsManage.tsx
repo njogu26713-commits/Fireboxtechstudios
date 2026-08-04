@@ -1,31 +1,55 @@
 import React, { useState } from 'react';
-import { useListSettings, useUpdateSettings, useGetSiteSettings, useUpdateSiteSettings } from '@workspace/api-client-react';
+import { useGetSiteSettings, useUpdateSiteSettings } from '@workspace/api-client-react';
+
+// Fields accepted by the PATCH /settings endpoint (matches UpdateSiteSettingsBody schema)
+const SETTINGS_FIELDS = [
+  'siteName','tagline','email','phone','whatsapp','whatsappChannelUrl',
+  'whatsappGroupUrl','address','googleMapsUrl','logoUrl','faviconUrl',
+  'tiktokUrl','facebookUrl','instagramUrl','linkedinUrl','githubUrl',
+  'youtubeUrl','twitterUrl','mpesaNumber','paypalEmail','donationMessage',
+  'metaDescription','metaKeywords',
+] as const;
+
+type SettingsFields = typeof SETTINGS_FIELDS[number];
 
 export default function SettingsManage() {
   const { data: settings, isLoading } = useGetSiteSettings();
   const updateSettings = useUpdateSiteSettings();
 
-  const [formData, setFormData] = useState<any>({});
+  const [formData, setFormData] = useState<Partial<Record<SettingsFields, string>>>({});
+  const [saveError, setSaveError] = useState<string | null>(null);
+  const [saveSuccess, setSaveSuccess] = useState(false);
 
-  // Init form
+  // Init form from server data — only known fields
   React.useEffect(() => {
     if (settings && Object.keys(formData).length === 0) {
-      setFormData(settings);
+      const clean: Partial<Record<SettingsFields, string>> = {};
+      for (const key of SETTINGS_FIELDS) {
+        const val = (settings as Record<string, unknown>)[key];
+        if (typeof val === 'string') clean[key] = val;
+      }
+      setFormData(clean);
     }
   }, [settings]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setSaveError(null);
+    setSaveSuccess(false);
     updateSettings.mutate({ data: formData }, {
-      onSuccess: () => alert('Settings saved successfully!')
+      onSuccess: () => setSaveSuccess(true),
+      onError: (err: unknown) => {
+        const msg = err instanceof Error ? err.message : 'Failed to save settings.';
+        setSaveError(msg);
+      },
     });
   };
 
-  const handleChange = (key: string, value: string) => {
-    setFormData({ ...formData, [key]: value });
+  const handleChange = (key: SettingsFields, value: string) => {
+    setFormData(prev => ({ ...prev, [key]: value }));
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div className="p-8 text-muted-foreground">Loading...</div>;
 
   return (
     <div className="max-w-4xl space-y-6">
@@ -97,7 +121,23 @@ export default function SettingsManage() {
           </div>
         </div>
 
-        <button type="submit" disabled={updateSettings.isPending} className="px-8 py-3 bg-primary text-background font-bold rounded-md hover:bg-primary/90 transition-all">
+        {saveError && (
+          <div className="px-4 py-3 rounded-md bg-destructive/10 border border-destructive/30 text-destructive text-sm">
+            <strong>Error:</strong> {saveError}
+          </div>
+        )}
+
+        {saveSuccess && (
+          <div className="px-4 py-3 rounded-md bg-green-500/10 border border-green-500/30 text-green-400 text-sm">
+            Settings saved successfully!
+          </div>
+        )}
+
+        <button
+          type="submit"
+          disabled={updateSettings.isPending}
+          className="px-8 py-3 bg-primary text-background font-bold rounded-md hover:bg-primary/90 transition-all disabled:opacity-50"
+        >
           {updateSettings.isPending ? 'Saving...' : 'Save Settings'}
         </button>
       </form>
