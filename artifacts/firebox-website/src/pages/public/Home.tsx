@@ -62,7 +62,7 @@ export default function Home() {
           <div className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden py-2 mb-2">
             <div className="flex whitespace-nowrap animate-marquee-ltr">
               {[...Array(6)].map((_, i) => (
-                <span key={i} className="text-[11vw] font-display font-bold tracking-tight leading-none shrink-0 px-[4vw]">
+                <span key={i} className="text-[6vw] font-display font-bold tracking-tight leading-none shrink-0 px-[3vw]">
                   Innovate with <span className="text-gradient">Intelligence</span>
                 </span>
               ))}
