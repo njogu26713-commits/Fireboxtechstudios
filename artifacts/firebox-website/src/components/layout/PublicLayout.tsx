@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, MessageSquare, Phone, Mail, ChevronDown } from 'lucide-react';
+import { Menu, X, MessageSquare, Phone, Mail, ChevronDown, Home, Layers, Briefcase, BookOpen, PhoneCall } from 'lucide-react';
 import { useGetSiteSettings } from '@workspace/api-client-react';
 
 const navLinks = [
@@ -139,7 +139,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
       </AnimatePresence>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col w-full pt-20">
+      <main className="flex-1 flex flex-col w-full pt-20 pb-20 lg:pb-0">
         {children}
       </main>
 
@@ -202,8 +202,45 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
         </div>
       </footer>
 
+      {/* Bottom Nav — mobile only */}
+      <nav className="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-background/80 backdrop-blur-xl border-t border-border/60">
+        <div className="flex items-center justify-around px-2 py-2 safe-area-inset-bottom">
+          {[
+            { href: '/', label: 'Home', icon: Home },
+            { href: '/services', label: 'Services', icon: Layers },
+            { href: '/portfolio', label: 'Portfolio', icon: Briefcase },
+            { href: '/blog', label: 'Blog', icon: BookOpen },
+            { href: '/contact', label: 'Contact', icon: PhoneCall },
+          ].map(({ href, label, icon: Icon }) => {
+            const active = location === href;
+            return (
+              <Link
+                key={href}
+                href={href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex flex-col items-center gap-1 px-3 py-1.5 rounded-xl transition-colors min-w-[56px]"
+              >
+                <Icon
+                  size={22}
+                  className={active ? 'text-primary' : 'text-muted-foreground'}
+                />
+                <span className={`text-[10px] font-medium leading-none ${active ? 'text-primary' : 'text-muted-foreground'}`}>
+                  {label}
+                </span>
+                {active && (
+                  <motion.div
+                    layoutId="bottomNavIndicator"
+                    className="absolute bottom-1.5 w-1 h-1 rounded-full bg-primary"
+                  />
+                )}
+              </Link>
+            );
+          })}
+        </div>
+      </nav>
+
       {/* Floating Contact Widget */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4">
+      <div className="fixed bottom-20 lg:bottom-6 right-6 z-50 flex flex-col items-end gap-4">
         <AnimatePresence>
           {contactOpen && (
             <motion.div 
