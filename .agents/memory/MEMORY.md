@@ -1,0 +1,1 @@
+- [FireboxTechStudios setup](firebox-setup.md) — API base URL wiring, Tailwind v4 @apply rules, port conflicts between legacy and managed workflows
