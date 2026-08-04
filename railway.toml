@@ -1,0 +1,12 @@
+[build]
+# Install all workspace dependencies, build the frontend (static files),
+# then bundle the API server with esbuild.
+buildCommand = "pnpm install && BASE_PATH=/ NODE_ENV=production pnpm --filter @workspace/firebox-website run build && pnpm --filter @workspace/api-server run build"
+
+[deploy]
+# Railway injects $PORT automatically.
+startCommand = "NODE_ENV=production pnpm --filter @workspace/api-server run start"
+healthcheckPath = "/api/healthz"
+healthcheckTimeout = 60
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3
