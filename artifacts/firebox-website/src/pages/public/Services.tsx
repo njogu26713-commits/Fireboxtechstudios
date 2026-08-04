@@ -40,8 +40,8 @@ export default function Services() {
       {isLoading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Array(6).fill(0).map((_, i) => (
-            <div key={i} className="glass-panel p-8 rounded-3xl h-72 animate-pulse">
-              <div className="w-14 h-14 bg-muted/60 rounded-2xl mb-6"></div>
+            <div key={i} className="glass-panel p-8 rounded-lg h-72 animate-pulse">
+              <div className="w-14 h-14 bg-muted/60 rounded-md mb-6"></div>
               <div className="h-8 bg-muted/60 rounded w-3/4 mb-4"></div>
               <div className="h-20 bg-muted/60 rounded w-full mb-4"></div>
             </div>
@@ -59,9 +59,9 @@ export default function Services() {
               <Link 
                 href={service.destinationUrl || `/services/${service.id}`}
                 target={service.destinationUrl ? "_blank" : undefined}
-                className="block glass-panel-glow p-8 rounded-3xl h-full flex flex-col group cursor-pointer"
+                className="block glass-panel-glow p-8 rounded-lg h-full flex flex-col group cursor-pointer"
               >
-                <div className="w-14 h-14 rounded-2xl bg-muted/40 flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-background transition-colors">
+                <div className="w-14 h-14 rounded-md bg-muted/40 flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-background transition-colors">
                   {service.title.toLowerCase().includes('web') ? <Code size={28} /> :
                    service.title.toLowerCase().includes('app') ? <Smartphone size={28} /> :
                    service.title.toLowerCase().includes('cyber') || service.title.toLowerCase().includes('security') ? <Shield size={28} /> :

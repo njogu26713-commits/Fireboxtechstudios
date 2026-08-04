@@ -210,7 +210,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
               initial={{ opacity: 0, y: 20, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.9 }}
-              className="glass-panel-glow p-4 rounded-2xl w-64 shadow-2xl"
+              className="glass-panel-glow p-4 rounded-md w-64 shadow-2xl"
             >
               <h4 className="font-display font-medium text-sm mb-3">Reach out to us</h4>
               <div className="space-y-2">
@@ -254,7 +254,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
             exit={{ opacity: 0, y: 50 }}
             className="fixed bottom-6 left-6 right-24 md:right-auto md:max-w-md z-40"
           >
-            <div className="glass-panel p-5 rounded-2xl flex flex-col gap-4 shadow-2xl">
+            <div className="glass-panel p-5 rounded-md flex flex-col gap-4 shadow-2xl">
               <p className="text-sm text-foreground/80">
                 We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept", you consent to our use of cookies.
               </p>

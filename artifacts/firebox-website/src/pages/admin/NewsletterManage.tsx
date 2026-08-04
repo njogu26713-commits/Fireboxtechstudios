@@ -17,7 +17,7 @@ export default function NewsletterManage() {
       {isLoading ? (
         <div className="text-muted-foreground">Loading...</div>
       ) : (
-        <div className="bg-muted/40 border border-border rounded-2xl overflow-hidden">
+        <div className="bg-muted/40 border border-border rounded-md overflow-hidden">
           <table className="w-full text-left">
             <thead className="bg-muted/40 border-b border-border text-sm text-muted-foreground">
               <tr>

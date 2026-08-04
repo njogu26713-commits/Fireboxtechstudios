@@ -16,7 +16,7 @@ export default function ProjectDetail() {
       <div className="container mx-auto px-4 py-24">
         <div className="animate-pulse max-w-4xl mx-auto space-y-8">
           <div className="h-10 bg-muted/60 rounded w-1/3"></div>
-          <div className="h-[500px] bg-muted/60 rounded-3xl w-full"></div>
+          <div className="h-[500px] bg-muted/60 rounded-lg w-full"></div>
         </div>
       </div>
     );
@@ -52,13 +52,13 @@ export default function ProjectDetail() {
             {screenshots.length > 0 && (
               <div className="space-y-8">
                 {screenshots.map((url, i) => (
-                  <img key={i} src={url} alt={`Screenshot ${i + 1}`} className="w-full rounded-3xl border border-border shadow-2xl" />
+                  <img key={i} src={url} alt={`Screenshot ${i + 1}`} className="w-full rounded-lg border border-border shadow-2xl" />
                 ))}
               </div>
             )}
             
             {project.videoUrl && (
-              <div className="mt-12 aspect-video rounded-3xl overflow-hidden border border-border">
+              <div className="mt-12 aspect-video rounded-lg overflow-hidden border border-border">
                 <video src={project.videoUrl} controls className="w-full h-full object-cover" />
               </div>
             )}
@@ -66,7 +66,7 @@ export default function ProjectDetail() {
 
           {/* Sidebar */}
           <div className="space-y-8">
-            <div className="glass-panel p-8 rounded-3xl">
+            <div className="glass-panel p-8 rounded-lg">
               <h3 className="text-xl font-display font-bold mb-6 border-b border-border pb-4">Project Details</h3>
               
               <div className="space-y-6 text-sm">
@@ -101,7 +101,7 @@ export default function ProjectDetail() {
               </div>
             </div>
 
-            <div className="glass-panel-glow p-8 rounded-3xl text-center">
+            <div className="glass-panel-glow p-8 rounded-lg text-center">
               <h4 className="font-display font-bold mb-2">Want to build something similar?</h4>
               <p className="text-muted-foreground text-sm mb-6">Let's discuss how we can bring your vision to life.</p>
               <Link href="/contact" className="inline-block px-6 py-3 rounded-full border border-primary text-primary font-medium hover:bg-primary hover:text-primary-foreground transition-all w-full">

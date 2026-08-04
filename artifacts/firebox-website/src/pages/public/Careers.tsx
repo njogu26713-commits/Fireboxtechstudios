@@ -24,7 +24,7 @@ export default function Careers() {
         {isLoading ? (
           <div className="space-y-4">
             {Array(3).fill(0).map((_, i) => (
-              <div key={i} className="glass-panel p-6 rounded-2xl h-32 animate-pulse" />
+              <div key={i} className="glass-panel p-6 rounded-md h-32 animate-pulse" />
             ))}
           </div>
         ) : jobs.length > 0 ? (
@@ -35,7 +35,7 @@ export default function Careers() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                className="glass-panel p-6 md:p-8 rounded-3xl hover:border-primary/30 transition-colors group flex flex-col md:flex-row md:items-center justify-between gap-6"
+                className="glass-panel p-6 md:p-8 rounded-lg hover:border-primary/30 transition-colors group flex flex-col md:flex-row md:items-center justify-between gap-6"
               >
                 <div>
                   <h3 className="text-2xl font-bold font-display mb-2 group-hover:text-primary transition-colors">{job.title}</h3>
@@ -58,7 +58,7 @@ export default function Careers() {
             ))}
           </div>
         ) : (
-          <div className="glass-panel p-12 rounded-3xl text-center">
+          <div className="glass-panel p-12 rounded-lg text-center">
             <h3 className="text-xl font-bold mb-2">No open positions right now</h3>
             <p className="text-muted-foreground mb-6">But we're always interested in meeting talented people. Send us your resume anyway.</p>
             <a href="mailto:careers@fireboxtechstudios.com" className="inline-flex h-12 px-6 rounded-xl bg-white text-background font-bold items-center justify-center">

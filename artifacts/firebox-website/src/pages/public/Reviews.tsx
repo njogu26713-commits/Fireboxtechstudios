@@ -38,7 +38,7 @@ export default function Reviews() {
         <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Client <span className="text-primary">Love</span></h1>
         <p className="text-xl text-muted-foreground mb-8">See what our clients say about working with FireboxTechStudios.</p>
         
-        <div className="inline-flex flex-col items-center justify-center p-6 glass-panel rounded-3xl">
+        <div className="inline-flex flex-col items-center justify-center p-6 glass-panel rounded-lg">
           <div className="text-5xl font-display font-bold text-foreground mb-2">{average.toFixed(1)}</div>
           <div className="flex gap-1 text-primary mb-2">
             {[1,2,3,4,5].map(s => <Star key={s} fill={s <= Math.round(average) ? "currentColor" : "none"} size={24} />)}
@@ -51,7 +51,7 @@ export default function Reviews() {
         {/* Reviews List */}
         <div className="lg:col-span-2 space-y-6">
           {isLoading ? (
-            Array(3).fill(0).map((_, i) => <div key={i} className="glass-panel h-40 rounded-3xl animate-pulse" />)
+            Array(3).fill(0).map((_, i) => <div key={i} className="glass-panel h-40 rounded-lg animate-pulse" />)
           ) : reviews.length > 0 ? (
             reviews.map((review, i) => (
               <motion.div 
@@ -59,7 +59,7 @@ export default function Reviews() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                className="glass-panel p-8 rounded-3xl relative"
+                className="glass-panel p-8 rounded-lg relative"
               >
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-display font-bold text-lg">{review.name}</h3>
@@ -89,7 +89,7 @@ export default function Reviews() {
 
         {/* Submit Form */}
         <div>
-          <div className="glass-panel-glow p-8 rounded-3xl sticky top-24">
+          <div className="glass-panel-glow p-8 rounded-lg sticky top-24">
             <h3 className="text-2xl font-display font-bold mb-6">Leave a Review</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>

@@ -16,7 +16,7 @@ export default function BlogPost() {
       <div className="container mx-auto px-4 py-24 max-w-3xl animate-pulse space-y-6">
         <div className="h-8 bg-muted/60 rounded w-1/4"></div>
         <div className="h-16 bg-muted/60 rounded w-full"></div>
-        <div className="aspect-[21/9] bg-muted/60 rounded-3xl w-full"></div>
+        <div className="aspect-[21/9] bg-muted/60 rounded-lg w-full"></div>
         <div className="h-4 bg-muted/60 rounded w-full"></div>
         <div className="h-4 bg-muted/60 rounded w-full"></div>
       </div>
@@ -61,14 +61,14 @@ export default function BlogPost() {
         </div>
 
         {post.featuredImageUrl && (
-          <div className="rounded-3xl overflow-hidden mb-12 border border-border shadow-2xl">
+          <div className="rounded-lg overflow-hidden mb-12 border border-border shadow-2xl">
             <img src={post.featuredImageUrl} alt={post.title} className="w-full h-auto object-cover max-h-[600px]" />
           </div>
         )}
 
         {/* Minimal rich text rendering. In real life, use a markdown or HTML parser like html-react-parser */}
         <div 
-          className="prose prose-invert prose-lg max-w-none prose-headings:font-display prose-a:text-secondary prose-img:rounded-2xl"
+          className="prose prose-invert prose-lg max-w-none prose-headings:font-display prose-a:text-secondary prose-img:rounded-md"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 

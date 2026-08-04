@@ -18,7 +18,7 @@ export default function ServiceDetail() {
         <div className="animate-pulse max-w-4xl mx-auto">
           <div className="h-10 bg-muted/60 rounded w-1/3 mb-4"></div>
           <div className="h-20 bg-muted/60 rounded w-full mb-8"></div>
-          <div className="h-96 bg-muted/60 rounded-3xl w-full"></div>
+          <div className="h-96 bg-muted/60 rounded-lg w-full"></div>
         </div>
       </div>
     );
@@ -73,13 +73,13 @@ export default function ServiceDetail() {
                 <h3 className="text-2xl font-display font-bold mb-6">Gallery</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {gallery.map((url, i) => (
-                    <img key={i} src={url} alt={`Gallery ${i}`} className="rounded-2xl w-full h-64 object-cover border border-border" />
+                    <img key={i} src={url} alt={`Gallery ${i}`} className="rounded-md w-full h-64 object-cover border border-border" />
                   ))}
                 </div>
               </div>
             )}
             
-            <div className="glass-panel p-8 rounded-3xl">
+            <div className="glass-panel p-8 rounded-lg">
               <h3 className="text-2xl font-display font-bold mb-6">Why Choose Firebox?</h3>
               <ul className="space-y-4">
                 {['Enterprise-grade architecture and security', 'Scalable solutions built for growth', 'Dedicated 24/7 support and maintenance', 'Agile development methodology'].map((feature, i) => (
@@ -94,7 +94,7 @@ export default function ServiceDetail() {
 
           {/* Sidebar */}
           <div>
-            <div className="glass-panel-glow p-8 rounded-3xl sticky top-24">
+            <div className="glass-panel-glow p-8 rounded-lg sticky top-24">
               <h3 className="text-2xl font-display font-bold mb-2">Get Started</h3>
               <p className="text-muted-foreground mb-8">Ready to transform your business with our {service.title.toLowerCase()} solutions?</p>
               

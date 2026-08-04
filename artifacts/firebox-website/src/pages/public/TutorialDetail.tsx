@@ -15,7 +15,7 @@ export default function TutorialDetail() {
     return (
       <div className="container mx-auto px-4 py-24 animate-pulse">
         <div className="h-10 bg-muted/60 rounded w-1/3 mb-8"></div>
-        <div className="aspect-video bg-muted/60 rounded-3xl w-full mb-8"></div>
+        <div className="aspect-video bg-muted/60 rounded-lg w-full mb-8"></div>
         <div className="h-4 bg-muted/60 rounded w-full mb-2"></div>
         <div className="h-4 bg-muted/60 rounded w-2/3"></div>
       </div>
@@ -57,7 +57,7 @@ export default function TutorialDetail() {
           <h1 className="text-4xl md:text-5xl font-display font-bold mb-8">{tutorial.title}</h1>
 
           {embedUrl ? (
-            <div className="aspect-video rounded-3xl overflow-hidden border border-border mb-12 shadow-2xl bg-black">
+            <div className="aspect-video rounded-lg overflow-hidden border border-border mb-12 shadow-2xl bg-black">
               <iframe 
                 src={embedUrl} 
                 className="w-full h-full"
@@ -66,19 +66,19 @@ export default function TutorialDetail() {
               ></iframe>
             </div>
           ) : (
-            <div className="aspect-video rounded-3xl border border-border mb-12 bg-muted/40 flex items-center justify-center text-foreground/30">
+            <div className="aspect-video rounded-lg border border-border mb-12 bg-muted/40 flex items-center justify-center text-foreground/30">
               <Play size={48} />
               <span className="ml-4 font-mono">Video unavailable</span>
             </div>
           )}
 
-          <div className="glass-panel p-8 rounded-3xl prose max-w-none mb-12">
+          <div className="glass-panel p-8 rounded-lg prose max-w-none mb-12">
             <h2 className="text-2xl font-display font-bold mb-4 text-foreground">About this tutorial</h2>
             <p className="text-foreground/80 whitespace-pre-wrap">{tutorial.description}</p>
           </div>
 
           {tutorial.downloadableResources && (
-            <div className="glass-panel-glow p-8 rounded-3xl flex items-center justify-between">
+            <div className="glass-panel-glow p-8 rounded-lg flex items-center justify-between">
               <div>
                 <h3 className="text-xl font-bold mb-1">Project Files</h3>
                 <p className="text-muted-foreground text-sm">Download the source code and assets used in this tutorial.</p>

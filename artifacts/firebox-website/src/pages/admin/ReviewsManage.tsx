@@ -31,7 +31,7 @@ export default function ReviewsManage() {
         {isLoading ? <div className="p-8">Loading...</div> : 
          reviews.length === 0 ? <div className="p-8 glass-panel text-muted-foreground">No reviews yet.</div> :
          reviews.map(r => (
-           <div key={r.id} className="glass-panel p-6 rounded-2xl flex flex-col md:flex-row gap-6">
+           <div key={r.id} className="glass-panel p-6 rounded-md flex flex-col md:flex-row gap-6">
              <div className="flex-1">
                <div className="flex items-center gap-3 mb-2">
                  <div className="flex text-yellow-400">

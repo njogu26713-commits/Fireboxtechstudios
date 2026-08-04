@@ -51,7 +51,7 @@ export default function Home() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
-            className="w-24 h-24 md:w-32 md:h-32 rounded-2xl bg-gradient-to-br from-primary via-primary to-secondary flex items-center justify-center mb-8 relative animate-firebox-pulse-glow"
+            className="w-24 h-24 md:w-32 md:h-32 rounded-md bg-gradient-to-br from-primary via-primary to-secondary flex items-center justify-center mb-8 relative animate-firebox-pulse-glow"
           >
             <span className="font-display font-bold text-4xl md:text-5xl text-background">FTS</span>
             {/* Orbiting elements */}
@@ -150,9 +150,9 @@ export default function Home() {
                 <Link 
                   href={service.destinationUrl || `/services/${service.id}`}
                   target={service.destinationUrl ? "_blank" : undefined}
-                  className="block glass-panel-glow p-8 rounded-3xl h-full flex flex-col group cursor-pointer"
+                  className="block glass-panel-glow p-8 rounded-lg h-full flex flex-col group cursor-pointer"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-muted/40 flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-background transition-colors">
+                  <div className="w-14 h-14 rounded-md bg-muted/40 flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-background transition-colors">
                     {/* fallback icons based on text */}
                     {service.title.toLowerCase().includes('web') ? <Code size={28} /> :
                      service.title.toLowerCase().includes('app') ? <Smartphone size={28} /> :
@@ -171,8 +171,8 @@ export default function Home() {
             )) : (
               // Fallback skeleton or empty state
               Array(3).fill(0).map((_, i) => (
-                <div key={i} className="glass-panel p-8 rounded-3xl h-64 animate-pulse">
-                  <div className="w-14 h-14 bg-muted/60 rounded-2xl mb-6"></div>
+                <div key={i} className="glass-panel p-8 rounded-lg h-64 animate-pulse">
+                  <div className="w-14 h-14 bg-muted/60 rounded-md mb-6"></div>
                   <div className="h-6 bg-muted/60 rounded w-3/4 mb-4"></div>
                   <div className="h-4 bg-muted/60 rounded w-full mb-2"></div>
                   <div className="h-4 bg-muted/60 rounded w-5/6"></div>
@@ -210,7 +210,7 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.6 }}
                 >
-                  <Link href={`/portfolio/${project.id}`} className="group block relative h-[400px] rounded-3xl overflow-hidden bg-muted/40">
+                  <Link href={`/portfolio/${project.id}`} className="group block relative h-[400px] rounded-lg overflow-hidden bg-muted/40">
                     {bgImg ? (
                       <img src={bgImg} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40" />
                     ) : (
@@ -279,7 +279,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {reviews.slice(0, 3).map(review => (
-              <div key={review.id} className="glass-panel p-8 rounded-3xl relative">
+              <div key={review.id} className="glass-panel p-8 rounded-lg relative">
                 <div className="text-primary mb-6"><Star fill="currentColor" size={32} /></div>
                 <p className="text-foreground/80 text-lg leading-relaxed mb-8 italic">"{review.testimonial}"</p>
                 <div className="mt-auto">

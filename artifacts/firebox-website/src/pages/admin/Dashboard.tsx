@@ -29,7 +29,7 @@ export default function Dashboard() {
         {statCards.map((stat, i) => {
           const Icon = stat.icon;
           return (
-            <Link key={i} href={stat.href} className="block glass-panel p-6 rounded-2xl hover:border-primary/50 transition-all hover:scale-[1.02]">
+            <Link key={i} href={stat.href} className="block glass-panel p-6 rounded-md hover:border-primary/50 transition-all hover:scale-[1.02]">
               <div className="flex items-start justify-between mb-4">
                 <div className={`p-3 rounded-lg bg-muted/40 ${stat.color}`}>
                   <Icon size={24} />
@@ -41,7 +41,7 @@ export default function Dashboard() {
           );
         })}
         
-        <div className="block glass-panel-glow p-6 rounded-2xl">
+        <div className="block glass-panel-glow p-6 rounded-md">
           <div className="flex items-start justify-between mb-4">
             <div className="p-3 rounded-lg bg-primary/20 text-primary">
               <Star size={24} />

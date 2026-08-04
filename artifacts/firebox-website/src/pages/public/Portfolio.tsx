@@ -42,7 +42,7 @@ export default function Portfolio() {
       {isLoading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {Array(4).fill(0).map((_, i) => (
-            <div key={i} className="glass-panel rounded-3xl h-[400px] animate-pulse" />
+            <div key={i} className="glass-panel rounded-lg h-[400px] animate-pulse" />
           ))}
         </div>
       ) : projects.length > 0 ? (
@@ -56,7 +56,7 @@ export default function Portfolio() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1, duration: 0.6 }}
               >
-                <div className="group block relative h-[450px] rounded-3xl overflow-hidden bg-muted/40 border border-border">
+                <div className="group block relative h-[450px] rounded-lg overflow-hidden bg-muted/40 border border-border">
                   {bgImg ? (
                     <img src={bgImg} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-60 group-hover:opacity-30" />
                   ) : (

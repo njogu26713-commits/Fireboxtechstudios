@@ -53,7 +53,7 @@ export default function Tutorials() {
       {isLoading ? (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {Array(6).fill(0).map((_, i) => (
-            <div key={i} className="glass-panel rounded-3xl h-80 animate-pulse" />
+            <div key={i} className="glass-panel rounded-lg h-80 animate-pulse" />
           ))}
         </div>
       ) : tutorials.length > 0 ? (
@@ -65,7 +65,7 @@ export default function Tutorials() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
             >
-              <Link href={`/tutorials/${tutorial.id}`} className="group block glass-panel rounded-3xl overflow-hidden hover:border-primary/50 transition-colors h-full flex flex-col">
+              <Link href={`/tutorials/${tutorial.id}`} className="group block glass-panel rounded-lg overflow-hidden hover:border-primary/50 transition-colors h-full flex flex-col">
                 <div className="relative aspect-video bg-black">
                   {tutorial.thumbnailUrl ? (
                     <img src={tutorial.thumbnailUrl} alt={tutorial.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />

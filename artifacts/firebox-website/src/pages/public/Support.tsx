@@ -19,7 +19,7 @@ export default function Support() {
 
       <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
         {settings?.mpesaNumber && (
-          <div className="glass-panel-glow p-10 rounded-3xl text-center border-t-[4px] border-t-[#4CAF50]">
+          <div className="glass-panel-glow p-10 rounded-lg text-center border-t-[4px] border-t-[#4CAF50]">
             <div className="w-16 h-16 mx-auto rounded-full bg-[#4CAF50]/20 text-[#4CAF50] flex items-center justify-center mb-6">
               <Smartphone size={32} />
             </div>
@@ -32,7 +32,7 @@ export default function Support() {
         )}
 
         {settings?.paypalEmail && (
-          <div className="glass-panel-glow p-10 rounded-3xl text-center border-t-[4px] border-t-[#003087]">
+          <div className="glass-panel-glow p-10 rounded-lg text-center border-t-[4px] border-t-[#003087]">
             <div className="w-16 h-16 mx-auto rounded-full bg-[#003087]/20 text-[#0079C1] flex items-center justify-center mb-6">
               <CreditCard size={32} />
             </div>

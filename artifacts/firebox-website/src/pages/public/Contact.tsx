@@ -52,7 +52,7 @@ export default function Contact() {
           
           {/* Contact Info Sidebar */}
           <div className="space-y-8">
-            <div className="glass-panel p-8 rounded-3xl space-y-8">
+            <div className="glass-panel p-8 rounded-lg space-y-8">
               <h3 className="text-2xl font-display font-bold border-b border-border pb-4">Direct Contact</h3>
               
               {settings?.email && (
@@ -87,7 +87,7 @@ export default function Contact() {
             </div>
 
             {settings?.whatsapp && (
-              <a href={`https://wa.me/${settings.whatsapp.replace(/[^0-9]/g, '')}`} target="_blank" rel="noreferrer" className="block glass-panel-glow p-6 rounded-3xl text-center hover:scale-[1.02] transition-transform">
+              <a href={`https://wa.me/${settings.whatsapp.replace(/[^0-9]/g, '')}`} target="_blank" rel="noreferrer" className="block glass-panel-glow p-6 rounded-lg text-center hover:scale-[1.02] transition-transform">
                 <div className="text-[#25D366] font-bold text-lg mb-2">Need a quick answer?</div>
                 <p className="text-muted-foreground text-sm">Chat with us directly on WhatsApp</p>
               </a>
@@ -95,7 +95,7 @@ export default function Contact() {
           </div>
 
           {/* Form Area */}
-          <div className="lg:col-span-2 glass-panel p-8 md:p-10 rounded-3xl">
+          <div className="lg:col-span-2 glass-panel p-8 md:p-10 rounded-lg">
             <div className="flex bg-muted/40 rounded-xl p-1 mb-8">
               <button 
                 onClick={() => setMode('contact')}

@@ -27,7 +27,7 @@ export default function About() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="glass-panel p-10 rounded-3xl"
+              className="glass-panel p-10 rounded-lg"
             >
               <div className="w-14 h-14 rounded-full bg-primary/20 text-primary flex items-center justify-center mb-6">
                 <Target size={28} />
@@ -42,7 +42,7 @@ export default function About() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="glass-panel-glow p-10 rounded-3xl"
+              className="glass-panel-glow p-10 rounded-lg"
             >
               <div className="w-14 h-14 rounded-full bg-secondary/20 text-secondary flex items-center justify-center mb-6">
                 <Rocket size={28} />
@@ -94,7 +94,7 @@ export default function About() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {team.map((member) => (
                 <div key={member.id} className="group">
-                  <div className="relative aspect-square rounded-3xl overflow-hidden mb-6 bg-muted/40 border border-border">
+                  <div className="relative aspect-square rounded-lg overflow-hidden mb-6 bg-muted/40 border border-border">
                     {member.avatarUrl ? (
                       <img src={member.avatarUrl} alt={member.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0" />
                     ) : (

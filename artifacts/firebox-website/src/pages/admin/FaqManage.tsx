@@ -116,7 +116,7 @@ export default function FaqManage() {
 
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-gray-900 border border-border rounded-2xl p-6 w-full max-w-lg">
+          <div className="bg-gray-900 border border-border rounded-md p-6 w-full max-w-lg">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-bold">{editingId ? 'Edit' : 'Add'} {tab === 'faq' ? 'FAQ Item' : 'Client'}</h2>
               <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-muted/60 rounded-lg"><X size={18} /></button>
