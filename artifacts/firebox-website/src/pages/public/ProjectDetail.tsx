@@ -93,7 +93,7 @@ export default function ProjectDetail() {
                     </a>
                   )}
                   {project.githubUrl && (
-                    <a href={project.githubUrl} target="_blank" rel="noreferrer" className="w-full h-12 rounded-xl bg-muted/60 text-white font-bold flex items-center justify-center gap-2 hover:bg-white/20 transition-all">
+                    <a href={project.githubUrl} target="_blank" rel="noreferrer" className="w-full h-12 rounded-xl bg-muted/60 text-foreground font-bold flex items-center justify-center gap-2 hover:bg-muted transition-all">
                       <Github size={18} /> Source Code
                     </a>
                   )}

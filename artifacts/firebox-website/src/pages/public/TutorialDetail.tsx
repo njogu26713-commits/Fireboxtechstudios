@@ -66,14 +66,14 @@ export default function TutorialDetail() {
               ></iframe>
             </div>
           ) : (
-            <div className="aspect-video rounded-3xl border border-border mb-12 bg-muted/40 flex items-center justify-center text-white/30">
+            <div className="aspect-video rounded-3xl border border-border mb-12 bg-muted/40 flex items-center justify-center text-foreground/30">
               <Play size={48} />
               <span className="ml-4 font-mono">Video unavailable</span>
             </div>
           )}
 
-          <div className="glass-panel p-8 rounded-3xl prose prose-invert max-w-none mb-12">
-            <h2 className="text-2xl font-display font-bold mb-4 text-white">About this tutorial</h2>
+          <div className="glass-panel p-8 rounded-3xl prose max-w-none mb-12">
+            <h2 className="text-2xl font-display font-bold mb-4 text-foreground">About this tutorial</h2>
             <p className="text-foreground/80 whitespace-pre-wrap">{tutorial.description}</p>
           </div>
 

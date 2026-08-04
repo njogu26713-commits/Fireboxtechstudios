@@ -31,7 +31,7 @@ export default function Tutorials() {
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 category === cat 
                   ? 'bg-primary text-primary-foreground' 
-                  : 'bg-muted/40 text-foreground/70 hover:bg-muted/60 hover:text-white'
+                  : 'bg-muted/40 text-foreground/70 hover:bg-muted/60 hover:text-foreground'
               }`}
             >
               {cat}
@@ -45,7 +45,7 @@ export default function Tutorials() {
             placeholder="Search tutorials..." 
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 bg-muted/40 border border-border rounded-full text-sm focus:outline-none focus:border-primary/50 text-white"
+            className="w-full pl-10 pr-4 py-2 bg-muted/40 border border-border rounded-full text-sm focus:outline-none focus:border-primary/50 text-foreground"
           />
         </div>
       </div>
@@ -70,7 +70,7 @@ export default function Tutorials() {
                   {tutorial.thumbnailUrl ? (
                     <img src={tutorial.thumbnailUrl} alt={tutorial.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-muted/40"><Play size={40} className="text-white/20" /></div>
+                    <div className="w-full h-full flex items-center justify-center bg-muted/40"><Play size={40} className="text-foreground/20" /></div>
                   )}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-14 h-14 rounded-full bg-primary/80 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 transition-all duration-300">

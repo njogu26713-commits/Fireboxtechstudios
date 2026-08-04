@@ -60,7 +60,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-sm font-medium ${
                   active 
                     ? 'bg-primary/20 text-primary' 
-                    : 'text-foreground/70 hover:bg-muted/40 hover:text-white'
+                    : 'text-foreground/70 hover:bg-muted/40 hover:text-foreground'
                 }`}
               >
                 <Icon size={18} />

@@ -76,7 +76,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                   href={link.href}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                     location === link.href 
-                      ? 'bg-muted/60 text-white' 
+                      ? 'bg-muted/60 text-foreground' 
                       : 'text-foreground/70 hover:text-foreground hover:bg-muted/40'
                   }`}
                 >
@@ -160,7 +160,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
             </div>
             
             <div>
-              <h4 className="font-display font-semibold mb-4 text-white">Quick Links</h4>
+              <h4 className="font-display font-semibold mb-4 text-foreground">Quick Links</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><Link href="/about" className="hover:text-primary transition-colors">About Us</Link></li>
                 <li><Link href="/services" className="hover:text-primary transition-colors">Services</Link></li>
@@ -170,7 +170,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
             </div>
             
             <div>
-              <h4 className="font-display font-semibold mb-4 text-white">Resources</h4>
+              <h4 className="font-display font-semibold mb-4 text-foreground">Resources</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><Link href="/tutorials" className="hover:text-primary transition-colors">Tutorials</Link></li>
                 <li><Link href="/blog" className="hover:text-primary transition-colors">Blog</Link></li>
@@ -180,7 +180,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
             </div>
             
             <div>
-              <h4 className="font-display font-semibold mb-4 text-white">Contact</h4>
+              <h4 className="font-display font-semibold mb-4 text-foreground">Contact</h4>
               <ul className="space-y-3 text-sm text-muted-foreground">
                 {settings?.email && (
                   <li className="flex items-center gap-2"><Mail size={16} className="text-primary" /> {settings.email}</li>
@@ -267,7 +267,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                 </button>
                 <Link 
                   href="/privacy" 
-                  className="px-4 py-2 rounded-lg bg-muted/40 hover:bg-muted/60 text-white text-sm font-medium transition-colors"
+                  className="px-4 py-2 rounded-lg bg-muted/40 hover:bg-muted/60 text-foreground text-sm font-medium transition-colors"
                   onClick={() => setShowCookie(false)}
                 >
                   Privacy Policy

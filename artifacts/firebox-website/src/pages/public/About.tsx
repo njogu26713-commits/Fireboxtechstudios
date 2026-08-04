@@ -71,7 +71,7 @@ export default function About() {
               { title: 'Agility', desc: 'We adapt quickly to changing market demands and client needs.' }
             ].map((value, i) => (
               <div key={i} className="text-center">
-                <div className="w-16 h-16 mx-auto rounded-full bg-muted/40 flex items-center justify-center text-white mb-6">
+                <div className="w-16 h-16 mx-auto rounded-full bg-muted/40 flex items-center justify-center text-foreground mb-6">
                   <CheckCircle2 size={24} />
                 </div>
                 <h3 className="text-xl font-bold mb-3">{value.title}</h3>
@@ -98,7 +98,7 @@ export default function About() {
                     {member.avatarUrl ? (
                       <img src={member.avatarUrl} alt={member.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0" />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-white/20">
+                      <div className="w-full h-full flex items-center justify-center text-foreground/20">
                         <Users size={64} />
                       </div>
                     )}

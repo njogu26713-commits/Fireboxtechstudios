@@ -31,7 +31,7 @@ export default function Portfolio() {
             className={`px-6 py-2 rounded-full font-medium transition-all ${
               techFilter === tech 
                 ? 'bg-secondary text-secondary-foreground shadow-[0_0_15px_rgba(168,85,247,0.4)]' 
-                : 'bg-muted/40 text-foreground/70 hover:bg-muted/60 hover:text-white'
+                : 'bg-muted/40 text-foreground/70 hover:bg-muted/60 hover:text-foreground'
             }`}
           >
             {tech}
@@ -60,7 +60,7 @@ export default function Portfolio() {
                   {bgImg ? (
                     <img src={bgImg} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-60 group-hover:opacity-30" />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-white/10">
+                    <div className="w-full h-full flex items-center justify-center text-foreground/20">
                       <Monitor size={64} />
                     </div>
                   )}

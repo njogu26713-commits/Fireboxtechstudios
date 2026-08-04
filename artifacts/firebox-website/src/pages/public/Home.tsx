@@ -103,11 +103,11 @@ export default function Home() {
                 <div className="text-sm text-muted-foreground uppercase tracking-wider font-mono">Projects Delivered</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-display font-bold text-white mb-2">{stats.totalServices}</div>
+                <div className="text-4xl md:text-5xl font-display font-bold text-foreground mb-2">{stats.totalServices}</div>
                 <div className="text-sm text-muted-foreground uppercase tracking-wider font-mono">Core Services</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-display font-bold text-white mb-2">{stats.avgRating.toFixed(1)}</div>
+                <div className="text-4xl md:text-5xl font-display font-bold text-foreground mb-2">{stats.avgRating.toFixed(1)}</div>
                 <div className="text-sm text-muted-foreground uppercase tracking-wider font-mono">Client Rating</div>
               </div>
               <div className="text-center">

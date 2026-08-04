@@ -31,7 +31,7 @@ export default function Blog() {
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 category === cat 
                   ? 'bg-secondary text-secondary-foreground' 
-                  : 'bg-muted/40 text-foreground/70 hover:bg-muted/60 hover:text-white'
+                  : 'bg-muted/40 text-foreground/70 hover:bg-muted/60 hover:text-foreground'
               }`}
             >
               {cat}
@@ -45,7 +45,7 @@ export default function Blog() {
             placeholder="Search articles..." 
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 bg-muted/40 border border-border rounded-full text-sm focus:outline-none focus:border-secondary/50 text-white"
+            className="w-full pl-10 pr-4 py-2 bg-muted/40 border border-border rounded-full text-sm focus:outline-none focus:border-secondary/50 text-foreground"
           />
         </div>
       </div>

@@ -39,7 +39,7 @@ export default function Reviews() {
         <p className="text-xl text-muted-foreground mb-8">See what our clients say about working with FireboxTechStudios.</p>
         
         <div className="inline-flex flex-col items-center justify-center p-6 glass-panel rounded-3xl">
-          <div className="text-5xl font-display font-bold text-white mb-2">{average.toFixed(1)}</div>
+          <div className="text-5xl font-display font-bold text-foreground mb-2">{average.toFixed(1)}</div>
           <div className="flex gap-1 text-primary mb-2">
             {[1,2,3,4,5].map(s => <Star key={s} fill={s <= Math.round(average) ? "currentColor" : "none"} size={24} />)}
           </div>
@@ -94,25 +94,25 @@ export default function Reviews() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-sm text-muted-foreground mb-1">Name</label>
-                <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full bg-muted/40 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-white" />
+                <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full bg-muted/40 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-foreground" />
               </div>
               <div>
                 <label className="block text-sm text-muted-foreground mb-1">Email (private)</label>
-                <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-muted/40 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-white" />
+                <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-muted/40 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-foreground" />
               </div>
               <div>
                 <label className="block text-sm text-muted-foreground mb-1">Rating</label>
                 <div className="flex gap-2">
                   {[1,2,3,4,5].map(s => (
-                    <button type="button" key={s} onClick={() => setFormData({...formData, rating: s})} className={`text-2xl ${s <= formData.rating ? 'text-primary' : 'text-white/20'}`}>★</button>
+                    <button type="button" key={s} onClick={() => setFormData({...formData, rating: s})} className={`text-2xl ${s <= formData.rating ? 'text-primary' : 'text-foreground/20'}`}>★</button>
                   ))}
                 </div>
               </div>
               <div>
                 <label className="block text-sm text-muted-foreground mb-1">Review</label>
-                <textarea required rows={4} value={formData.testimonial} onChange={e => setFormData({...formData, testimonial: e.target.value})} className="w-full bg-muted/40 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-white resize-none"></textarea>
+                <textarea required rows={4} value={formData.testimonial} onChange={e => setFormData({...formData, testimonial: e.target.value})} className="w-full bg-muted/40 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-foreground resize-none"></textarea>
               </div>
-              <button disabled={createReview.isPending} type="submit" className="w-full h-12 rounded-xl bg-white text-background font-bold hover:bg-white/90 transition-all disabled:opacity-50">
+              <button disabled={createReview.isPending} type="submit" className="w-full h-12 rounded-xl bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all disabled:opacity-50">
                 {createReview.isPending ? 'Submitting...' : 'Submit Review'}
               </button>
             </form>
