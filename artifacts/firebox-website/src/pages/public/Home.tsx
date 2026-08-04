@@ -59,14 +59,15 @@ export default function Home() {
             <div className="absolute inset-[-80px] border border-primary/20 rounded-md animate-[firebox-orbit-ccw_15s_linear_infinite]" />
           </motion.div>
 
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-display font-bold max-w-4xl tracking-tight leading-tight mb-6"
-          >
-            Innovate with <span className="text-gradient">Intelligence</span>
-          </motion.h1>
+          <div className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden py-2 mb-2">
+            <div className="flex whitespace-nowrap animate-marquee-ltr">
+              {[...Array(6)].map((_, i) => (
+                <span key={i} className="text-[11vw] font-display font-bold tracking-tight leading-none shrink-0 px-[4vw]">
+                  Innovate with <span className="text-gradient">Intelligence</span>
+                </span>
+              ))}
+            </div>
+          </div>
           
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
