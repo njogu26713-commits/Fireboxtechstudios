@@ -13,7 +13,7 @@ export default function TutorialDetail() {
 
   if (isLoading) {
     return (
-      <div className="container mx-auto px-4 py-24 animate-pulse">
+      <div className="w-full px-4 py-24 animate-pulse">
         <div className="h-10 bg-muted/60 rounded w-1/3 mb-8"></div>
         <div className="aspect-video bg-muted/60 rounded-lg w-full mb-8"></div>
         <div className="h-4 bg-muted/60 rounded w-full mb-2"></div>
@@ -24,7 +24,7 @@ export default function TutorialDetail() {
 
   if (!tutorial) {
     return (
-      <div className="container mx-auto px-4 py-32 text-center">
+      <div className="w-full px-4 py-32 text-center">
         <h1 className="text-4xl font-display font-bold mb-4">Tutorial Not Found</h1>
         <Link href="/tutorials" className="text-primary hover:underline">Return to Tutorials</Link>
       </div>
@@ -42,7 +42,7 @@ export default function TutorialDetail() {
 
   return (
     <div className="pb-24">
-      <div className="container mx-auto px-4 md:px-6 pt-12">
+      <div className="w-full px-4 pt-12">
         <Link href="/tutorials" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 transition-colors">
           <ArrowLeft size={16} /> Back to Tutorials
         </Link>

@@ -57,7 +57,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
           isScrolled ? 'bg-background/70 backdrop-blur-xl border-b border-border py-3' : 'bg-transparent py-5'
         }`}
       >
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="w-full px-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2 group">
               <div className="w-10 h-10 rounded-md bg-gradient-to-br from-primary to-secondary flex items-center justify-center font-display font-bold text-lg shadow-[0_0_20px_rgba(0,183,255,0.3)] group-hover:shadow-[0_0_30px_rgba(0,183,255,0.6)] transition-all">
@@ -145,7 +145,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
 
       {/* Footer */}
       <footer className="border-t border-border bg-background/80 backdrop-blur-lg pt-16 pb-8 mt-20 relative z-10">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="w-full px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
             <div className="space-y-4">
               <Link href="/" className="flex items-center gap-2">

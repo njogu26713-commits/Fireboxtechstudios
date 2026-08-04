@@ -6,7 +6,7 @@ export default function Support() {
   const { data: settings } = useGetSiteSettings();
 
   return (
-    <div className="container mx-auto px-4 md:px-6 py-24 pb-32">
+    <div className="w-full px-4 py-24 pb-32">
       <div className="max-w-3xl mx-auto text-center mb-16">
         <div className="w-20 h-20 mx-auto rounded-md bg-destructive/20 text-destructive flex items-center justify-center mb-6">
           <Heart size={40} />

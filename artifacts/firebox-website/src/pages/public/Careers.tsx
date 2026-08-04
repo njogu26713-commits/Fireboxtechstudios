@@ -7,7 +7,7 @@ export default function Careers() {
   const { data: jobs = [], isLoading } = useListPublicJobs();
 
   return (
-    <div className="container mx-auto px-4 md:px-6 py-12 pb-24">
+    <div className="w-full px-4 py-12 pb-24">
       <div className="max-w-4xl mx-auto text-center mb-16 pt-12">
         <span className="px-4 py-1.5 rounded-md bg-primary/20 text-primary text-sm font-mono font-medium mb-6 inline-block">
           Join the Team

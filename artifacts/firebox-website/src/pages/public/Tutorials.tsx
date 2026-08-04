@@ -16,7 +16,7 @@ export default function Tutorials() {
   const categories = ["All", "Web Dev", "AI", "Cloud", "Cybersecurity", "Mobile"];
 
   return (
-    <div className="container mx-auto px-4 md:px-6 py-12">
+    <div className="w-full px-4 py-12">
       <div className="max-w-4xl mx-auto text-center mb-16">
         <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Developer <span className="text-primary">Tutorials</span></h1>
         <p className="text-xl text-muted-foreground">Level up your skills with our deep-dive technical guides and video tutorials.</p>

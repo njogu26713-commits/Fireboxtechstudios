@@ -46,7 +46,7 @@ export default function Home() {
         {/* Background Grid */}
         <div className="absolute inset-0 bg-grid opacity-30 z-0"></div>
         
-        <div className="container relative z-10 px-4 md:px-6 mx-auto text-center flex flex-col items-center">
+        <div className="w-full relative z-10 px-4 text-center flex flex-col items-center">
           <motion.div 
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -96,7 +96,7 @@ export default function Home() {
       {/* Stats Section */}
       {stats && (
         <section className="py-12 border-y border-border/50 bg-muted/30">
-          <div className="container mx-auto px-4 md:px-6">
+          <div className="w-full px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="text-center">
                 <div className="text-4xl md:text-5xl font-display font-bold text-primary mb-2">{stats.totalProjects}+</div>
@@ -121,7 +121,7 @@ export default function Home() {
 
       {/* Featured Services */}
       <section className="py-24 relative">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="w-full px-4">
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -187,7 +187,7 @@ export default function Home() {
       <section className="py-24 bg-card/30 border-y border-border/50 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/10 rounded-md blur-[100px] pointer-events-none" />
         
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="w-full px-4 relative z-10">
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -247,7 +247,7 @@ export default function Home() {
       {/* Trusted Clients Marquee */}
       {clients && clients.length > 0 && (
         <section className="py-12 border-b border-border/50 overflow-hidden">
-          <div className="container mx-auto px-4 text-center mb-8">
+          <div className="w-full px-4 text-center mb-8">
             <h3 className="text-sm font-mono text-muted-foreground/70 uppercase tracking-widest">Trusted by industry leaders</h3>
           </div>
           <div className="flex gap-12 items-center w-max animate-[firebox-shimmer_30s_linear_infinite]">
@@ -266,7 +266,7 @@ export default function Home() {
 
       {/* Testimonials */}
       <section className="py-24 relative">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="w-full px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">Client <span className="text-primary">Success</span></h2>
             <div className="flex items-center justify-center gap-2 mb-4">
@@ -303,7 +303,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-primary/30 blur-[100px] rounded-md pointer-events-none"></div>
         
-        <div className="container mx-auto px-4 relative z-10 text-center">
+        <div className="w-full px-4 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}

@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Privacy() {
   return (
-    <div className="container mx-auto px-4 py-24 max-w-4xl prose prose-invert prose-lg prose-headings:font-display">
+    <div className="w-full px-4 py-24 max-w-4xl prose prose-invert prose-lg prose-headings:font-display">
       <h1>Privacy Policy</h1>
       <p>Last updated: {new Date().toLocaleDateString()}</p>
       

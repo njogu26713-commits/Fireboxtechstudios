@@ -16,7 +16,7 @@ export default function Portfolio() {
   const commonTechs = ["All", "React", "Node.js", "Python", "AWS", "Flutter", "TailwindCSS"];
 
   return (
-    <div className="container mx-auto px-4 md:px-6 py-12">
+    <div className="w-full px-4 py-12">
       <div className="max-w-4xl mx-auto text-center mb-16">
         <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Our <span className="text-secondary">Portfolio</span></h1>
         <p className="text-xl text-muted-foreground">A showcase of digital products, scalable architectures, and intelligent systems we've built.</p>

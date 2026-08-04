@@ -11,7 +11,7 @@ export default function About() {
       {/* Hero */}
       <section className="relative pt-24 pb-32 overflow-hidden border-b border-border bg-card/30">
         <div className="absolute inset-0 bg-grid opacity-30 z-0"></div>
-        <div className="container relative z-10 mx-auto px-4 md:px-6 text-center max-w-4xl">
+        <div className="w-full relative z-10 px-4 text-center max-w-4xl">
           <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Building the <span className="text-gradient">Future</span></h1>
           <p className="text-xl md:text-2xl text-foreground/70 leading-relaxed">
             FireboxTechStudios is a collective of engineers, designers, and strategists dedicated to pushing the boundaries of what's possible with technology.
@@ -21,7 +21,7 @@ export default function About() {
 
       {/* Mission / Vision */}
       <section className="py-24">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="w-full px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
@@ -58,7 +58,7 @@ export default function About() {
 
       {/* Core Values */}
       <section className="py-24 bg-muted/30 border-y border-border/50">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="w-full px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-display font-bold mb-4">Core <span className="text-primary">Values</span></h2>
           </div>
@@ -84,7 +84,7 @@ export default function About() {
 
       {/* Team */}
       <section className="py-24">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="w-full px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">Meet the <span className="text-secondary">Team</span></h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">The brilliant minds behind our successful deliveries.</p>

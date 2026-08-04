@@ -14,7 +14,7 @@ export default function ServiceDetail() {
 
   if (isLoading) {
     return (
-      <div className="container mx-auto px-4 py-24">
+      <div className="w-full px-4 py-24">
         <div className="animate-pulse max-w-4xl mx-auto">
           <div className="h-10 bg-muted/60 rounded w-1/3 mb-4"></div>
           <div className="h-20 bg-muted/60 rounded w-full mb-8"></div>
@@ -26,7 +26,7 @@ export default function ServiceDetail() {
 
   if (!service) {
     return (
-      <div className="container mx-auto px-4 py-32 text-center">
+      <div className="w-full px-4 py-32 text-center">
         <h1 className="text-4xl font-display font-bold mb-4">Service Not Found</h1>
         <Link href="/services" className="text-primary hover:underline">Return to Services</Link>
       </div>
@@ -47,7 +47,7 @@ export default function ServiceDetail() {
           </div>
         )}
         
-        <div className="container relative z-10 mx-auto px-4 md:px-6">
+        <div className="w-full relative z-10 px-4">
           <Link href="/services" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 transition-colors">
             <ArrowLeft size={16} /> Back to Services
           </Link>
@@ -64,7 +64,7 @@ export default function ServiceDetail() {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 py-16">
+      <div className="w-full px-4 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-12">

@@ -13,7 +13,7 @@ export default function BlogPost() {
 
   if (isLoading) {
     return (
-      <div className="container mx-auto px-4 py-24 max-w-3xl animate-pulse space-y-6">
+      <div className="w-full px-4 py-24 max-w-3xl animate-pulse space-y-6">
         <div className="h-8 bg-muted/60 rounded w-1/4"></div>
         <div className="h-16 bg-muted/60 rounded w-full"></div>
         <div className="aspect-[21/9] bg-muted/60 rounded-lg w-full"></div>
@@ -25,7 +25,7 @@ export default function BlogPost() {
 
   if (!post) {
     return (
-      <div className="container mx-auto px-4 py-32 text-center">
+      <div className="w-full px-4 py-32 text-center">
         <h1 className="text-4xl font-display font-bold mb-4">Article Not Found</h1>
         <Link href="/blog" className="text-primary hover:underline">Return to Blog</Link>
       </div>
@@ -36,7 +36,7 @@ export default function BlogPost() {
 
   return (
     <article className="pb-24">
-      <div className="container mx-auto px-4 md:px-6 pt-12 max-w-4xl">
+      <div className="w-full px-4 pt-12 max-w-4xl">
         <Link href="/blog" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 transition-colors">
           <ArrowLeft size={16} /> Back to Blog
         </Link>
