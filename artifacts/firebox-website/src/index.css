@@ -76,32 +76,32 @@
   --popover-foreground: 270 12% 12%;
   --popover-border: 270 25% 88%;
 
-  --primary: 270 78% 52%;            /* rich purple */
+  --primary: 270 90% 22%;            /* deep dark purple */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 285 65% 62%;          /* violet */
+  --secondary: 285 80% 28%;          /* deep dark violet */
   --secondary-foreground: 0 0% 100%;
 
   --muted: 270 30% 96%;              /* whisper-purple background */
   --muted-foreground: 270 15% 48%;   /* mid-tone purple-gray */
 
-  --accent: 270 55% 94%;
-  --accent-foreground: 270 78% 45%;
+  --accent: 270 40% 92%;
+  --accent-foreground: 270 90% 22%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
 
   --input: 270 20% 90%;
-  --ring: 270 78% 52%;
+  --ring: 270 90% 22%;
 
   --sidebar: 270 30% 98%;
   --sidebar-foreground: 270 12% 12%;
   --sidebar-border: 270 25% 88%;
-  --sidebar-primary: 270 78% 52%;
+  --sidebar-primary: 270 90% 22%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 270 55% 94%;
-  --sidebar-accent-foreground: 270 78% 45%;
-  --sidebar-ring: 270 78% 52%;
+  --sidebar-accent: 270 40% 92%;
+  --sidebar-accent-foreground: 270 90% 22%;
+  --sidebar-ring: 270 90% 22%;
 
   --app-font-sans: 'Plus Jakarta Sans', sans-serif;
   --app-font-display: 'Outfit', sans-serif;
