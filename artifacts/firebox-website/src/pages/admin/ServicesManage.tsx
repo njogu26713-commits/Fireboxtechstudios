@@ -123,42 +123,42 @@ export default function ServicesManage() {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-muted-foreground mb-1">Title</label>
-                  <input required value={formData.title} onChange={e=>setFormData({...formData, title: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none" />
+                  <input required value={formData.title} onChange={e=>setFormData({...formData, title: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-primary focus:outline-none" />
                 </div>
                 <div>
                   <label className="block text-muted-foreground mb-1">Category</label>
-                  <input required value={formData.category} onChange={e=>setFormData({...formData, category: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none" />
+                  <input required value={formData.category} onChange={e=>setFormData({...formData, category: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-primary focus:outline-none" />
                 </div>
               </div>
               
               <div>
                 <label className="block text-muted-foreground mb-1">Description</label>
-                <textarea required rows={4} value={formData.description} onChange={e=>setFormData({...formData, description: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none resize-none"></textarea>
+                <textarea required rows={4} value={formData.description} onChange={e=>setFormData({...formData, description: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-primary focus:outline-none resize-none"></textarea>
               </div>
               
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-muted-foreground mb-1">Banner Image URL</label>
-                  <input value={formData.bannerUrl} onChange={e=>setFormData({...formData, bannerUrl: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none" />
+                  <input value={formData.bannerUrl} onChange={e=>setFormData({...formData, bannerUrl: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-primary focus:outline-none" />
                 </div>
                 <div>
                   <label className="block text-muted-foreground mb-1">Gallery URLs (comma separated)</label>
-                  <input value={formData.galleryUrls} onChange={e=>setFormData({...formData, galleryUrls: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none" />
+                  <input value={formData.galleryUrls} onChange={e=>setFormData({...formData, galleryUrls: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-primary focus:outline-none" />
                 </div>
               </div>
 
               <div className="grid grid-cols-3 gap-4">
                 <div>
                   <label className="block text-muted-foreground mb-1">Pricing (e.g. $5k+)</label>
-                  <input value={formData.pricing} onChange={e=>setFormData({...formData, pricing: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none" />
+                  <input value={formData.pricing} onChange={e=>setFormData({...formData, pricing: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-primary focus:outline-none" />
                 </div>
                 <div>
                   <label className="block text-muted-foreground mb-1">Button Text</label>
-                  <input value={formData.buttonText} onChange={e=>setFormData({...formData, buttonText: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none" />
+                  <input value={formData.buttonText} onChange={e=>setFormData({...formData, buttonText: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-primary focus:outline-none" />
                 </div>
                 <div>
                   <label className="block text-muted-foreground mb-1">Destination URL (External)</label>
-                  <input value={formData.destinationUrl} onChange={e=>setFormData({...formData, destinationUrl: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-primary focus:outline-none" />
+                  <input value={formData.destinationUrl} onChange={e=>setFormData({...formData, destinationUrl: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-primary focus:outline-none" />
                 </div>
               </div>
 

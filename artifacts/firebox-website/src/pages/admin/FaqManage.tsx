@@ -50,7 +50,7 @@ export default function FaqManage() {
 
       <div className="flex gap-2 border-b border-border pb-4">
         {(['faq', 'clients'] as const).map(t => (
-          <button key={t} onClick={() => setTab(t)} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors capitalize ${tab === t ? 'bg-purple-600 text-white' : 'bg-muted/40 text-muted-foreground hover:bg-muted/60'}`}>
+          <button key={t} onClick={() => setTab(t)} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors capitalize ${tab === t ? 'bg-purple-600 text-foreground' : 'bg-muted/40 text-muted-foreground hover:bg-muted/60'}`}>
             {t === 'faq' ? 'FAQ Items' : 'Trusted Clients'}
           </button>
         ))}
@@ -59,7 +59,7 @@ export default function FaqManage() {
       {tab === 'faq' && (
         <div className="space-y-4">
           <div className="flex justify-end">
-            <button onClick={() => { setFaqForm({ question: '', answer: '', category: '', sortOrder: 0 }); setEditingId(null); setIsModalOpen(true); }} className="px-4 py-2 bg-purple-600 text-white font-bold rounded-lg flex items-center gap-2 hover:bg-purple-700 transition-colors">
+            <button onClick={() => { setFaqForm({ question: '', answer: '', category: '', sortOrder: 0 }); setEditingId(null); setIsModalOpen(true); }} className="px-4 py-2 bg-purple-600 text-foreground font-bold rounded-lg flex items-center gap-2 hover:bg-purple-700 transition-colors">
               <Plus size={18} /> Add FAQ
             </button>
           </div>
@@ -89,7 +89,7 @@ export default function FaqManage() {
       {tab === 'clients' && (
         <div className="space-y-4">
           <div className="flex justify-end">
-            <button onClick={() => { setClientForm({ name: '', logoUrl: '', websiteUrl: '', sortOrder: 0 }); setEditingId(null); setIsModalOpen(true); }} className="px-4 py-2 bg-purple-600 text-white font-bold rounded-lg flex items-center gap-2 hover:bg-purple-700 transition-colors">
+            <button onClick={() => { setClientForm({ name: '', logoUrl: '', websiteUrl: '', sortOrder: 0 }); setEditingId(null); setIsModalOpen(true); }} className="px-4 py-2 bg-purple-600 text-foreground font-bold rounded-lg flex items-center gap-2 hover:bg-purple-700 transition-colors">
               <Plus size={18} /> Add Client
             </button>
           </div>
@@ -127,12 +127,12 @@ export default function FaqManage() {
                 {[{ key: 'question', label: 'Question', required: true }, { key: 'category', label: 'Category' }].map(({ key, label, required }) => (
                   <div key={key}>
                     <label className="block text-sm text-muted-foreground mb-1">{label}</label>
-                    <input value={(faqForm as any)[key]} onChange={e => setFaqForm(p => ({ ...p, [key]: e.target.value }))} required={required} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white outline-none focus:border-purple-500" />
+                    <input value={(faqForm as any)[key]} onChange={e => setFaqForm(p => ({ ...p, [key]: e.target.value }))} required={required} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground outline-none focus:border-purple-500" />
                   </div>
                 ))}
                 <div>
                   <label className="block text-sm text-muted-foreground mb-1">Answer</label>
-                  <textarea rows={4} value={faqForm.answer} onChange={e => setFaqForm(p => ({ ...p, answer: e.target.value }))} required className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white outline-none focus:border-purple-500" />
+                  <textarea rows={4} value={faqForm.answer} onChange={e => setFaqForm(p => ({ ...p, answer: e.target.value }))} required className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground outline-none focus:border-purple-500" />
                 </div>
                 <div className="flex gap-3">
                   <button type="button" onClick={() => setIsModalOpen(false)} className="flex-1 py-2 rounded-lg bg-muted/40 hover:bg-muted/60">Cancel</button>
@@ -144,7 +144,7 @@ export default function FaqManage() {
                 {[{ key: 'name', label: 'Client Name', required: true }, { key: 'logoUrl', label: 'Logo URL' }, { key: 'websiteUrl', label: 'Website URL' }].map(({ key, label, required }) => (
                   <div key={key}>
                     <label className="block text-sm text-muted-foreground mb-1">{label}</label>
-                    <input value={(clientForm as any)[key]} onChange={e => setClientForm(p => ({ ...p, [key]: e.target.value }))} required={required} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white outline-none focus:border-purple-500" />
+                    <input value={(clientForm as any)[key]} onChange={e => setClientForm(p => ({ ...p, [key]: e.target.value }))} required={required} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground outline-none focus:border-purple-500" />
                   </div>
                 ))}
                 <div className="flex gap-3">

@@ -52,7 +52,7 @@ export default function JobsManage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Job Postings</h1>
-        <button onClick={() => { resetForm(); setIsModalOpen(true); }} className="px-4 py-2 bg-purple-600 text-white font-bold rounded-lg flex items-center gap-2 hover:bg-purple-700 transition-colors">
+        <button onClick={() => { resetForm(); setIsModalOpen(true); }} className="px-4 py-2 bg-purple-600 text-foreground font-bold rounded-lg flex items-center gap-2 hover:bg-purple-700 transition-colors">
           <Plus size={18} /> Add Job
         </button>
       </div>
@@ -115,12 +115,12 @@ export default function JobsManage() {
               ].map(({ key, label, required }) => (
                 <div key={key}>
                   <label className="block text-sm text-muted-foreground mb-1">{label}</label>
-                  <input value={(formData as any)[key]} onChange={e => setFormData(p => ({ ...p, [key]: e.target.value }))} required={required} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white outline-none focus:border-purple-500" />
+                  <input value={(formData as any)[key]} onChange={e => setFormData(p => ({ ...p, [key]: e.target.value }))} required={required} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground outline-none focus:border-purple-500" />
                 </div>
               ))}
               <div>
                 <label className="block text-sm text-muted-foreground mb-1">Employment Type</label>
-                <select value={formData.type} onChange={e => setFormData(p => ({ ...p, type: e.target.value }))} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white outline-none focus:border-purple-500">
+                <select value={formData.type} onChange={e => setFormData(p => ({ ...p, type: e.target.value }))} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground outline-none focus:border-purple-500">
                   <option value="full-time">Full-time</option>
                   <option value="part-time">Part-time</option>
                   <option value="contract">Contract</option>
@@ -130,11 +130,11 @@ export default function JobsManage() {
               </div>
               <div>
                 <label className="block text-sm text-muted-foreground mb-1">Description</label>
-                <textarea rows={3} value={formData.description} onChange={e => setFormData(p => ({ ...p, description: e.target.value }))} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white outline-none focus:border-purple-500" />
+                <textarea rows={3} value={formData.description} onChange={e => setFormData(p => ({ ...p, description: e.target.value }))} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground outline-none focus:border-purple-500" />
               </div>
               <div>
                 <label className="block text-sm text-muted-foreground mb-1">Requirements</label>
-                <textarea rows={3} value={formData.requirements} onChange={e => setFormData(p => ({ ...p, requirements: e.target.value }))} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white outline-none focus:border-purple-500" />
+                <textarea rows={3} value={formData.requirements} onChange={e => setFormData(p => ({ ...p, requirements: e.target.value }))} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground outline-none focus:border-purple-500" />
               </div>
               <label className="flex items-center gap-2 cursor-pointer">
                 <input type="checkbox" checked={formData.active} onChange={e => setFormData(p => ({ ...p, active: e.target.checked }))} className="w-4 h-4" />

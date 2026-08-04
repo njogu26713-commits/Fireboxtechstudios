@@ -49,7 +49,7 @@ export default function BlogManage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-display font-bold">Manage Blog</h1>
-        <button onClick={() => { resetForm(); setIsModalOpen(true); }} className="px-4 py-2 bg-green-500 text-white font-bold rounded-lg flex items-center gap-2">
+        <button onClick={() => { resetForm(); setIsModalOpen(true); }} className="px-4 py-2 bg-green-500 text-foreground font-bold rounded-lg flex items-center gap-2">
           <Plus size={18} /> Add Post
         </button>
       </div>
@@ -104,7 +104,7 @@ export default function BlogManage() {
                 <div><label className="block text-xs mb-1">Tags (csv)</label><input value={formData.tags} onChange={e=>setFormData({...formData,tags:e.target.value})} className="w-full bg-muted/40 border border-border rounded p-2 text-sm" /></div>
               </div>
               <label className="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" checked={formData.published} onChange={e=>setFormData({...formData,published:e.target.checked})} /> Published</label>
-              <div className="flex justify-end pt-4"><button type="submit" className="px-6 py-2 bg-green-500 text-white font-bold rounded">Save Post</button></div>
+              <div className="flex justify-end pt-4"><button type="submit" className="px-6 py-2 bg-green-500 text-foreground font-bold rounded">Save Post</button></div>
             </form>
           </div>
         </div>

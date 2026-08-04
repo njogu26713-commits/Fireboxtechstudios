@@ -53,7 +53,7 @@ export default function TutorialsManage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Manage Tutorials</h1>
-        <button onClick={() => { resetForm(); setIsModalOpen(true); }} className="px-4 py-2 bg-purple-600 text-white font-bold rounded-lg flex items-center gap-2 hover:bg-purple-700 transition-colors">
+        <button onClick={() => { resetForm(); setIsModalOpen(true); }} className="px-4 py-2 bg-purple-600 text-foreground font-bold rounded-lg flex items-center gap-2 hover:bg-purple-700 transition-colors">
           <Plus size={18} /> Add Tutorial
         </button>
       </div>
@@ -119,17 +119,17 @@ export default function TutorialsManage() {
                     value={(formData as any)[key]}
                     onChange={e => setFormData(p => ({ ...p, [key]: e.target.value }))}
                     required={required}
-                    className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white outline-none focus:border-purple-500"
+                    className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground outline-none focus:border-purple-500"
                   />
                 </div>
               ))}
               <div>
                 <label className="block text-sm text-muted-foreground mb-1">Description</label>
-                <textarea rows={3} value={formData.description} onChange={e => setFormData(p => ({ ...p, description: e.target.value }))} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white outline-none focus:border-purple-500" />
+                <textarea rows={3} value={formData.description} onChange={e => setFormData(p => ({ ...p, description: e.target.value }))} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground outline-none focus:border-purple-500" />
               </div>
               <div>
                 <label className="block text-sm text-muted-foreground mb-1">Difficulty</label>
-                <select value={formData.difficulty} onChange={e => setFormData(p => ({ ...p, difficulty: e.target.value }))} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white outline-none focus:border-purple-500">
+                <select value={formData.difficulty} onChange={e => setFormData(p => ({ ...p, difficulty: e.target.value }))} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground outline-none focus:border-purple-500">
                   <option value="beginner">Beginner</option>
                   <option value="intermediate">Intermediate</option>
                   <option value="advanced">Advanced</option>

@@ -52,7 +52,7 @@ export default function TeamManage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Team Members</h1>
-        <button onClick={() => { resetForm(); setIsModalOpen(true); }} className="px-4 py-2 bg-purple-600 text-white font-bold rounded-lg flex items-center gap-2 hover:bg-purple-700 transition-colors">
+        <button onClick={() => { resetForm(); setIsModalOpen(true); }} className="px-4 py-2 bg-purple-600 text-foreground font-bold rounded-lg flex items-center gap-2 hover:bg-purple-700 transition-colors">
           <Plus size={18} /> Add Member
         </button>
       </div>
@@ -105,16 +105,16 @@ export default function TeamManage() {
               ].map(({ key, label, required }) => (
                 <div key={key}>
                   <label className="block text-sm text-muted-foreground mb-1">{label}</label>
-                  <input value={(formData as any)[key]} onChange={e => setFormData(p => ({ ...p, [key]: e.target.value }))} required={required} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white outline-none focus:border-purple-500" />
+                  <input value={(formData as any)[key]} onChange={e => setFormData(p => ({ ...p, [key]: e.target.value }))} required={required} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground outline-none focus:border-purple-500" />
                 </div>
               ))}
               <div>
                 <label className="block text-sm text-muted-foreground mb-1">Bio</label>
-                <textarea rows={3} value={formData.bio} onChange={e => setFormData(p => ({ ...p, bio: e.target.value }))} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white outline-none focus:border-purple-500" />
+                <textarea rows={3} value={formData.bio} onChange={e => setFormData(p => ({ ...p, bio: e.target.value }))} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground outline-none focus:border-purple-500" />
               </div>
               <div>
                 <label className="block text-sm text-muted-foreground mb-1">Sort Order</label>
-                <input type="number" value={formData.sortOrder} onChange={e => setFormData(p => ({ ...p, sortOrder: Number(e.target.value) }))} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white outline-none focus:border-purple-500" />
+                <input type="number" value={formData.sortOrder} onChange={e => setFormData(p => ({ ...p, sortOrder: Number(e.target.value) }))} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground outline-none focus:border-purple-500" />
               </div>
               <div className="flex gap-3 pt-2">
                 <button type="button" onClick={() => setIsModalOpen(false)} className="flex-1 py-2 rounded-lg bg-muted/40 hover:bg-muted/60 transition-colors">Cancel</button>

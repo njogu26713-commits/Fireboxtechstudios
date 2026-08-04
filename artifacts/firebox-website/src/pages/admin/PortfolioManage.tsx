@@ -63,7 +63,7 @@ export default function PortfolioManage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-display font-bold">Manage Portfolio</h1>
-        <button onClick={handleOpenCreate} className="px-4 py-2 bg-secondary text-white font-bold rounded-lg flex items-center gap-2">
+        <button onClick={handleOpenCreate} className="px-4 py-2 bg-secondary text-foreground font-bold rounded-lg flex items-center gap-2">
           <Plus size={18} /> Add Project
         </button>
       </div>
@@ -121,41 +121,41 @@ export default function PortfolioManage() {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-muted-foreground mb-1">Title</label>
-                  <input required value={formData.title} onChange={e=>setFormData({...formData, title: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none" />
+                  <input required value={formData.title} onChange={e=>setFormData({...formData, title: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-secondary focus:outline-none" />
                 </div>
                 <div>
                   <label className="block text-muted-foreground mb-1">Category</label>
-                  <input value={formData.category} onChange={e=>setFormData({...formData, category: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none" />
+                  <input value={formData.category} onChange={e=>setFormData({...formData, category: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-secondary focus:outline-none" />
                 </div>
               </div>
               
               <div>
                 <label className="block text-muted-foreground mb-1">Description</label>
-                <textarea required rows={4} value={formData.description} onChange={e=>setFormData({...formData, description: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none resize-none"></textarea>
+                <textarea required rows={4} value={formData.description} onChange={e=>setFormData({...formData, description: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-secondary focus:outline-none resize-none"></textarea>
               </div>
 
               <div>
                 <label className="block text-muted-foreground mb-1">Technologies (comma separated)</label>
-                <input value={formData.technologies} onChange={e=>setFormData({...formData, technologies: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none" />
+                <input value={formData.technologies} onChange={e=>setFormData({...formData, technologies: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-secondary focus:outline-none" />
               </div>
               
               <div>
                 <label className="block text-muted-foreground mb-1">Screenshot URLs (comma separated)</label>
-                <input value={formData.screenshotUrls} onChange={e=>setFormData({...formData, screenshotUrls: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none" />
+                <input value={formData.screenshotUrls} onChange={e=>setFormData({...formData, screenshotUrls: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-secondary focus:outline-none" />
               </div>
 
               <div className="grid grid-cols-3 gap-4">
                 <div>
                   <label className="block text-muted-foreground mb-1">Video URL</label>
-                  <input value={formData.videoUrl} onChange={e=>setFormData({...formData, videoUrl: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none" />
+                  <input value={formData.videoUrl} onChange={e=>setFormData({...formData, videoUrl: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-secondary focus:outline-none" />
                 </div>
                 <div>
                   <label className="block text-muted-foreground mb-1">Live Demo URL</label>
-                  <input value={formData.liveDemoUrl} onChange={e=>setFormData({...formData, liveDemoUrl: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none" />
+                  <input value={formData.liveDemoUrl} onChange={e=>setFormData({...formData, liveDemoUrl: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-secondary focus:outline-none" />
                 </div>
                 <div>
                   <label className="block text-muted-foreground mb-1">GitHub URL</label>
-                  <input value={formData.githubUrl} onChange={e=>setFormData({...formData, githubUrl: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-white focus:border-secondary focus:outline-none" />
+                  <input value={formData.githubUrl} onChange={e=>setFormData({...formData, githubUrl: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-secondary focus:outline-none" />
                 </div>
               </div>
 
@@ -172,7 +172,7 @@ export default function PortfolioManage() {
 
               <div className="pt-4 flex justify-end gap-3">
                 <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 bg-muted/60 rounded-lg font-medium hover:bg-white/20">Cancel</button>
-                <button type="submit" disabled={createProject.isPending || updateProject.isPending} className="px-6 py-2 bg-secondary text-white font-bold rounded-lg hover:bg-secondary/90">
+                <button type="submit" disabled={createProject.isPending || updateProject.isPending} className="px-6 py-2 bg-secondary text-foreground font-bold rounded-lg hover:bg-secondary/90">
                   {editingId ? 'Save Changes' : 'Create Project'}
                 </button>
               </div>
