@@ -1,6 +1,30 @@
 import React from 'react';
+import { Link } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
-import { Pin, Film, ImageIcon, FileText } from 'lucide-react';
+import { Pin, Film, ImageIcon, FileText, Share2, Check } from 'lucide-react';
+
+function ShareButton({ id }: { id: string }) {
+  const [copied, setCopied] = React.useState(false);
+
+  const handleShare = () => {
+    const url = `${window.location.origin}/updates/${id}`;
+    navigator.clipboard.writeText(url).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
+  return (
+    <button
+      onClick={handleShare}
+      className="inline-flex items-center gap-1.5 text-xs text-gray-400 hover:text-primary transition-colors"
+      title="Copy share link"
+    >
+      {copied ? <Check size={13} className="text-green-500" /> : <Share2 size={13} />}
+      <span>{copied ? 'Copied!' : 'Share'}</span>
+    </button>
+  );
+}
 
 interface Update {
   id: string;
@@ -67,6 +91,14 @@ function VideoPost({ update }: { update: Update }) {
 
       {/* Caption / description */}
       <p className="mt-4 px-1 text-gray-600 leading-relaxed">{update.caption}</p>
+
+      {/* Share row */}
+      <div className="mt-4 px-1 flex items-center gap-3">
+        <ShareButton id={update.id} />
+        <Link href={`/updates/${update.id}`} className="text-xs text-gray-400 hover:text-primary transition-colors">
+          View post
+        </Link>
+      </div>
     </article>
   );
 }
@@ -110,6 +142,14 @@ function PhotoPost({ update }: { update: Update }) {
 
       {/* Caption */}
       <p className="mt-4 px-1 text-gray-600 leading-relaxed">{update.caption}</p>
+
+      {/* Share row */}
+      <div className="mt-4 px-1 flex items-center gap-3">
+        <ShareButton id={update.id} />
+        <Link href={`/updates/${update.id}`} className="text-xs text-gray-400 hover:text-primary transition-colors">
+          View post
+        </Link>
+      </div>
     </article>
   );
 }
@@ -138,6 +178,14 @@ function TextPost({ update }: { update: Update }) {
 
       <div className="rounded-2xl border border-gray-200 bg-gray-50 px-8 py-8 shadow-sm">
         <p className="text-gray-700 leading-relaxed text-base whitespace-pre-wrap">{update.caption}</p>
+      </div>
+
+      {/* Share row */}
+      <div className="mt-4 px-1 flex items-center gap-3">
+        <ShareButton id={update.id} />
+        <Link href={`/updates/${update.id}`} className="text-xs text-gray-400 hover:text-primary transition-colors">
+          View post
+        </Link>
       </div>
     </article>
   );

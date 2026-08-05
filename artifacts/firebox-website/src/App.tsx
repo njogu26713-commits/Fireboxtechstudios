@@ -41,6 +41,7 @@ import AdminJobs from '@/pages/admin/JobsManage';
 import AdminSettings from '@/pages/admin/SettingsManage';
 import AdminUpdates from '@/pages/admin/UpdatesManage';
 import Updates from '@/pages/public/Updates';
+import UpdatePost from '@/pages/public/UpdatePost';
 
 import NotFound from '@/pages/not-found';
 
@@ -68,6 +69,7 @@ function PublicRoutes() {
         <Route path="/blog" component={Blog} />
         <Route path="/blog/:id" component={BlogPost} />
         <Route path="/updates" component={Updates} />
+        <Route path="/updates/:id" component={UpdatePost} />
         <Route path="/careers" component={Careers} />
         <Route path="/reviews" component={Reviews} />
         <Route path="/contact" component={Contact} />
