@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, MessageSquare, Phone, Mail, ChevronDown, Home, Layers, Briefcase, BookOpen, PhoneCall, Zap } from 'lucide-react';
+import { Menu, X, MessageSquare, Phone, Mail, ChevronDown, Home, Layers, Briefcase, BookOpen, PhoneCall, Zap, ArrowUp, ExternalLink } from 'lucide-react';
+import { FaXTwitter, FaLinkedinIn, FaGithub, FaInstagram, FaYoutube } from 'react-icons/fa6';
 import { useGetSiteSettings } from '@workspace/api-client-react';
 
 const navLinks = [
@@ -145,59 +146,151 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-background/80 backdrop-blur-lg pt-16 pb-8 mt-20 relative z-10">
-        <div className="w-full px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-            <div className="space-y-4">
-              <Link href="/" className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center font-display font-bold text-sm text-primary-foreground">
-                  FTS
-                </div>
-                <span className="font-display font-bold text-lg">FireboxTechStudios</span>
-              </Link>
-              <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
-                {settings?.tagline || 'Building the future with AI, Web, Mobile, and Cloud Computing solutions.'}
-              </p>
-            </div>
-            
+      <footer className="relative z-10 mt-20">
+        {/* CTA Band */}
+        <div className="relative overflow-hidden bg-gradient-to-r from-primary/20 via-secondary/10 to-primary/20 border-y border-primary/20">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/60 pointer-events-none" />
+          <div className="relative w-full max-w-6xl mx-auto px-6 py-12 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-              <h4 className="font-display font-semibold mb-4 text-foreground">Quick Links</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link href="/about" className="hover:text-primary transition-colors">About Us</Link></li>
-                <li><Link href="/services" className="hover:text-primary transition-colors">Services</Link></li>
-                <li><Link href="/portfolio" className="hover:text-primary transition-colors">Portfolio</Link></li>
-                <li><Link href="/careers" className="hover:text-primary transition-colors">Careers</Link></li>
-              </ul>
+              <h3 className="font-display font-bold text-xl text-foreground">Ready to build something great?</h3>
+              <p className="text-muted-foreground text-sm mt-1">Let's turn your idea into a high-performance product.</p>
             </div>
-            
-            <div>
-              <h4 className="font-display font-semibold mb-4 text-foreground">Resources</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link href="/tutorials" className="hover:text-primary transition-colors">Tutorials</Link></li>
-                <li><Link href="/blog" className="hover:text-primary transition-colors">Blog</Link></li>
-                <li><Link href="/support" className="hover:text-primary transition-colors">Support Us</Link></li>
-                <li><Link href="/reviews" className="hover:text-primary transition-colors">Reviews</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-display font-semibold mb-4 text-foreground">Contact</h4>
-              <ul className="space-y-3 text-sm text-muted-foreground">
-                {settings?.email && (
-                  <li className="flex items-center gap-2"><Mail size={16} className="text-primary" /> {settings.email}</li>
-                )}
-                {settings?.phone && (
-                  <li className="flex items-center gap-2"><Phone size={16} className="text-primary" /> {settings.phone}</li>
-                )}
-              </ul>
-            </div>
+            <Link
+              href="/contact"
+              className="shrink-0 inline-flex items-center gap-2 h-11 px-7 rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-sm transition-all hover:shadow-[0_0_24px_rgba(0,183,255,0.45)]"
+            >
+              Get a Free Quote <ExternalLink size={14} />
+            </Link>
           </div>
-          
-          <div className="border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} {settings?.siteName || 'FireboxTechStudios'}. All rights reserved.</p>
-            <div className="flex items-center gap-4">
-              <Link href="/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
-              <Link href="/terms" className="hover:text-foreground transition-colors">Terms of Service</Link>
+        </div>
+
+        {/* Main footer body */}
+        <div className="bg-[#07080f] border-t border-white/5">
+          <div className="w-full max-w-6xl mx-auto px-6 pt-14 pb-10">
+            {/* Top grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+              {/* Brand */}
+              <div className="sm:col-span-2 lg:col-span-1 space-y-5">
+                <Link href="/" className="flex items-center gap-2.5 group w-fit">
+                  <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center font-display font-bold text-sm text-white shadow-[0_0_16px_rgba(0,183,255,0.35)] group-hover:shadow-[0_0_24px_rgba(0,183,255,0.55)] transition-all">
+                    FTS
+                  </div>
+                  <span className="font-display font-bold text-base text-white">
+                    Firebox<span className="text-primary">Tech</span>Studios
+                  </span>
+                </Link>
+                <p className="text-sm text-white/50 leading-relaxed max-w-[220px]">
+                  {settings?.tagline || 'Building the future with AI, Web, Mobile & Cloud solutions.'}
+                </p>
+                {/* Social icons */}
+                <div className="flex items-center gap-3 pt-1">
+                  {[
+                    { icon: FaXTwitter, href: '#', label: 'X / Twitter' },
+                    { icon: FaLinkedinIn, href: '#', label: 'LinkedIn' },
+                    { icon: FaGithub, href: '#', label: 'GitHub' },
+                    { icon: FaInstagram, href: '#', label: 'Instagram' },
+                    { icon: FaYoutube, href: '#', label: 'YouTube' },
+                  ].map(({ icon: Icon, href, label }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      aria-label={label}
+                      className="w-8 h-8 rounded-md bg-white/5 hover:bg-primary/20 hover:text-primary text-white/40 flex items-center justify-center transition-colors"
+                    >
+                      <Icon size={14} />
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              {/* Quick Links */}
+              <div>
+                <h4 className="text-xs font-semibold text-white/30 uppercase tracking-widest mb-5">Company</h4>
+                <ul className="space-y-3 text-sm">
+                  {[
+                    { href: '/about', label: 'About Us' },
+                    { href: '/services', label: 'Services' },
+                    { href: '/portfolio', label: 'Portfolio' },
+                    { href: '/updates', label: 'Updates' },
+                    { href: '/careers', label: 'Careers' },
+                  ].map(({ href, label }) => (
+                    <li key={href}>
+                      <Link href={href} className="text-white/50 hover:text-primary transition-colors">
+                        {label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Resources */}
+              <div>
+                <h4 className="text-xs font-semibold text-white/30 uppercase tracking-widest mb-5">Resources</h4>
+                <ul className="space-y-3 text-sm">
+                  {[
+                    { href: '/tutorials', label: 'Tutorials' },
+                    { href: '/blog', label: 'Blog' },
+                    { href: '/reviews', label: 'Reviews' },
+                    { href: '/support', label: 'Support Us' },
+                    { href: '/contact', label: 'Contact' },
+                  ].map(({ href, label }) => (
+                    <li key={href}>
+                      <Link href={href} className="text-white/50 hover:text-primary transition-colors">
+                        {label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Contact */}
+              <div>
+                <h4 className="text-xs font-semibold text-white/30 uppercase tracking-widest mb-5">Get in Touch</h4>
+                <ul className="space-y-4 text-sm">
+                  {settings?.email ? (
+                    <li>
+                      <a href={`mailto:${settings.email}`} className="flex items-start gap-2.5 text-white/50 hover:text-primary transition-colors">
+                        <Mail size={15} className="mt-0.5 shrink-0 text-primary/60" />
+                        <span>{settings.email}</span>
+                      </a>
+                    </li>
+                  ) : (
+                    <li className="flex items-start gap-2.5 text-white/30">
+                      <Mail size={15} className="mt-0.5 shrink-0" />
+                      <span>hello@fireboxtech.com</span>
+                    </li>
+                  )}
+                  {settings?.phone && (
+                    <li>
+                      <a href={`tel:${settings.phone}`} className="flex items-start gap-2.5 text-white/50 hover:text-primary transition-colors">
+                        <Phone size={15} className="mt-0.5 shrink-0 text-primary/60" />
+                        <span>{settings.phone}</span>
+                      </a>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8" />
+
+            {/* Bottom bar */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <p className="text-xs text-white/30">
+                &copy; {new Date().getFullYear()} {settings?.siteName || 'FireboxTechStudios'}. All rights reserved.
+              </p>
+              <div className="flex items-center gap-5">
+                <Link href="/privacy" className="text-xs text-white/30 hover:text-white/60 transition-colors">Privacy Policy</Link>
+                <Link href="/terms" className="text-xs text-white/30 hover:text-white/60 transition-colors">Terms of Service</Link>
+                <button
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="w-7 h-7 rounded-md bg-white/5 hover:bg-white/10 text-white/30 hover:text-white/60 flex items-center justify-center transition-colors"
+                  aria-label="Back to top"
+                >
+                  <ArrowUp size={13} />
+                </button>
+              </div>
             </div>
           </div>
         </div>
