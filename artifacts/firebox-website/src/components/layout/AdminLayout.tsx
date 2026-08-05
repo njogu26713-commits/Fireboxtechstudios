@@ -14,7 +14,8 @@ import {
   HelpCircle, 
   Briefcase, 
   Settings,
-  Globe
+  Globe,
+  Zap,
 } from 'lucide-react';
 
 const adminLinks = [
@@ -30,6 +31,7 @@ const adminLinks = [
   { href: '/admin/team', label: 'Team', icon: Users },
   { href: '/admin/faq', label: 'FAQ & Clients', icon: HelpCircle },
   { href: '/admin/jobs', label: 'Jobs', icon: Briefcase },
+  { href: '/admin/updates', label: 'Updates', icon: Zap },
   { href: '/admin/settings', label: 'Settings', icon: Settings },
 ];
 

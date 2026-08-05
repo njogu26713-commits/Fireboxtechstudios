@@ -442,3 +442,32 @@ const jobSchema = new Schema<IJob>(
 export const JobModel: Model<IJob> =
   (mongoose.models["Job"] as Model<IJob>) ||
   mongoose.model<IJob>("Job", jobSchema);
+
+// ─── Update (social feed post) ────────────────────────────────────────────────
+
+export interface IUpdate extends Document {
+  title?: string | null;
+  caption: string;
+  mediaType: 'video' | 'photo' | 'text';
+  mediaUrl?: string | null;
+  thumbnail?: string | null;
+  published: boolean;
+  pinned: boolean;
+}
+
+const updateSchema = new Schema<IUpdate>(
+  {
+    title: { type: String, default: null },
+    caption: { type: String, required: true },
+    mediaType: { type: String, required: true, enum: ['video', 'photo', 'text'] },
+    mediaUrl: { type: String, default: null },
+    thumbnail: { type: String, default: null },
+    published: { type: Boolean, required: true, default: false },
+    pinned: { type: Boolean, required: true, default: false },
+  },
+  baseOptions,
+);
+
+export const UpdateModel: Model<IUpdate> =
+  (mongoose.models["Update"] as Model<IUpdate>) ||
+  mongoose.model<IUpdate>("Update", updateSchema);

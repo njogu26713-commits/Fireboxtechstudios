@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, MessageSquare, Phone, Mail, ChevronDown, Home, Layers, Briefcase, BookOpen, PhoneCall } from 'lucide-react';
+import { Menu, X, MessageSquare, Phone, Mail, ChevronDown, Home, Layers, Briefcase, BookOpen, PhoneCall, Zap } from 'lucide-react';
 import { useGetSiteSettings } from '@workspace/api-client-react';
 
 const navLinks = [
@@ -11,6 +11,7 @@ const navLinks = [
   { href: '/about', label: 'About' },
   { href: '/tutorials', label: 'Tutorials' },
   { href: '/blog', label: 'Blog' },
+  { href: '/updates', label: 'Updates' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -208,7 +209,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
           {[
             { href: '/', label: 'Home', icon: Home },
             { href: '/services', label: 'Services', icon: Layers },
-            { href: '/portfolio', label: 'Portfolio', icon: Briefcase },
+            { href: '/updates', label: 'Updates', icon: Zap },
             { href: '/blog', label: 'Blog', icon: BookOpen },
             { href: '/contact', label: 'Contact', icon: PhoneCall },
           ].map(({ href, label, icon: Icon }) => {

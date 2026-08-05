@@ -39,6 +39,8 @@ import AdminTeam from '@/pages/admin/TeamManage';
 import AdminFaq from '@/pages/admin/FaqManage';
 import AdminJobs from '@/pages/admin/JobsManage';
 import AdminSettings from '@/pages/admin/SettingsManage';
+import AdminUpdates from '@/pages/admin/UpdatesManage';
+import Updates from '@/pages/public/Updates';
 
 import NotFound from '@/pages/not-found';
 
@@ -65,6 +67,7 @@ function PublicRoutes() {
         <Route path="/tutorials/:id" component={TutorialDetail} />
         <Route path="/blog" component={Blog} />
         <Route path="/blog/:id" component={BlogPost} />
+        <Route path="/updates" component={Updates} />
         <Route path="/careers" component={Careers} />
         <Route path="/reviews" component={Reviews} />
         <Route path="/contact" component={Contact} />
@@ -93,6 +96,7 @@ function AdminRoutes() {
         <Route path="/admin/team" component={AdminTeam} />
         <Route path="/admin/faq" component={AdminFaq} />
         <Route path="/admin/jobs" component={AdminJobs} />
+        <Route path="/admin/updates" component={AdminUpdates} />
         <Route path="/admin/settings" component={AdminSettings} />
         <Route component={NotFound} />
       </Switch>

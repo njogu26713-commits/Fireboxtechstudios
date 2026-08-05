@@ -13,6 +13,7 @@ import teamRouter from "./team";
 import faqRouter from "./faq";
 import jobsRouter from "./jobs";
 import statsRouter from "./stats";
+import updatesRouter from "./updates";
 
 const router: IRouter = Router();
 
@@ -30,5 +31,6 @@ router.use(settingsRouter);
 router.use(teamRouter);
 router.use(faqRouter);
 router.use(jobsRouter);
+router.use(updatesRouter);
 
 export default router;
