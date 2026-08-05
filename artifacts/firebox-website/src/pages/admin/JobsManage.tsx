@@ -11,7 +11,7 @@ export default function JobsManage() {
   const deleteJob = useDeleteJob();
 
   const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [editingId, setEditingId] = React.useState<string | null>(null);
+  const [editingId, setEditingId] = React.useState<number | null>(null);
   const [formData, setFormData] = React.useState({
     title: '', department: '', type: 'full-time', location: '',
     description: '', requirements: '', salaryRange: '', applicationUrl: '', active: true,
@@ -43,7 +43,7 @@ export default function JobsManage() {
     }
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = (id: number) => {
     if (!confirm('Delete this job posting?')) return;
     deleteJob.mutate({ id }, { onSuccess: () => queryClient.invalidateQueries({ queryKey: ['listJobs'] }) });
   };

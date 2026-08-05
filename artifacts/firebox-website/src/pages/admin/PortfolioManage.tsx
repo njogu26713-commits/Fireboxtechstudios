@@ -11,7 +11,7 @@ export default function PortfolioManage() {
   const deleteProject = useDeleteProject();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editingId, setEditingId] = useState<number | null>(null);
   const [formData, setFormData] = useState({
     title: '', description: '', category: '', technologies: '', screenshotUrls: '', 
     videoUrl: '', githubUrl: '', liveDemoUrl: '', published: true, featured: false
@@ -51,7 +51,7 @@ export default function PortfolioManage() {
     }
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = (id: number) => {
     if (confirm('Delete this project?')) {
       deleteProject.mutate({ id }, {
         onSuccess: () => queryClient.invalidateQueries({ queryKey: ['listProjects'] })

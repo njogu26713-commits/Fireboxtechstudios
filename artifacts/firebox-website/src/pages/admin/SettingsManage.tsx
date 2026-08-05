@@ -25,7 +25,7 @@ export default function SettingsManage() {
     if (settings && Object.keys(formData).length === 0) {
       const clean: Partial<Record<SettingsFields, string>> = {};
       for (const key of SETTINGS_FIELDS) {
-        const val = (settings as Record<string, unknown>)[key];
+        const val = (settings as unknown as Record<string, unknown>)[key];
         if (typeof val === 'string') clean[key] = val;
       }
       setFormData(clean);

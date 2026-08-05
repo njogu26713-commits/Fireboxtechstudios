@@ -11,7 +11,7 @@ export default function TutorialsManage() {
   const deleteTutorial = useDeleteTutorial();
 
   const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [editingId, setEditingId] = React.useState<string | null>(null);
+  const [editingId, setEditingId] = React.useState<number | null>(null);
   const [formData, setFormData] = React.useState({
     title: '', description: '', category: '', thumbnailUrl: '',
     videoUrl: '', youtubeEmbedUrl: '', duration: '', difficulty: 'beginner',
@@ -44,7 +44,7 @@ export default function TutorialsManage() {
     }
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = (id: number) => {
     if (!confirm('Delete this tutorial?')) return;
     deleteTutorial.mutate({ id }, { onSuccess: () => queryClient.invalidateQueries({ queryKey: ['listTutorials'] }) });
   };

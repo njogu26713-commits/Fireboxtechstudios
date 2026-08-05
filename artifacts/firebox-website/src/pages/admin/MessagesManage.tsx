@@ -9,13 +9,13 @@ export default function MessagesManage() {
   const updateMessage = useUpdateContactMessage();
   const deleteMessage = useDeleteContactMessage();
 
-  const handleMarkRead = (id: string, read: boolean) => {
+  const handleMarkRead = (id: number, read: boolean) => {
     updateMessage.mutate({ id, data: { read } }, {
       onSuccess: () => queryClient.invalidateQueries({ queryKey: ['listContactMessages'] })
     });
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = (id: number) => {
     if (confirm('Delete message?')) {
       deleteMessage.mutate({ id }, {
         onSuccess: () => queryClient.invalidateQueries({ queryKey: ['listContactMessages'] })

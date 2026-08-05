@@ -9,13 +9,13 @@ export default function QuotesManage() {
   const updateQuote = useUpdateQuoteRequest();
   const deleteQuote = useDeleteQuoteRequest();
 
-  const handleUpdateStatus = (id: string, status: string) => {
+  const handleUpdateStatus = (id: number, status: string) => {
     updateQuote.mutate({ id, data: { status } }, {
       onSuccess: () => queryClient.invalidateQueries({ queryKey: ['listQuoteRequests'] })
     });
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = (id: number) => {
     if (confirm('Delete quote request?')) {
       deleteQuote.mutate({ id }, {
         onSuccess: () => queryClient.invalidateQueries({ queryKey: ['listQuoteRequests'] })

@@ -7,8 +7,8 @@ export default function BlogPost() {
   const [, params] = useRoute('/blog/:id');
   const id = params?.id;
 
-  const { data: post, isLoading } = useGetBlogPost(id as string, {
-    query: { enabled: !!id }
+  const { data: post, isLoading } = useGetBlogPost(Number(id), {
+    query: { enabled: !!id } as any
   });
 
   if (isLoading) {

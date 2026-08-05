@@ -7,8 +7,8 @@ export default function ProjectDetail() {
   const [, params] = useRoute('/portfolio/:id');
   const id = params?.id;
 
-  const { data: project, isLoading } = useGetProject(id as string, {
-    query: { enabled: !!id }
+  const { data: project, isLoading } = useGetProject(Number(id), {
+    query: { enabled: !!id } as any
   });
 
   if (isLoading) {

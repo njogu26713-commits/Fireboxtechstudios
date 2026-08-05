@@ -11,7 +11,7 @@ export default function ServicesManage() {
   const deleteService = useDeleteService();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editingId, setEditingId] = useState<number | null>(null);
   const [formData, setFormData] = useState({
     title: '', description: '', category: '', published: true, featured: false,
     icon: '', bannerUrl: '', galleryUrls: '', pricing: '', buttonText: '', destinationUrl: ''
@@ -58,7 +58,7 @@ export default function ServicesManage() {
     }
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = (id: number) => {
     if (confirm('Are you sure you want to delete this service?')) {
       deleteService.mutate({ id }, {
         onSuccess: () => queryClient.invalidateQueries({ queryKey: ['listServices'] })

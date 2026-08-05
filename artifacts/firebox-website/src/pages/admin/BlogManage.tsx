@@ -11,7 +11,7 @@ export default function BlogManage() {
   const deletePost = useDeleteBlogPost();
 
   const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [editingId, setEditingId] = React.useState<string | null>(null);
+  const [editingId, setEditingId] = React.useState<number | null>(null);
   const [formData, setFormData] = React.useState({
     title: '', content: '', excerpt: '', category: '', 
     featuredImageUrl: '', published: true, authorName: '', tags: ''

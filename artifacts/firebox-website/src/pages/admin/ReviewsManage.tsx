@@ -9,13 +9,13 @@ export default function ReviewsManage() {
   const updateReview = useUpdateReview();
   const deleteReview = useDeleteReview();
 
-  const handleUpdate = (id: string, updates: any) => {
+  const handleUpdate = (id: number, updates: any) => {
     updateReview.mutate({ id, data: updates }, {
       onSuccess: () => queryClient.invalidateQueries({ queryKey: ['listReviews'] })
     });
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = (id: number) => {
     if (confirm('Delete review?')) {
       deleteReview.mutate({ id }, {
         onSuccess: () => queryClient.invalidateQueries({ queryKey: ['listReviews'] })

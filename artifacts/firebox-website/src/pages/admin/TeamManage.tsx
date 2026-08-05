@@ -11,7 +11,7 @@ export default function TeamManage() {
   const deleteMember = useDeleteTeamMember();
 
   const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [editingId, setEditingId] = React.useState<string | null>(null);
+  const [editingId, setEditingId] = React.useState<number | null>(null);
   const [formData, setFormData] = React.useState({
     name: '', role: '', bio: '', avatarUrl: '',
     linkedinUrl: '', githubUrl: '', twitterUrl: '', sortOrder: 0,
@@ -43,7 +43,7 @@ export default function TeamManage() {
     }
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = (id: number) => {
     if (!confirm('Remove this team member?')) return;
     deleteMember.mutate({ id }, { onSuccess: () => queryClient.invalidateQueries({ queryKey: ['listTeamMembers'] }) });
   };

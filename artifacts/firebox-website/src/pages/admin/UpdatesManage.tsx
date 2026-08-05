@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Plus, Edit2, Trash2, X, Film, Image as ImageIcon, FileText, Pin, Eye, EyeOff, Upload, Link } from 'lucide-react';
 import { useUpload } from '@workspace/object-storage-web';
@@ -166,6 +166,120 @@ function MediaUploadField({
   );
 }
 
+// ── Local video preview (no database, blob URL only) ─────────────────────────
+function LocalVideoPreview() {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [blobUrl, setBlobUrl] = useState<string | null>(null);
+  const [fileName, setFileName] = useState<string>('');
+
+  // Revoke the previous blob URL whenever it changes or the component unmounts
+  useEffect(() => {
+    return () => {
+      if (blobUrl) URL.revokeObjectURL(blobUrl);
+    };
+  }, [blobUrl]);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (blobUrl) URL.revokeObjectURL(blobUrl);
+    setBlobUrl(URL.createObjectURL(file));
+    setFileName(file.name);
+    e.target.value = '';
+  };
+
+  const handleClear = () => {
+    if (blobUrl) URL.revokeObjectURL(blobUrl);
+    setBlobUrl(null);
+    setFileName('');
+  };
+
+  return (
+    <div className="glass-panel rounded-xl p-6 space-y-4">
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-lg font-semibold flex items-center gap-2">
+            <Film size={18} className="text-purple-400" />
+            Local Video Preview
+          </h2>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            Pick an MP4 file to preview it instantly — nothing is saved or uploaded.
+          </p>
+        </div>
+        {blobUrl && (
+          <button
+            type="button"
+            onClick={handleClear}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground bg-muted/40 hover:bg-muted/70 rounded-lg transition-colors"
+          >
+            <X size={13} /> Clear
+          </button>
+        )}
+      </div>
+
+      {/* Drop zone / file picker */}
+      {!blobUrl && (
+        <>
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept=".mp4,video/mp4"
+            className="hidden"
+            onChange={handleFileChange}
+          />
+          <button
+            type="button"
+            onClick={() => fileInputRef.current?.click()}
+            className="w-full flex flex-col items-center gap-3 p-10 border-2 border-dashed border-border rounded-xl hover:border-purple-400/60 hover:bg-purple-500/5 transition-all cursor-pointer group"
+          >
+            <div className="w-14 h-14 rounded-full bg-purple-500/10 flex items-center justify-center group-hover:bg-purple-500/20 transition-colors">
+              <Upload size={26} className="text-purple-400" />
+            </div>
+            <div className="text-center">
+              <p className="text-sm font-medium">Click to choose an MP4 file</p>
+              <p className="text-xs text-muted-foreground mt-0.5">Played locally in your browser — no upload required</p>
+            </div>
+          </button>
+        </>
+      )}
+
+      {/* Video player */}
+      {blobUrl && (
+        <div className="space-y-3">
+          <video
+            key={blobUrl}
+            src={blobUrl}
+            controls
+            controlsList="nodownload"
+            className="w-full rounded-xl bg-black"
+            style={{ maxHeight: '480px' }}
+          >
+            Your browser does not support HTML5 video.
+          </video>
+          <div className="flex items-center justify-between text-xs text-muted-foreground px-1">
+            <span className="truncate max-w-[70%]">📄 {fileName}</span>
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              className="text-primary hover:underline shrink-0"
+            >
+              Choose another file
+            </button>
+          </div>
+          {/* Hidden input so user can swap files */}
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept=".mp4,video/mp4"
+            className="hidden"
+            onChange={handleFileChange}
+          />
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function UpdatesManage() {
   const qc = useQueryClient();
   const { data: updates = [], isLoading } = useUpdates();
@@ -264,6 +378,9 @@ export default function UpdatesManage() {
           );
         })}
       </div>
+
+      {/* Local video preview */}
+      <LocalVideoPreview />
 
       {/* Table */}
       <div className="glass-panel rounded-xl overflow-hidden">

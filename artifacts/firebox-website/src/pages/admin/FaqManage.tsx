@@ -20,7 +20,7 @@ export default function FaqManage() {
 
   const [tab, setTab] = React.useState<'faq' | 'clients'>('faq');
   const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [editingId, setEditingId] = React.useState<string | null>(null);
+  const [editingId, setEditingId] = React.useState<number | null>(null);
   const [faqForm, setFaqForm] = React.useState({ question: '', answer: '', category: '', sortOrder: 0 });
   const [clientForm, setClientForm] = React.useState({ name: '', logoUrl: '', websiteUrl: '', sortOrder: 0 });
 
