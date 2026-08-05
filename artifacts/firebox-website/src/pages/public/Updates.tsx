@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Play, Pause, VolumeX, Volume2, Pin, Image as ImageIcon, FileText, Film } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Pin, Film, ImageIcon, FileText } from 'lucide-react';
 
 interface Update {
   id: string;
@@ -25,189 +24,135 @@ function useUpdatesPublic() {
   });
 }
 
-// ── Video Card ────────────────────────────────────────────────────────────────
-function VideoCard({ update, active }: { update: Update; active: boolean }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
-  const [muted, setMuted] = useState(true);
-
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    if (active) {
-      v.play().then(() => setPlaying(true)).catch(() => {});
-    } else {
-      v.pause();
-      setPlaying(false);
-    }
-  }, [active]);
-
-  const toggle = () => {
-    const v = videoRef.current;
-    if (!v) return;
-    if (v.paused) { v.play(); setPlaying(true); }
-    else { v.pause(); setPlaying(false); }
-  };
-
+// ── Video post ────────────────────────────────────────────────────────────────
+function VideoPost({ update }: { update: Update }) {
   return (
-    <div className="relative w-full h-full bg-black flex items-center justify-center">
+    <article className="w-full max-w-[900px] mx-auto py-10 border-b border-gray-100 last:border-0">
+      {/* Meta row */}
+      <div className="flex items-center gap-2 mb-3 px-1">
+        <Film size={14} className="text-gray-400" />
+        <span className="text-xs text-gray-400 uppercase tracking-wide font-medium">Video</span>
+        {update.pinned && (
+          <span className="flex items-center gap-1 text-xs text-primary font-medium ml-1">
+            <Pin size={11} /> Pinned
+          </span>
+        )}
+        <span className="ml-auto text-xs text-gray-400">
+          {new Date(update.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </span>
+      </div>
+
+      {/* Title */}
+      {update.title && (
+        <h2 className="text-xl font-bold text-gray-900 mb-4 px-1 leading-snug">{update.title}</h2>
+      )}
+
+      {/* Player */}
       {update.mediaUrl ? (
         <video
-          ref={videoRef}
           src={update.mediaUrl}
-          className="w-full h-full object-cover"
-          loop
-          muted={muted}
-          playsInline
           poster={update.thumbnail || undefined}
-          onClick={toggle}
-        />
+          controls
+          className="w-full rounded-2xl shadow-md bg-black"
+          style={{ maxHeight: '506px' }}
+        >
+          Your browser does not support HTML5 video.
+        </video>
       ) : (
-        <div className="flex flex-col items-center gap-3 text-white/40">
-          <Film size={64} />
-          <span className="text-lg">No video URL set</span>
+        <div className="w-full h-56 rounded-2xl bg-gray-100 flex flex-col items-center justify-center gap-3 text-gray-400 shadow-inner">
+          <Film size={40} />
+          <span className="text-sm">No video uploaded</span>
         </div>
       )}
 
-      {/* Overlay gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none" />
-
-      {/* Controls */}
-      <div className="absolute bottom-24 left-0 right-0 px-6 flex flex-col gap-3">
-        {update.title && (
-          <h3 className="text-white font-display font-bold text-xl leading-tight drop-shadow-lg">
-            {update.title}
-          </h3>
-        )}
-        <p className="text-white/90 text-sm leading-relaxed drop-shadow">{update.caption}</p>
-        <div className="flex items-center gap-3 mt-1">
-          <button
-            onClick={toggle}
-            className="w-10 h-10 rounded-full bg-white/20 backdrop-blur flex items-center justify-center text-white hover:bg-white/30 transition-colors"
-          >
-            {playing ? <Pause size={18} /> : <Play size={18} />}
-          </button>
-          <button
-            onClick={() => setMuted(!muted)}
-            className="w-10 h-10 rounded-full bg-white/20 backdrop-blur flex items-center justify-center text-white hover:bg-white/30 transition-colors"
-          >
-            {muted ? <VolumeX size={18} /> : <Volume2 size={18} />}
-          </button>
-        </div>
-      </div>
-    </div>
+      {/* Caption / description */}
+      <p className="mt-4 px-1 text-gray-600 leading-relaxed">{update.caption}</p>
+    </article>
   );
 }
 
-// ── Photo Card ────────────────────────────────────────────────────────────────
-function PhotoCard({ update }: { update: Update }) {
+// ── Photo post ────────────────────────────────────────────────────────────────
+function PhotoPost({ update }: { update: Update }) {
   return (
-    <div className="relative w-full h-full bg-black flex items-center justify-center">
+    <article className="w-full max-w-[900px] mx-auto py-10 border-b border-gray-100 last:border-0">
+      {/* Meta row */}
+      <div className="flex items-center gap-2 mb-3 px-1">
+        <ImageIcon size={14} className="text-gray-400" />
+        <span className="text-xs text-gray-400 uppercase tracking-wide font-medium">Photo</span>
+        {update.pinned && (
+          <span className="flex items-center gap-1 text-xs text-primary font-medium ml-1">
+            <Pin size={11} /> Pinned
+          </span>
+        )}
+        <span className="ml-auto text-xs text-gray-400">
+          {new Date(update.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </span>
+      </div>
+
+      {/* Title */}
+      {update.title && (
+        <h2 className="text-xl font-bold text-gray-900 mb-4 px-1 leading-snug">{update.title}</h2>
+      )}
+
+      {/* Image */}
       {update.mediaUrl ? (
         <img
           src={update.mediaUrl}
           alt={update.title || update.caption}
-          className="w-full h-full object-cover"
+          className="w-full rounded-2xl shadow-md object-cover max-h-[600px]"
         />
       ) : (
-        <div className="flex flex-col items-center gap-3 text-white/40">
-          <ImageIcon size={64} />
-          <span className="text-lg">No image URL set</span>
+        <div className="w-full h-56 rounded-2xl bg-gray-100 flex flex-col items-center justify-center gap-3 text-gray-400 shadow-inner">
+          <ImageIcon size={40} />
+          <span className="text-sm">No image uploaded</span>
         </div>
       )}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-      <div className="absolute bottom-24 left-0 right-0 px-6 space-y-2">
-        {update.title && (
-          <h3 className="text-white font-display font-bold text-xl drop-shadow-lg">{update.title}</h3>
-        )}
-        <p className="text-white/90 text-sm leading-relaxed drop-shadow">{update.caption}</p>
-      </div>
-    </div>
+
+      {/* Caption */}
+      <p className="mt-4 px-1 text-gray-600 leading-relaxed">{update.caption}</p>
+    </article>
   );
 }
 
-// ── Text Card ─────────────────────────────────────────────────────────────────
-function TextCard({ update }: { update: Update }) {
+// ── Text post ─────────────────────────────────────────────────────────────────
+function TextPost({ update }: { update: Update }) {
   return (
-    <div className="relative w-full h-full flex items-center justify-center px-8 py-24 bg-gradient-to-br from-background via-primary/10 to-secondary/10">
-      {/* ambient orbs */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-[80px] pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/4 w-48 h-48 bg-secondary/20 rounded-full blur-[60px] pointer-events-none" />
-
-      <div className="relative z-10 max-w-xl text-center space-y-6">
-        <div className="w-14 h-14 rounded-xl bg-primary/20 border border-primary/30 flex items-center justify-center mx-auto">
-          <FileText size={26} className="text-primary" />
-        </div>
-        {update.title && (
-          <h3 className="font-display font-bold text-3xl md:text-4xl leading-tight text-foreground">
-            {update.title}
-          </h3>
-        )}
-        <p className="text-foreground/80 text-lg leading-relaxed">{update.caption}</p>
-      </div>
-    </div>
-  );
-}
-
-// ── Feed Item ─────────────────────────────────────────────────────────────────
-function FeedItem({ update, active, index }: { update: Update; active: boolean; index: number }) {
-  return (
-    <div
-      className="w-full h-[100dvh] flex-shrink-0 snap-start snap-always relative overflow-hidden"
-      style={{ scrollSnapAlign: 'start' }}
-    >
-      {update.mediaType === 'video' && <VideoCard update={update} active={active} />}
-      {update.mediaType === 'photo' && <PhotoCard update={update} />}
-      {update.mediaType === 'text' && <TextCard update={update} />}
-
-      {/* Top badges */}
-      <div className="absolute top-24 left-4 flex items-center gap-2">
+    <article className="w-full max-w-[900px] mx-auto py-10 border-b border-gray-100 last:border-0">
+      {/* Meta row */}
+      <div className="flex items-center gap-2 mb-3 px-1">
+        <FileText size={14} className="text-gray-400" />
+        <span className="text-xs text-gray-400 uppercase tracking-wide font-medium">Post</span>
         {update.pinned && (
-          <span className="flex items-center gap-1 bg-primary/80 text-primary-foreground text-xs font-medium px-2 py-1 rounded-full backdrop-blur">
-            <Pin size={10} /> Pinned
+          <span className="flex items-center gap-1 text-xs text-primary font-medium ml-1">
+            <Pin size={11} /> Pinned
           </span>
         )}
-        <span className="bg-black/40 text-white/70 text-xs px-2 py-1 rounded-full backdrop-blur">
-          {update.mediaType === 'video' ? '🎥 Video' : update.mediaType === 'photo' ? '📷 Photo' : '📝 Post'}
+        <span className="ml-auto text-xs text-gray-400">
+          {new Date(update.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
         </span>
       </div>
 
-      {/* Index counter */}
-      <div className="absolute top-24 right-4 text-white/40 text-xs font-mono">
-        {index + 1}
+      {update.title && (
+        <h2 className="text-xl font-bold text-gray-900 mb-4 px-1 leading-snug">{update.title}</h2>
+      )}
+
+      <div className="rounded-2xl border border-gray-200 bg-gray-50 px-8 py-8 shadow-sm">
+        <p className="text-gray-700 leading-relaxed text-base whitespace-pre-wrap">{update.caption}</p>
       </div>
-    </div>
+    </article>
   );
 }
 
-// ── Main Page ─────────────────────────────────────────────────────────────────
+// ── Main page ─────────────────────────────────────────────────────────────────
 export default function Updates() {
   const { data: updates = [], isLoading, isError } = useUpdatesPublic();
-  const [activeIndex, setActiveIndex] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  // Track which item is in view via scroll
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const onScroll = () => {
-      const scrollTop = container.scrollTop;
-      const itemH = container.clientHeight;
-      const idx = Math.round(scrollTop / itemH);
-      setActiveIndex(idx);
-    };
-
-    container.addEventListener('scroll', onScroll, { passive: true });
-    return () => container.removeEventListener('scroll', onScroll);
-  }, [updates.length]);
 
   if (isLoading) {
     return (
-      <div className="h-[80vh] flex items-center justify-center">
-        <div className="flex flex-col items-center gap-4 text-muted-foreground">
-          <div className="w-10 h-10 rounded-full border-2 border-primary border-t-transparent animate-spin" />
-          <span>Loading updates…</span>
+      <div className="min-h-[60vh] flex items-center justify-center bg-white">
+        <div className="flex flex-col items-center gap-4 text-gray-400">
+          <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin" />
+          <span className="text-sm">Loading updates…</span>
         </div>
       </div>
     );
@@ -215,64 +160,42 @@ export default function Updates() {
 
   if (isError || updates.length === 0) {
     return (
-      <div className="h-[80vh] flex items-center justify-center px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center space-y-4 max-w-sm"
-        >
-          <div className="w-20 h-20 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto">
-            <Film size={36} className="text-primary" />
+      <div className="min-h-[60vh] flex items-center justify-center bg-white px-6">
+        <div className="text-center space-y-4 max-w-sm">
+          <div className="w-16 h-16 rounded-2xl bg-gray-100 flex items-center justify-center mx-auto">
+            <Film size={28} className="text-gray-400" />
           </div>
-          <h2 className="font-display font-bold text-2xl">No updates yet</h2>
-          <p className="text-muted-foreground text-sm leading-relaxed">
+          <h2 className="font-bold text-xl text-gray-800">No updates yet</h2>
+          <p className="text-gray-500 text-sm leading-relaxed">
             Check back soon — videos, photos, and posts from FireboxTechStudios will appear here.
           </p>
-        </motion.div>
+        </div>
       </div>
     );
   }
 
+  // Pinned posts first
+  const sorted = [...updates].sort((a, b) => Number(b.pinned) - Number(a.pinned));
+
   return (
-    <>
-      {/* Page header above the feed */}
-      <div className="px-4 pt-4 pb-2 flex items-center justify-between max-w-screen-sm mx-auto w-full">
-        <h1 className="font-display font-bold text-lg text-foreground">Updates</h1>
-        <span className="text-xs text-muted-foreground">{updates.length} post{updates.length !== 1 ? 's' : ''}</span>
+    <div className="bg-white min-h-screen">
+      {/* Page header */}
+      <div className="max-w-[900px] mx-auto px-4 pt-12 pb-2">
+        <h1 className="text-3xl font-bold text-gray-900">Updates</h1>
+        <p className="text-gray-500 mt-1 text-sm">
+          {updates.length} post{updates.length !== 1 ? 's' : ''}
+        </p>
+        <div className="mt-6 border-b border-gray-100" />
       </div>
 
-      {/* TikTok-style vertical snap scroll */}
-      <div
-        ref={containerRef}
-        className="flex-1 overflow-y-scroll"
-        style={{
-          scrollSnapType: 'y mandatory',
-          WebkitOverflowScrolling: 'touch',
-          height: 'calc(100dvh - 120px)',
-        }}
-      >
-        {updates.map((update, i) => (
-          <FeedItem key={update.id} update={update} active={i === activeIndex} index={i} />
-        ))}
+      {/* Feed */}
+      <div className="px-4 pb-20">
+        {sorted.map((update) => {
+          if (update.mediaType === 'video') return <VideoPost key={update.id} update={update} />;
+          if (update.mediaType === 'photo') return <PhotoPost key={update.id} update={update} />;
+          return <TextPost key={update.id} update={update} />;
+        })}
       </div>
-
-      {/* Dot navigation — desktop */}
-      {updates.length > 1 && (
-        <div className="hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 flex-col gap-2 z-50">
-          {updates.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => {
-                const container = containerRef.current;
-                if (container) container.scrollTo({ top: i * container.clientHeight, behavior: 'smooth' });
-              }}
-              className={`w-2 rounded-full transition-all duration-300 ${
-                i === activeIndex ? 'h-6 bg-primary' : 'h-2 bg-white/30 hover:bg-white/60'
-              }`}
-            />
-          ))}
-        </div>
-      )}
-    </>
+    </div>
   );
 }
