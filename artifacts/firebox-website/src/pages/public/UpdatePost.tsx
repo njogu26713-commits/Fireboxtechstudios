@@ -90,7 +90,7 @@ export default function UpdatePost() {
     'Post';
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-white">
       <div className="max-w-[900px] mx-auto px-4 pt-8 pb-2">
         <Link href="/updates" className="inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-gray-700 transition-colors mb-8">
           <ArrowLeft size={14} />

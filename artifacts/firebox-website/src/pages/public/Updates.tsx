@@ -226,7 +226,7 @@ export default function Updates() {
   const sorted = [...updates].sort((a, b) => Number(b.pinned) - Number(a.pinned));
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-white">
       {/* Page header */}
       <div className="max-w-[900px] mx-auto px-4 pt-12 pb-2">
         <h1 className="text-3xl font-bold text-gray-900">Updates</h1>
