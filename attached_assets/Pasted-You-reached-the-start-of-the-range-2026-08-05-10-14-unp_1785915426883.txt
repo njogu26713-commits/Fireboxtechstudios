@@ -1,0 +1,106 @@
+You reached the start of the range
+2026-08-05 10:14
+unpacking archive
+1.5 MB
+7ms
+uploading snapshot
+345.8 KB
+15ms
+using build driver railpack-v0.35.0
+                   
+╭─────────────────╮
+│ Railpack 0.35.0 │
+╰─────────────────╯
+ 
+  ↳ Detected Node
+  ↳ Using pnpm package manager
+  ↳ Found workspace with 8 packages
+  ↳ Custom start command detected, skipping Caddy start
+  ↳ Installing pnpm@10.26.1 with Corepack
+            
+  Packages  
+  ──────────
+  pnpm  │  10.26.1  │  package.json > packageManager (10.26.1)
+  node  │  22.23.1  │  railpack default (22)
+            
+  Steps     
+  ──────────
+  ▸ install
+    $ npm i -g corepack@latest && corepack enable && corepack prepare --activate
+    $ pnpm install --frozen-lockfile --prefer-offline
+         
+  ▸ build
+    $ BASE_PATH=/ NODE_ENV=production pnpm --filter @workspace/firebox-website run build && pnpm --filter @workspace/api-server run build
+            
+  Deploy    
+  ──────────
+    $ NODE_ENV=production pnpm --filter @workspace/api-server run start
+ 
+
+load build definition from ./railpack-plan.json
+0ms
+
+install mise packages: node
+2s
+mise node@22.23.1 ✓ installed
+
+install apt packages: libatomic1
+2s
+Processing triggers for libc-bin (2.36-9+deb12u14) ...
+
+copy / /app, package.json, /mise/shims
+411ms
+
+npm i -g corepack@latest && corepack enable && corepack prepare --activate
+1s
+Preparing pnpm@10.26.1 for immediate activation...
+
+copy /mise/installs, /usr/local/bin/mise, /etc/mise/config.toml, /root/.local/state/mise
+1s
+scheduling build on Metal builder "builder-dbgvgf"
+
+mkdir -p /app/node_modules/.cache
+254ms
+
+pnpm install --frozen-lockfile --prefer-offline
+5s
+Done in 5.1s using pnpm v10.26.1
+
+copy / /app, .
+530ms
+
+BASE_PATH=/ NODE_ENV=production pnpm --filter @workspace/firebox-website run build && pnpm --filter @workspace/api-server run build
+5s
+> @workspace/firebox-website@0.0.0 build /app/artifacts/firebox-website
+> vite build --config vite.config.ts
+vite v7.3.6 building client environment for production...
+transforming...
+[33msrc/components/ui/tooltip.tsx (2:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.[39m
+
+✓ 2205 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/public/index.html                   1.47 kB │ gzip:   0.56 kB
+dist/public/assets/index-yT6OnzoG.css  160.15 kB │ gzip:  23.76 kB
+dist/public/assets/index-DgmEKzEh.js   655.66 kB │ gzip: 184.72 kB
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 3.74s
+> @workspace/api-server@0.0.0 build /app/artifacts/api-server
+> node ./build.mjs
+✘ [ERROR] Could not resolve "zod"
+    src/routes/updates.ts:3:18:
+      3 │ import { z } from "zod";
+        ╵                   ~~~~~
+  You can mark the path "zod" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+1 error
+Error: Build failed with 1 error:
+
+src/routes/updates.ts:3:18: ERROR: Could not resolve "zod"
+    at failureErrorWithLog (/app/node_modules/.pnpm/esbuild@0.27.3/node_modules/esbuild/lib/main.js:1467:15)
+    at /app/node_modules/.pnpm/esbuild@0.27.3/node_modules/esbuild/lib/main.js:926:25
+    at /app/node_modules/.pnpm/esbuild@0.27.3/node_modules/esbuild/lib/main.js:1345:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {
+  errors: [Getter/Setter],
