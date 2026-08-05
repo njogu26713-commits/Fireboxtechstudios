@@ -12,6 +12,8 @@ interface Update {
   thumbnail?: string | null;
   pinned: boolean;
   createdAt: string;
+  buttonLabel?: string | null;
+  buttonUrl?: string | null;
 }
 
 function useUpdate(id: string) {
@@ -160,6 +162,20 @@ export default function UpdatePost() {
           </div>
         ) : (
           <p className="text-gray-600 leading-relaxed mb-6">{update.caption}</p>
+        )}
+
+        {/* CTA button */}
+        {update.buttonLabel && update.buttonUrl && (
+          <div className="mt-6">
+            <a
+              href={update.buttonUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors"
+            >
+              {update.buttonLabel}
+            </a>
+          </div>
         )}
 
         {/* Share footer */}

@@ -13,6 +13,8 @@ interface Update {
   published: boolean;
   pinned: boolean;
   createdAt: string;
+  buttonLabel?: string | null;
+  buttonUrl?: string | null;
 }
 
 type FormData = {
@@ -23,11 +25,14 @@ type FormData = {
   thumbnail: string;
   published: boolean;
   pinned: boolean;
+  buttonLabel: string;
+  buttonUrl: string;
 };
 
 const defaultForm: FormData = {
   title: '', caption: '', mediaType: 'text', mediaUrl: '',
   thumbnail: '', published: true, pinned: false,
+  buttonLabel: '', buttonUrl: '',
 };
 
 const BASE = '/api';
@@ -317,6 +322,8 @@ export default function UpdatesManage() {
       thumbnail: u.thumbnail || '',
       published: u.published,
       pinned: u.pinned,
+      buttonLabel: u.buttonLabel || '',
+      buttonUrl: u.buttonUrl || '',
     });
     setEditingId(u.id);
     setIsModalOpen(true);
@@ -329,6 +336,8 @@ export default function UpdatesManage() {
       title: (form.title || null) as any,
       mediaUrl: (form.mediaUrl || null) as any,
       thumbnail: (form.thumbnail || null) as any,
+      buttonLabel: (form.buttonLabel || null) as any,
+      buttonUrl: (form.buttonUrl || null) as any,
     };
     if (editingId) {
       updateUpdate.mutate({ id: editingId, data: payload }, {
@@ -561,6 +570,34 @@ export default function UpdatesManage() {
                   />
                 </div>
               )}
+
+              {/* Call-to-action button */}
+              <div className="rounded-lg border border-border bg-muted/20 p-4 space-y-3">
+                <label className="block text-xs font-semibold text-foreground">
+                  Call-to-Action Button <span className="font-normal text-muted-foreground">(optional)</span>
+                </label>
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-xs text-muted-foreground mb-1">Button label</label>
+                    <input
+                      value={form.buttonLabel}
+                      onChange={e => set('buttonLabel', e.target.value)}
+                      placeholder="e.g. Learn More"
+                      className="w-full bg-muted/40 border border-border rounded-lg p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs text-muted-foreground mb-1">Button URL</label>
+                    <input
+                      value={form.buttonUrl}
+                      onChange={e => set('buttonUrl', e.target.value)}
+                      placeholder="https://…"
+                      className="w-full bg-muted/40 border border-border rounded-lg p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                    />
+                  </div>
+                </div>
+                <p className="text-xs text-muted-foreground">Both fields required to show the button. Leave empty to hide it.</p>
+              </div>
 
               {/* Toggles */}
               <div className="flex gap-6">

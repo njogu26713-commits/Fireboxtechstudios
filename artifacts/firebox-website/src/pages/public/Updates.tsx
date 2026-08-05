@@ -35,6 +35,8 @@ interface Update {
   thumbnail?: string | null;
   pinned: boolean;
   createdAt: string;
+  buttonLabel?: string | null;
+  buttonUrl?: string | null;
 }
 
 function useUpdatesPublic() {
@@ -92,6 +94,20 @@ function VideoPost({ update }: { update: Update }) {
       {/* Caption / description */}
       <p className="mt-4 px-1 text-gray-600 leading-relaxed">{update.caption}</p>
 
+      {/* CTA button */}
+      {update.buttonLabel && update.buttonUrl && (
+        <div className="mt-4 px-1">
+          <a
+            href={update.buttonUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors"
+          >
+            {update.buttonLabel}
+          </a>
+        </div>
+      )}
+
       {/* Share row */}
       <div className="mt-4 px-1 flex items-center gap-3">
         <ShareButton id={update.id} />
@@ -143,6 +159,20 @@ function PhotoPost({ update }: { update: Update }) {
       {/* Caption */}
       <p className="mt-4 px-1 text-gray-600 leading-relaxed">{update.caption}</p>
 
+      {/* CTA button */}
+      {update.buttonLabel && update.buttonUrl && (
+        <div className="mt-4 px-1">
+          <a
+            href={update.buttonUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors"
+          >
+            {update.buttonLabel}
+          </a>
+        </div>
+      )}
+
       {/* Share row */}
       <div className="mt-4 px-1 flex items-center gap-3">
         <ShareButton id={update.id} />
@@ -179,6 +209,20 @@ function TextPost({ update }: { update: Update }) {
       <div className="rounded-2xl border border-gray-200 bg-gray-50 px-8 py-8 shadow-sm">
         <p className="text-gray-700 leading-relaxed text-base whitespace-pre-wrap">{update.caption}</p>
       </div>
+
+      {/* CTA button */}
+      {update.buttonLabel && update.buttonUrl && (
+        <div className="mt-4 px-1">
+          <a
+            href={update.buttonUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors"
+          >
+            {update.buttonLabel}
+          </a>
+        </div>
+      )}
 
       {/* Share row */}
       <div className="mt-4 px-1 flex items-center gap-3">

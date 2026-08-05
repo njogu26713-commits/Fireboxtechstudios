@@ -12,6 +12,8 @@ const CreateUpdateBody = z.object({
   thumbnail: z.string().optional().nullable(),
   published: z.boolean().optional(),
   pinned: z.boolean().optional(),
+  buttonLabel: z.string().optional().nullable(),
+  buttonUrl: z.string().optional().nullable(),
 });
 
 const UpdateUpdateBody = CreateUpdateBody.partial();

@@ -453,6 +453,8 @@ export interface IUpdate extends Document {
   thumbnail?: string | null;
   published: boolean;
   pinned: boolean;
+  buttonLabel?: string | null;
+  buttonUrl?: string | null;
 }
 
 const updateSchema = new Schema<IUpdate>(
@@ -464,6 +466,8 @@ const updateSchema = new Schema<IUpdate>(
     thumbnail: { type: String, default: null },
     published: { type: Boolean, required: true, default: false },
     pinned: { type: Boolean, required: true, default: false },
+    buttonLabel: { type: String, default: null },
+    buttonUrl: { type: String, default: null },
   },
   baseOptions,
 );
