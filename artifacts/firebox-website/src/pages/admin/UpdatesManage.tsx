@@ -169,27 +169,35 @@ function MediaUploadField({
 // ── Local video preview (no database, blob URL only) ─────────────────────────
 function LocalVideoPreview() {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  // Track the active blob URL in a ref so revocation never touches it during
+  // React Strict Mode's effect cleanup cycle (which would invalidate the URL
+  // before the <video> element has a chance to load it).
+  const activeBlobRef = useRef<string | null>(null);
   const [blobUrl, setBlobUrl] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string>('');
 
-  // Revoke the previous blob URL whenever it changes or the component unmounts
+  // Only revoke on final unmount — never on re-renders or dep changes.
   useEffect(() => {
     return () => {
-      if (blobUrl) URL.revokeObjectURL(blobUrl);
+      if (activeBlobRef.current) URL.revokeObjectURL(activeBlobRef.current);
     };
-  }, [blobUrl]);
+  }, []);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    if (blobUrl) URL.revokeObjectURL(blobUrl);
-    setBlobUrl(URL.createObjectURL(file));
+    // Revoke the previous URL now (explicit, safe — not inside an effect).
+    if (activeBlobRef.current) URL.revokeObjectURL(activeBlobRef.current);
+    const url = URL.createObjectURL(file);
+    activeBlobRef.current = url;
+    setBlobUrl(url);
     setFileName(file.name);
     e.target.value = '';
   };
 
   const handleClear = () => {
-    if (blobUrl) URL.revokeObjectURL(blobUrl);
+    if (activeBlobRef.current) URL.revokeObjectURL(activeBlobRef.current);
+    activeBlobRef.current = null;
     setBlobUrl(null);
     setFileName('');
   };
