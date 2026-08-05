@@ -2,6 +2,7 @@ import React from 'react';
 import { useListTeamMembers, useCreateTeamMember, useUpdateTeamMember, useDeleteTeamMember } from '@workspace/api-client-react';
 import { Plus, Edit2, Trash2, X } from 'lucide-react';
 import { useQueryClient } from '@tanstack/react-query';
+import { FilePickerInput } from '../../components/admin/FilePickerInput';
 
 export default function TeamManage() {
   const queryClient = useQueryClient();
@@ -98,7 +99,6 @@ export default function TeamManage() {
               {[
                 { key: 'name', label: 'Name', required: true },
                 { key: 'role', label: 'Role / Title' },
-                { key: 'avatarUrl', label: 'Avatar URL' },
                 { key: 'linkedinUrl', label: 'LinkedIn URL' },
                 { key: 'githubUrl', label: 'GitHub URL' },
                 { key: 'twitterUrl', label: 'Twitter / X URL' },
@@ -108,6 +108,7 @@ export default function TeamManage() {
                   <input value={(formData as any)[key]} onChange={e => setFormData(p => ({ ...p, [key]: e.target.value }))} required={required} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground outline-none focus:border-purple-500" />
                 </div>
               ))}
+              <FilePickerInput label="Avatar Photo" value={formData.avatarUrl} onChange={url => setFormData(p => ({ ...p, avatarUrl: url }))} accept="image/*" previewType="image" />
               <div>
                 <label className="block text-sm text-muted-foreground mb-1">Bio</label>
                 <textarea rows={3} value={formData.bio} onChange={e => setFormData(p => ({ ...p, bio: e.target.value }))} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground outline-none focus:border-purple-500" />

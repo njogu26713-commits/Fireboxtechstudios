@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useListProjects, useCreateProject, useUpdateProject, useDeleteProject } from '@workspace/api-client-react';
 import { Plus, Edit2, Trash2, X, ExternalLink } from 'lucide-react';
 import { useQueryClient } from '@tanstack/react-query';
+import { FilePickerInput } from '../../components/admin/FilePickerInput';
 
 export default function PortfolioManage() {
   const queryClient = useQueryClient();
@@ -139,23 +140,17 @@ export default function PortfolioManage() {
                 <input value={formData.technologies} onChange={e=>setFormData({...formData, technologies: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-secondary focus:outline-none" />
               </div>
               
-              <div>
-                <label className="block text-muted-foreground mb-1">Screenshot URLs (comma separated)</label>
-                <input value={formData.screenshotUrls} onChange={e=>setFormData({...formData, screenshotUrls: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-secondary focus:outline-none" />
-              </div>
+              <FilePickerInput label="Screenshot" value={formData.screenshotUrls} onChange={url=>setFormData({...formData, screenshotUrls: url})} accept="image/*" previewType="image" />
+              <FilePickerInput label="Project Video" value={formData.videoUrl} onChange={url=>setFormData({...formData, videoUrl: url})} accept="video/*" previewType="video" />
 
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-muted-foreground mb-1">Video URL</label>
-                  <input value={formData.videoUrl} onChange={e=>setFormData({...formData, videoUrl: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-secondary focus:outline-none" />
+                  <label className="block text-muted-foreground mb-1 text-sm">Live Demo URL</label>
+                  <input value={formData.liveDemoUrl} onChange={e=>setFormData({...formData, liveDemoUrl: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-secondary focus:outline-none text-sm" />
                 </div>
                 <div>
-                  <label className="block text-muted-foreground mb-1">Live Demo URL</label>
-                  <input value={formData.liveDemoUrl} onChange={e=>setFormData({...formData, liveDemoUrl: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-secondary focus:outline-none" />
-                </div>
-                <div>
-                  <label className="block text-muted-foreground mb-1">GitHub URL</label>
-                  <input value={formData.githubUrl} onChange={e=>setFormData({...formData, githubUrl: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-secondary focus:outline-none" />
+                  <label className="block text-muted-foreground mb-1 text-sm">GitHub URL</label>
+                  <input value={formData.githubUrl} onChange={e=>setFormData({...formData, githubUrl: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-secondary focus:outline-none text-sm" />
                 </div>
               </div>
 

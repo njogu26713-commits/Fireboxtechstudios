@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useListServices, useCreateService, useUpdateService, useDeleteService } from '@workspace/api-client-react';
 import { Plus, Edit2, Trash2, X } from 'lucide-react';
 import { useQueryClient } from '@tanstack/react-query';
+import { FilePickerInput } from '../../components/admin/FilePickerInput';
 
 export default function ServicesManage() {
   const queryClient = useQueryClient();
@@ -136,16 +137,7 @@ export default function ServicesManage() {
                 <textarea required rows={4} value={formData.description} onChange={e=>setFormData({...formData, description: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-primary focus:outline-none resize-none"></textarea>
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-muted-foreground mb-1">Banner Image URL</label>
-                  <input value={formData.bannerUrl} onChange={e=>setFormData({...formData, bannerUrl: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-primary focus:outline-none" />
-                </div>
-                <div>
-                  <label className="block text-muted-foreground mb-1">Gallery URLs (comma separated)</label>
-                  <input value={formData.galleryUrls} onChange={e=>setFormData({...formData, galleryUrls: e.target.value})} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground focus:border-primary focus:outline-none" />
-                </div>
-              </div>
+              <FilePickerInput label="Banner Image" value={formData.bannerUrl} onChange={url=>setFormData({...formData, bannerUrl: url})} accept="image/*" previewType="image" />
 
               <div className="grid grid-cols-3 gap-4">
                 <div>

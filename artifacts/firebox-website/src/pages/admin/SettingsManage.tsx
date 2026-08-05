@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useGetSiteSettings, useUpdateSiteSettings } from '@workspace/api-client-react';
+import { FilePickerInput } from '../../components/admin/FilePickerInput';
 
 // Fields accepted by the PATCH /settings endpoint (matches UpdateSiteSettingsBody schema)
 const SETTINGS_FIELDS = [
@@ -70,14 +71,8 @@ export default function SettingsManage() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm mb-1 text-muted-foreground">Logo URL</label>
-              <input value={formData.logoUrl || ''} onChange={e=>handleChange('logoUrl', e.target.value)} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground" />
-            </div>
-            <div>
-              <label className="block text-sm mb-1 text-muted-foreground">Favicon URL</label>
-              <input value={formData.faviconUrl || ''} onChange={e=>handleChange('faviconUrl', e.target.value)} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground" />
-            </div>
+            <FilePickerInput label="Logo" value={formData.logoUrl || ''} onChange={url=>handleChange('logoUrl', url)} accept="image/*" previewType="image" />
+            <FilePickerInput label="Favicon" value={formData.faviconUrl || ''} onChange={url=>handleChange('faviconUrl', url)} accept="image/*" previewType="image" />
           </div>
         </div>
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { useListTutorials, useCreateTutorial, useUpdateTutorial, useDeleteTutorial } from '@workspace/api-client-react';
 import { Plus, Edit2, Trash2, X } from 'lucide-react';
 import { useQueryClient } from '@tanstack/react-query';
+import { FilePickerInput } from '../../components/admin/FilePickerInput';
 
 export default function TutorialsManage() {
   const queryClient = useQueryClient();
@@ -108,8 +109,6 @@ export default function TutorialsManage() {
               {[
                 { key: 'title', label: 'Title', required: true },
                 { key: 'category', label: 'Category' },
-                { key: 'thumbnailUrl', label: 'Thumbnail URL' },
-                { key: 'videoUrl', label: 'Video URL' },
                 { key: 'youtubeEmbedUrl', label: 'YouTube Embed URL' },
                 { key: 'duration', label: 'Duration (e.g. 15 min)' },
               ].map(({ key, label, required }) => (
@@ -123,6 +122,8 @@ export default function TutorialsManage() {
                   />
                 </div>
               ))}
+              <FilePickerInput label="Thumbnail Image" value={formData.thumbnailUrl} onChange={url => setFormData(p => ({ ...p, thumbnailUrl: url }))} accept="image/*" previewType="image" />
+              <FilePickerInput label="Video File" value={formData.videoUrl} onChange={url => setFormData(p => ({ ...p, videoUrl: url }))} accept="video/*" previewType="video" />
               <div>
                 <label className="block text-sm text-muted-foreground mb-1">Description</label>
                 <textarea rows={3} value={formData.description} onChange={e => setFormData(p => ({ ...p, description: e.target.value }))} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground outline-none focus:border-purple-500" />

@@ -5,6 +5,7 @@ import {
 } from '@workspace/api-client-react';
 import { Plus, Edit2, Trash2, X } from 'lucide-react';
 import { useQueryClient } from '@tanstack/react-query';
+import { FilePickerInput } from '../../components/admin/FilePickerInput';
 
 export default function FaqManage() {
   const queryClient = useQueryClient();
@@ -141,12 +142,13 @@ export default function FaqManage() {
               </form>
             ) : (
               <form onSubmit={handleClientSubmit} className="space-y-4">
-                {[{ key: 'name', label: 'Client Name', required: true }, { key: 'logoUrl', label: 'Logo URL' }, { key: 'websiteUrl', label: 'Website URL' }].map(({ key, label, required }) => (
+                {[{ key: 'name', label: 'Client Name', required: true }, { key: 'websiteUrl', label: 'Website URL' }].map(({ key, label, required }) => (
                   <div key={key}>
                     <label className="block text-sm text-muted-foreground mb-1">{label}</label>
                     <input value={(clientForm as any)[key]} onChange={e => setClientForm(p => ({ ...p, [key]: e.target.value }))} required={required} className="w-full bg-muted/40 border border-border rounded-lg px-3 py-2 text-foreground outline-none focus:border-purple-500" />
                   </div>
                 ))}
+                <FilePickerInput label="Logo" value={clientForm.logoUrl} onChange={url => setClientForm(p => ({ ...p, logoUrl: url }))} accept="image/*" previewType="image" />
                 <div className="flex gap-3">
                   <button type="button" onClick={() => setIsModalOpen(false)} className="flex-1 py-2 rounded-lg bg-muted/40 hover:bg-muted/60">Cancel</button>
                   <button type="submit" className="flex-1 py-2 rounded-lg bg-purple-600 hover:bg-purple-700 font-bold">Save</button>

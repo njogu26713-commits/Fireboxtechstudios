@@ -2,6 +2,7 @@ import React from 'react';
 import { useListBlogPosts, useCreateBlogPost, useUpdateBlogPost, useDeleteBlogPost } from '@workspace/api-client-react';
 import { Plus, Edit2, Trash2, X } from 'lucide-react';
 import { useQueryClient } from '@tanstack/react-query';
+import { FilePickerInput } from '../../components/admin/FilePickerInput';
 
 export default function BlogManage() {
   const queryClient = useQueryClient();
@@ -99,7 +100,7 @@ export default function BlogManage() {
               <div><label className="block text-xs mb-1">Excerpt</label><textarea value={formData.excerpt} onChange={e=>setFormData({...formData,excerpt:e.target.value})} className="w-full bg-muted/40 border border-border rounded p-2 text-sm resize-none"></textarea></div>
               <div><label className="block text-xs mb-1">Content (HTML)</label><textarea required rows={10} value={formData.content} onChange={e=>setFormData({...formData,content:e.target.value})} className="w-full bg-muted/40 border border-border rounded p-2 text-sm font-mono resize-none"></textarea></div>
               <div className="grid grid-cols-3 gap-4">
-                <div><label className="block text-xs mb-1">Image URL</label><input value={formData.featuredImageUrl} onChange={e=>setFormData({...formData,featuredImageUrl:e.target.value})} className="w-full bg-muted/40 border border-border rounded p-2 text-sm" /></div>
+                <div><FilePickerInput label="Featured Image" value={formData.featuredImageUrl} onChange={url=>setFormData({...formData,featuredImageUrl:url})} accept="image/*" previewType="image" /></div>
                 <div><label className="block text-xs mb-1">Author Name</label><input value={formData.authorName} onChange={e=>setFormData({...formData,authorName:e.target.value})} className="w-full bg-muted/40 border border-border rounded p-2 text-sm" /></div>
                 <div><label className="block text-xs mb-1">Tags (csv)</label><input value={formData.tags} onChange={e=>setFormData({...formData,tags:e.target.value})} className="w-full bg-muted/40 border border-border rounded p-2 text-sm" /></div>
               </div>
