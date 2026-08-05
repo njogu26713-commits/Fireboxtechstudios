@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, MessageSquare, Phone, Mail, ChevronDown, Home, Layers, Briefcase, BookOpen, PhoneCall, Zap, ArrowUp, ExternalLink } from 'lucide-react';
+import { Menu, X, MessageSquare, Phone, Mail, ChevronDown, Home, Layers, Briefcase, BookOpen, PhoneCall, Zap, ArrowUp, ExternalLink, Sun, Moon } from 'lucide-react';
 import { FaXTwitter, FaLinkedinIn, FaGithub, FaInstagram, FaYoutube } from 'react-icons/fa6';
 import { useGetSiteSettings } from '@workspace/api-client-react';
+import { useTheme } from '@/context/ThemeContext';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -22,7 +23,8 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showCookie, setShowCookie] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
-  
+  const { theme, toggleTheme } = useTheme();
+
   const { data: settings } = useGetSiteSettings();
 
   useEffect(() => {
@@ -87,19 +89,35 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
               ))}
             </nav>
 
-            <div className="hidden lg:flex items-center gap-4">
-              <Link href="/contact" className="h-10 px-6 rounded-md bg-primary hover:bg-primary/90 text-primary-foreground font-medium flex items-center justify-center transition-all hover:shadow-[0_0_20px_rgba(0,183,255,0.4)]">
+            <div className="hidden lg:flex items-center gap-3">
+              <button
+                onClick={toggleTheme}
+                className="w-9 h-9 flex items-center justify-center rounded-md bg-muted/40 border border-border text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Toggle theme"
+              >
+                {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+              </button>
+              <Link href="/contact" className="h-10 px-6 rounded-md bg-primary hover:bg-primary/90 text-primary-foreground font-medium flex items-center justify-center transition-all hover:shadow-[0_0_20px_rgba(139,92,246,0.4)]">
                 Get a Quote
               </Link>
             </div>
 
             {/* Mobile Toggle */}
-            <button 
-              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-md bg-muted/40 border border-border"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
+            <div className="lg:hidden flex items-center gap-2">
+              <button
+                onClick={toggleTheme}
+                className="w-9 h-9 flex items-center justify-center rounded-md bg-muted/40 border border-border text-muted-foreground"
+                aria-label="Toggle theme"
+              >
+                {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+              </button>
+              <button 
+                className="w-10 h-10 flex items-center justify-center rounded-md bg-muted/40 border border-border"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              </button>
+            </div>
           </div>
         </div>
       </header>

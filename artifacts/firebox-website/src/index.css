@@ -111,6 +111,48 @@
   --tracking-normal: -0.02em;
 }
 
+.dark {
+  --background: 270 20% 7%;
+  --foreground: 270 10% 94%;
+
+  --border: 270 15% 18%;
+
+  --card: 270 18% 10%;
+  --card-foreground: 270 10% 94%;
+  --card-border: 270 15% 18%;
+
+  --popover: 270 18% 10%;
+  --popover-foreground: 270 10% 94%;
+  --popover-border: 270 15% 18%;
+
+  --primary: 270 75% 65%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 285 70% 60%;
+  --secondary-foreground: 0 0% 100%;
+
+  --muted: 270 18% 14%;
+  --muted-foreground: 270 12% 55%;
+
+  --accent: 270 18% 16%;
+  --accent-foreground: 270 75% 75%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  --input: 270 18% 16%;
+  --ring: 270 75% 65%;
+
+  --sidebar: 270 18% 9%;
+  --sidebar-foreground: 270 10% 94%;
+  --sidebar-border: 270 15% 18%;
+  --sidebar-primary: 270 75% 65%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 270 18% 16%;
+  --sidebar-accent-foreground: 270 75% 75%;
+  --sidebar-ring: 270 75% 65%;
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -130,10 +172,10 @@
     animation: shimmer 8s linear infinite;
   }
   .glass-panel {
-    @apply bg-white/80 backdrop-blur-xl border border-border shadow-[0_4px_24px_rgba(139,92,246,0.08)];
+    @apply bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-border shadow-[0_4px_24px_rgba(139,92,246,0.08)];
   }
   .glass-panel-glow {
-    @apply bg-white/80 backdrop-blur-xl border border-border shadow-[0_4px_24px_rgba(139,92,246,0.08)] relative z-0;
+    @apply bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-border shadow-[0_4px_24px_rgba(139,92,246,0.08)] relative z-0;
   }
   .glass-panel-glow::before {
     content: '';
