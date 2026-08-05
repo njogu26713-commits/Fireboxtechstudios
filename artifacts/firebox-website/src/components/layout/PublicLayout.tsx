@@ -146,7 +146,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 mt-20">
+      <footer className="relative z-10">
         {/* CTA Band */}
         <div className="relative overflow-hidden bg-gradient-to-r from-primary/20 via-secondary/10 to-primary/20 border-y border-primary/20">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/60 pointer-events-none" />
