@@ -24,7 +24,7 @@ export interface DashboardStats {
 }
 
 export interface Service {
-  id: string;
+  id: number;
   title: string;
   description: string;
   category: string;
@@ -78,7 +78,7 @@ export interface ServiceUpdate {
 }
 
 export interface Project {
-  id: string;
+  id: number;
   title: string;
   description: string;
   /** @nullable */
@@ -126,7 +126,7 @@ export interface ProjectUpdate {
 }
 
 export interface Tutorial {
-  id: string;
+  id: number;
   title: string;
   description: string;
   category: string;
@@ -174,7 +174,7 @@ export interface TutorialUpdate {
 }
 
 export interface BlogPost {
-  id: string;
+  id: number;
   title: string;
   slug: string;
   content: string;
@@ -219,7 +219,7 @@ export interface BlogPostUpdate {
 }
 
 export interface Review {
-  id: string;
+  id: number;
   name: string;
   email: string;
   rating: number;
@@ -251,7 +251,7 @@ export interface PublicReviewsResponse {
 }
 
 export interface ContactMessage {
-  id: string;
+  id: number;
   name: string;
   email: string;
   subject: string;
@@ -275,7 +275,7 @@ export interface ContactMessageUpdate {
 }
 
 export interface QuoteRequest {
-  id: string;
+  id: number;
   name: string;
   email: string;
   /** @nullable */
@@ -305,7 +305,7 @@ export interface QuoteRequestUpdate {
 }
 
 export interface NewsletterSubscription {
-  id: string;
+  id: number;
   email: string;
   createdAt: string;
 }
@@ -315,7 +315,7 @@ export interface NewsletterSubscriptionInput {
 }
 
 export interface SiteSettings {
-  id: string;
+  id: number;
   siteName?: string;
   tagline?: string;
   email?: string;
@@ -368,7 +368,7 @@ export interface SiteSettingsUpdate {
 }
 
 export interface TeamMember {
-  id: string;
+  id: number;
   name: string;
   role: string;
   /** @nullable */
@@ -408,7 +408,7 @@ export interface TeamMemberUpdate {
 }
 
 export interface FaqItem {
-  id: string;
+  id: number;
   question: string;
   answer: string;
   /** @nullable */
@@ -432,7 +432,7 @@ export interface FaqItemUpdate {
 }
 
 export interface TrustedClient {
-  id: string;
+  id: number;
   name: string;
   /** @nullable */
   logoUrl?: string | null;
@@ -457,7 +457,7 @@ export interface TrustedClientUpdate {
 }
 
 export interface Job {
-  id: string;
+  id: number;
   title: string;
   department: string;
   type: string;
@@ -496,6 +496,36 @@ export interface JobUpdate {
   salaryRange?: string;
   active?: boolean;
   applicationUrl?: string;
+}
+
+export interface UploadUrlRequest {
+  /**
+     * Original file name.
+     * @minLength 1
+     */
+  name: string;
+  /**
+     * File size in bytes.
+     * @minimum 1
+     */
+  size: number;
+  /**
+     * MIME type of the file (e.g. `image/jpeg`).
+     * @minLength 1
+     */
+  contentType: string;
+}
+
+export interface UploadUrlResponse {
+  /** Presigned GCS URL for PUT upload. */
+  uploadURL: string;
+  /** Normalized object path (e.g. `/objects/uploads/uuid`). Store this in your database. */
+  objectPath: string;
+  metadata?: UploadUrlRequest;
+}
+
+export interface ErrorEnvelope {
+  error: string;
 }
 
 export type ListServicesParams = {

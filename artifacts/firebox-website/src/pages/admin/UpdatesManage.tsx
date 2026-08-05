@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { Plus, Edit2, Trash2, X, Film, Image as ImageIcon, FileText, Pin, Eye, EyeOff } from 'lucide-react';
+import { Plus, Edit2, Trash2, X, Film, Image as ImageIcon, FileText, Pin, Eye, EyeOff, Upload, Link } from 'lucide-react';
+import { useUpload } from '@workspace/object-storage-web';
 
 interface Update {
   id: string;
@@ -63,6 +64,108 @@ const mediaTypeIcon = { video: Film, photo: ImageIcon, text: FileText };
 const mediaTypeLabel = { video: 'Video', photo: 'Photo', text: 'Text Post' };
 const mediaTypeColor = { video: 'text-purple-400', photo: 'text-blue-400', text: 'text-green-400' };
 
+// ── Media upload widget ───────────────────────────────────────────────────────
+function MediaUploadField({
+  mediaType,
+  value,
+  onChange,
+}: {
+  mediaType: 'video' | 'photo';
+  value: string;
+  onChange: (url: string) => void;
+}) {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [tab, setTab] = useState<'upload' | 'url'>('upload');
+  const [fileName, setFileName] = useState('');
+
+  const { uploadFile, isUploading, progress } = useUpload({
+    onSuccess: (response: { objectPath: string; metadata?: { name?: string } }) => {
+      const servingUrl = `/api/storage${response.objectPath}`;
+      onChange(servingUrl);
+      setFileName(response.metadata?.name ?? '');
+    },
+  });
+
+  const accept = mediaType === 'video' ? 'video/*' : 'image/*';
+  const label = mediaType === 'video' ? 'Video' : 'Image';
+
+  return (
+    <div>
+      <label className="block text-xs font-medium mb-2 text-muted-foreground">{label} Media</label>
+
+      {/* Tab switcher */}
+      <div className="flex gap-1 mb-3 bg-muted/30 rounded-lg p-1 w-fit">
+        <button
+          type="button"
+          onClick={() => setTab('upload')}
+          className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md transition-all ${
+            tab === 'upload' ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
+          }`}
+        >
+          <Upload size={12} /> Upload File
+        </button>
+        <button
+          type="button"
+          onClick={() => setTab('url')}
+          className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md transition-all ${
+            tab === 'url' ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
+          }`}
+        >
+          <Link size={12} /> Paste URL
+        </button>
+      </div>
+
+      {tab === 'upload' ? (
+        <div>
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept={accept}
+            className="hidden"
+            onChange={async (e) => {
+              const file = e.target.files?.[0];
+              if (!file) return;
+              setFileName(file.name);
+              await uploadFile(file);
+              e.target.value = '';
+            }}
+          />
+          <button
+            type="button"
+            disabled={isUploading}
+            onClick={() => fileInputRef.current?.click()}
+            className="w-full flex flex-col items-center gap-2 p-6 border-2 border-dashed border-border rounded-lg hover:border-primary/60 hover:bg-primary/5 transition-all disabled:opacity-60 cursor-pointer"
+          >
+            <Upload size={24} className={isUploading ? 'text-primary animate-pulse' : 'text-muted-foreground'} />
+            <span className="text-sm text-muted-foreground">
+              {isUploading
+                ? `Uploading… ${progress}%`
+                : fileName
+                ? fileName
+                : `Click to choose a ${label.toLowerCase()} file`}
+            </span>
+            {!isUploading && (
+              <span className="text-xs text-muted-foreground/60">
+                {mediaType === 'video' ? 'MP4, WebM, MOV…' : 'JPG, PNG, WebP, GIF…'}
+              </span>
+            )}
+          </button>
+          {value && value.startsWith('/api/storage') && (
+            <p className="text-xs text-green-400 mt-1.5">✓ Uploaded — saved to storage</p>
+          )}
+        </div>
+      ) : (
+        <input
+          value={value}
+          onChange={(e) => { onChange(e.target.value); setFileName(''); }}
+          placeholder={mediaType === 'video' ? 'https://… .mp4 or YouTube embed' : 'https://… .jpg/.png'}
+          className="w-full bg-muted/40 border border-border rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+        />
+      )}
+    </div>
+  );
+}
+
 export default function UpdatesManage() {
   const qc = useQueryClient();
   const { data: updates = [], isLoading } = useUpdates();
@@ -99,11 +202,11 @@ export default function UpdatesManage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const payload = {
+    const payload: Partial<FormData> = {
       ...form,
-      title: form.title || null,
-      mediaUrl: form.mediaUrl || null,
-      thumbnail: form.thumbnail || null,
+      title: (form.title || null) as any,
+      mediaUrl: (form.mediaUrl || null) as any,
+      thumbnail: (form.thumbnail || null) as any,
     };
     if (editingId) {
       updateUpdate.mutate({ id: editingId, data: payload }, {
@@ -312,20 +415,13 @@ export default function UpdatesManage() {
                 />
               </div>
 
-              {/* Media URL (video/photo only) */}
+              {/* Media upload/URL (video/photo only) */}
               {form.mediaType !== 'text' && (
-                <div>
-                  <label className="block text-xs font-medium mb-1 text-muted-foreground">
-                    {form.mediaType === 'video' ? 'Video URL' : 'Image URL'}
-                    <span className="ml-1 text-muted-foreground/60">(paste a direct link)</span>
-                  </label>
-                  <input
-                    value={form.mediaUrl}
-                    onChange={e => set('mediaUrl', e.target.value)}
-                    placeholder={form.mediaType === 'video' ? 'https://… .mp4 or YouTube embed' : 'https://… .jpg/.png'}
-                    className="w-full bg-muted/40 border border-border rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
-                  />
-                </div>
+                <MediaUploadField
+                  mediaType={form.mediaType}
+                  value={form.mediaUrl}
+                  onChange={(url) => set('mediaUrl', url)}
+                />
               )}
 
               {/* Thumbnail (video only) */}
