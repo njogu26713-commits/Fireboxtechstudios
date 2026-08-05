@@ -141,7 +141,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
       </AnimatePresence>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col w-full pt-20 pb-20 lg:pb-0">
+      <main className="flex-1 flex flex-col w-full pt-20">
         {children}
       </main>
 
@@ -166,7 +166,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
 
         {/* Main footer body */}
         <div className="bg-[#07080f] border-t border-white/5">
-          <div className="w-full max-w-6xl mx-auto px-6 pt-14 pb-10">
+          <div className="w-full max-w-6xl mx-auto px-6 pt-14 pb-24 lg:pb-10">
             {/* Top grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
               {/* Brand */}
