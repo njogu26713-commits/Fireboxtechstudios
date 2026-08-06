@@ -44,7 +44,18 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
         {/* Background Grid */}
-        <div className="absolute inset-0 bg-grid opacity-30 z-0"></div>
+        <div className="absolute inset-0 bg-grid opacity-30 z-0" />
+
+        {/* Mobile-only: hero image as background */}
+        <div className="absolute inset-0 lg:hidden z-0">
+          <img
+            src="/hero-image.jpg"
+            alt=""
+            className="w-full h-full object-cover"
+          />
+          {/* Dark gradient so text stays readable */}
+          <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/70 to-background/90" />
+        </div>
 
         <div className="w-full relative z-10 px-6 md:px-12 lg:px-20 max-w-screen-xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -90,12 +101,12 @@ export default function Home() {
               </motion.div>
             </motion.div>
 
-            {/* Right — hero image */}
+            {/* Right — hero image (desktop only) */}
             <motion.div
               initial={{ opacity: 0, x: 60 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-              className="relative flex items-center justify-center"
+              className="relative hidden lg:flex items-center justify-center"
             >
               {/* Glow behind image */}
               <div className="absolute inset-0 bg-primary/20 blur-[80px] rounded-full scale-75 pointer-events-none" />
@@ -103,9 +114,8 @@ export default function Home() {
                 <img
                   src="/hero-image.jpg"
                   alt="Futuristic AI and technology visualization"
-                  className="w-full object-cover max-h-[280px] sm:max-h-[380px] lg:max-h-[560px]"
+                  className="w-full object-cover max-h-[560px]"
                 />
-                {/* Subtle overlay to blend with dark theme */}
                 <div className="absolute inset-0 bg-gradient-to-tl from-background/40 via-transparent to-transparent pointer-events-none" />
               </div>
             </motion.div>
