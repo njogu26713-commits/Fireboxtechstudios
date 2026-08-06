@@ -6,13 +6,14 @@ description: Key decisions about how the frontend and API are wired together in 
 # FireboxTechStudios Setup Notes
 
 ## API wiring
-- Frontend sets `setBaseUrl('/api')` in `main.tsx` — all generated hooks prepend `/api` to paths like `/services` → `/api/services`
+- Frontend sets `setBaseUrl('')` in `main.tsx` (empty string, NOT `/api`)
+- The generated hooks already include `/api` in their paths (e.g. `/api/services/public`), so setting it to `/api` causes double-prefixing → `/api/api/services/public` → 404
 - Vite dev server proxies `/api` → `http://localhost:8080` (where the API server runs)
 - API server mounts router at `/api` via `app.use("/api", router)` in `app.ts`
 
-**Why:** The `@workspace/api-client-react` generated hooks use relative paths. Without `setBaseUrl`, all API calls would hit the wrong path.
+**Why:** `setBaseUrl` prepends to whatever path the generated hook already has. Since the OpenAPI spec paths already start with `/api/`, the base must be empty.
 
-**How to apply:** If the API base URL changes (e.g. a different port), update both the Vite proxy target in `vite.config.ts` and the `setBaseUrl` call in `main.tsx`.
+**How to apply:** Keep `setBaseUrl('')` in `main.tsx`. If the proxy target changes, update only `vite.config.ts`.
 
 ## Custom CSS classes in Tailwind v4
 - Tailwind v4 does NOT allow `@apply` with one custom `@layer utilities` class inside another

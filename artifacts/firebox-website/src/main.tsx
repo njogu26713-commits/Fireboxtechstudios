@@ -5,6 +5,6 @@ import App from './App';
 
 import './index.css';
 
-setBaseUrl('/api');
+setBaseUrl('');
 
 createRoot(document.getElementById('root')!).render(<App />);
