@@ -7,7 +7,7 @@ export default function TutorialDetail() {
   const [, params] = useRoute('/tutorials/:id');
   const id = params?.id;
 
-  const { data: tutorial, isLoading } = useGetTutorial(Number(id), {
+  const { data: tutorial, isLoading } = useGetTutorial(id as any, {
     query: { enabled: !!id } as any
   });
 

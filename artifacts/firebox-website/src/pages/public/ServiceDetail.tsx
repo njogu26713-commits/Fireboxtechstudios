@@ -8,7 +8,7 @@ export default function ServiceDetail() {
   const [, params] = useRoute('/services/:id');
   const id = params?.id;
 
-  const { data: service, isLoading } = useGetService(Number(id), {
+  const { data: service, isLoading } = useGetService(id as any, {
     query: { enabled: !!id } as any
   });
 
