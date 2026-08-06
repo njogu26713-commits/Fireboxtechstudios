@@ -95,15 +95,15 @@ export default function Home() {
               initial={{ opacity: 0, x: 60 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-              className="relative hidden lg:flex items-center justify-center"
+              className="relative flex items-center justify-center"
             >
               {/* Glow behind image */}
               <div className="absolute inset-0 bg-primary/20 blur-[80px] rounded-full scale-75 pointer-events-none" />
-              <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_80px_rgba(0,183,255,0.15)]">
+              <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_80px_rgba(0,183,255,0.15)] w-full">
                 <img
                   src="/hero-image.jpg"
                   alt="Futuristic AI and technology visualization"
-                  className="w-full h-full object-cover max-h-[560px]"
+                  className="w-full object-cover max-h-[280px] sm:max-h-[380px] lg:max-h-[560px]"
                 />
                 {/* Subtle overlay to blend with dark theme */}
                 <div className="absolute inset-0 bg-gradient-to-tl from-background/40 via-transparent to-transparent pointer-events-none" />
